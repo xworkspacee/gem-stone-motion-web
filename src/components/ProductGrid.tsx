@@ -2,6 +2,8 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, ShoppingBag } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { useNavigate } from 'react-router-dom';
 
 interface Product {
   id: number;
@@ -62,6 +64,12 @@ const products: Product[] = [
 ];
 
 const ProductGrid = () => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (product: Product) => {
+    navigate(`/product/${product.id}`);
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -83,79 +91,98 @@ const ProductGrid = () => {
           </div>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {products.map((product) => (
-            <div key={product.id} className="group cursor-pointer animate-scale-in">
-              <div className="relative overflow-hidden bg-luxury-cream rounded-lg mb-4 aspect-square">
-                {/* Badges */}
-                {product.isNew && (
-                  <div className="absolute top-3 left-3 bg-luxury-gold text-white text-xs font-medium px-2 py-1 rounded z-10">
-                    NEW
-                  </div>
-                )}
-                {product.isBestSeller && (
-                  <div className="absolute top-3 left-3 bg-luxury-black text-white text-xs font-medium px-2 py-1 rounded z-10">
-                    BEST SELLER
-                  </div>
-                )}
+        {/* Product Carousel */}
+        <div className="max-w-6xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {products.map((product) => (
+                <CarouselItem key={product.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="group cursor-pointer animate-scale-in" onClick={() => handleProductClick(product)}>
+                    <div className="relative overflow-hidden bg-luxury-cream rounded-lg mb-4 aspect-square">
+                      {/* Badges */}
+                      {product.isNew && (
+                        <div className="absolute top-3 left-3 bg-luxury-gold text-white text-xs font-medium px-2 py-1 rounded z-10">
+                          NEW
+                        </div>
+                      )}
+                      {product.isBestSeller && (
+                        <div className="absolute top-3 left-3 bg-luxury-black text-white text-xs font-medium px-2 py-1 rounded z-10">
+                          BEST SELLER
+                        </div>
+                      )}
 
-                {/* Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                  <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white">
-                    <Heart size={16} />
-                  </Button>
-                  <Button size="sm" className="bg-luxury-black hover:bg-luxury-brown">
-                    <ShoppingBag size={16} />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Product Info */}
-              <div className="text-center">
-                <h3 className="font-medium text-luxury-black mb-2 group-hover:text-luxury-gold transition-colors">
-                  {product.name}
-                </h3>
-                <div className="flex items-center justify-center space-x-2 mb-2">
-                  <span className="text-luxury-black font-medium">{product.price}</span>
-                  {product.originalPrice && (
-                    <span className="text-luxury-gray line-through text-sm">{product.originalPrice}</span>
-                  )}
-                </div>
-
-                {/* Color Options */}
-                {product.colors && (
-                  <div className="flex justify-center space-x-2">
-                    {product.colors.map((color) => (
-                      <div
-                        key={color}
-                        className={`w-4 h-4 rounded-full border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform ${
-                          color === 'gold' ? 'bg-luxury-gold' : 'bg-gray-300'
-                        }`}
+                      {/* Product Image */}
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {/* Navigation Arrows */}
-        <div className="flex justify-center items-center mt-8 space-x-4">
-          <Button variant="outline" size="sm" className="w-10 h-10 rounded-full">
-            ←
-          </Button>
-          <Button variant="outline" size="sm" className="w-10 h-10 rounded-full">
-            →
-          </Button>
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                        <Button 
+                          size="sm" 
+                          variant="secondary" 
+                          className="bg-white/90 hover:bg-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log('Added to wishlist:', product.name);
+                          }}
+                        >
+                          <Heart size={16} />
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          className="bg-luxury-black hover:bg-luxury-brown"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log('Added to cart:', product.name);
+                          }}
+                        >
+                          <ShoppingBag size={16} />
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Product Info */}
+                    <div className="text-center">
+                      <h3 className="font-medium text-luxury-black mb-2 group-hover:text-luxury-gold transition-colors">
+                        {product.name}
+                      </h3>
+                      <div className="flex items-center justify-center space-x-2 mb-2">
+                        <span className="text-luxury-black font-medium">{product.price}</span>
+                        {product.originalPrice && (
+                          <span className="text-luxury-gray line-through text-sm">{product.originalPrice}</span>
+                        )}
+                      </div>
+
+                      {/* Color Options */}
+                      {product.colors && (
+                        <div className="flex justify-center space-x-2">
+                          {product.colors.map((color) => (
+                            <div
+                              key={color}
+                              className={`w-4 h-4 rounded-full border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform ${
+                                color === 'gold' ? 'bg-luxury-gold' : 'bg-gray-300'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+          </Carousel>
         </div>
       </div>
     </section>
