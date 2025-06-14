@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -633,6 +634,19 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
+      {/* Top Banner */}
+      <div className="bg-gray-100 py-3">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center space-x-8 text-sm text-gray-600">
+            <span>FREE SHIPPING</span>
+            <span>•</span>
+            <span>30-DAY RETURNS</span>
+            <span>•</span>
+            <span>LIFETIME WARRANTY</span>
+          </div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <Button 
@@ -644,15 +658,15 @@ const ProductDetail = () => {
           Back to Products
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-lg shadow-sm overflow-hidden min-h-[600px]">
           {/* Left Side - Images */}
-          <div className="bg-black p-8">
+          <div className="bg-gray-900 p-8 flex flex-col">
             {/* Main Image */}
-            <div className="aspect-square mb-4 bg-black rounded-lg overflow-hidden">
+            <div className="flex-1 mb-4 bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center">
               <img
                 src={product.images[selectedImageIndex]?.url}
                 alt={product.images[selectedImageIndex]?.alt}
-                className="w-full h-full object-cover"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
 
@@ -681,7 +695,7 @@ const ProductDetail = () => {
           </div>
 
           {/* Right Side - Product Details */}
-          <div className="p-8 space-y-6">
+          <div className="p-8 space-y-6 bg-white">
             {/* Product Title and Price */}
             <div>
               <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
