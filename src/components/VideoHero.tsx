@@ -3,15 +3,19 @@ import React from 'react';
 
 const VideoHero = () => {
   return (
-    <section className="relative h-screen overflow-hidden bg-gradient-to-br from-luxury-black to-luxury-brown">
+    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-luxury-black to-luxury-brown">
       {/* Video Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-full h-full">
         <video
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover"
+          style={{
+            objectPosition: 'center center'
+          }}
         >
           <source src="https://ik.imagekit.io/cn0lbrbin/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4?updatedAt=1749900056126" type="video/mp4" />
           Your browser does not support the video tag.
