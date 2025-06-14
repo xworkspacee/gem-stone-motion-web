@@ -2,12 +2,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { useCart } from '@/contexts/CartContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { ArrowLeft, CreditCard, MapPin, User } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AddressForm from '@/components/checkout/AddressForm';
+import PaymentOptions from '@/components/checkout/PaymentOptions';
+import OrderSummary from '@/components/checkout/OrderSummary';
+import DeliveryOptions from '@/components/checkout/DeliveryOptions';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -26,7 +29,8 @@ const Checkout = () => {
     alternatePhone: '',
   });
 
-  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [paymentMethod, setPaymentMethod] = useState('upi');
+  const [deliveryOption, setDeliveryOption] = useState('standard');
 
   if (!user) {
     navigate('/auth');
@@ -43,7 +47,13 @@ const Checkout = () => {
     return total + (price * item.quantity);
   }, 0);
 
-  const deliveryCharges = totalAmount > 500 ? 0 : 40;
+  const getDeliveryCharges = () => {
+    if (deliveryOption === 'express') return 99;
+    if (deliveryOption === 'same-day') return 199;
+    return totalAmount > 500 ? 0 : 40;
+  };
+
+  const deliveryCharges = getDeliveryCharges();
   const finalAmount = totalAmount + deliveryCharges;
 
   const handleAddressChange = (field: string, value: string) => {
@@ -51,16 +61,15 @@ const Checkout = () => {
   };
 
   const handlePlaceOrder = async () => {
-    // Here you would typically process the payment and create the order
     console.log('Order details:', {
       user: user.id,
       items: cartItems,
       shippingAddress,
       paymentMethod,
+      deliveryOption,
       totalAmount: finalAmount,
     });
 
-    // For demo purposes, we'll just clear the cart and show success
     await clearCart();
     navigate('/order-success');
   };
@@ -76,185 +85,105 @@ const Checkout = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
+      {/* Top Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-3">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center space-x-8 text-sm text-white">
+            <span className="flex items-center"><Check size={16} className="mr-1" /> FREE SHIPPING</span>
+            <span>•</span>
+            <span className="flex items-center"><Check size={16} className="mr-1" /> 30-DAY RETURNS</span>
+            <span>•</span>
+            <span className="flex items-center"><Check size={16} className="mr-1" /> SECURE PAYMENTS</span>
+          </div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 py-8">
-        <Button 
-          variant="ghost" 
-          onClick={() => navigate('/')}
-          className="mb-6 text-luxury-gray hover:text-luxury-black"
-        >
-          <ArrowLeft size={20} className="mr-2" />
-          Back to Shopping
-        </Button>
+        {/* Breadcrumb */}
+        <div className="flex items-center space-x-2 text-sm text-gray-600 mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate('/')}
+            className="p-0 h-auto text-blue-600 hover:text-blue-800"
+          >
+            Home
+          </Button>
+          <span>/</span>
+          <span className="text-gray-400">Secure Checkout</span>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Address Form */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-4 flex items-center">
-                <MapPin size={20} className="mr-2" />
-                Delivery Address
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input
-                  placeholder="Full Name"
-                  value={shippingAddress.fullName}
-                  onChange={(e) => handleAddressChange('fullName', e.target.value)}
-                />
-                <Input
-                  placeholder="Mobile Number"
-                  value={shippingAddress.mobile}
-                  onChange={(e) => handleAddressChange('mobile', e.target.value)}
-                />
-                <Input
-                  placeholder="Pincode"
-                  value={shippingAddress.pincode}
-                  onChange={(e) => handleAddressChange('pincode', e.target.value)}
-                />
-                <Input
-                  placeholder="Locality"
-                  value={shippingAddress.locality}
-                  onChange={(e) => handleAddressChange('locality', e.target.value)}
-                />
-                <div className="md:col-span-2">
-                  <Input
-                    placeholder="Address (Area and Street)"
-                    value={shippingAddress.address}
-                    onChange={(e) => handleAddressChange('address', e.target.value)}
-                  />
-                </div>
-                <Input
-                  placeholder="City/District/Town"
-                  value={shippingAddress.city}
-                  onChange={(e) => handleAddressChange('city', e.target.value)}
-                />
-                <Input
-                  placeholder="State"
-                  value={shippingAddress.state}
-                  onChange={(e) => handleAddressChange('state', e.target.value)}
-                />
-                <Input
-                  placeholder="Landmark (Optional)"
-                  value={shippingAddress.landmark}
-                  onChange={(e) => handleAddressChange('landmark', e.target.value)}
-                />
-                <Input
-                  placeholder="Alternate Phone (Optional)"
-                  value={shippingAddress.alternatePhone}
-                  onChange={(e) => handleAddressChange('alternatePhone', e.target.value)}
-                />
+        {/* Progress Steps */}
+        <div className="flex items-center justify-center mb-8">
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                <ShoppingBag size={16} />
               </div>
+              <span className="ml-2 text-sm font-medium text-blue-600">Cart</span>
             </div>
-
-            {/* Payment Method */}
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-4 flex items-center">
-                <CreditCard size={20} className="mr-2" />
-                Payment Method
-              </h2>
-              
-              <div className="space-y-3">
-                <label className="flex items-center space-x-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="card"
-                    checked={paymentMethod === 'card'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="text-luxury-black"
-                  />
-                  <span>Credit/Debit Card</span>
-                </label>
-                <label className="flex items-center space-x-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="upi"
-                    checked={paymentMethod === 'upi'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="text-luxury-black"
-                  />
-                  <span>UPI</span>
-                </label>
-                <label className="flex items-center space-x-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="netbanking"
-                    checked={paymentMethod === 'netbanking'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="text-luxury-black"
-                  />
-                  <span>Net Banking</span>
-                </label>
-                <label className="flex items-center space-x-3 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="cod"
-                    checked={paymentMethod === 'cod'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="text-luxury-black"
-                  />
-                  <span>Cash on Delivery</span>
-                </label>
+            <div className="w-12 h-0.5 bg-blue-600"></div>
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+                2
               </div>
+              <span className="ml-2 text-sm font-medium text-blue-600">Checkout</span>
+            </div>
+            <div className="w-12 h-0.5 bg-gray-300"></div>
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-semibold">
+                3
+              </div>
+              <span className="ml-2 text-sm font-medium text-gray-600">Payment</span>
             </div>
           </div>
+        </div>
 
-          {/* Order Summary */}
-          <div className="bg-white p-6 rounded-lg shadow-sm h-fit">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Forms */}
+          <div className="lg:col-span-2 space-y-6">
+            <AddressForm 
+              address={shippingAddress}
+              onAddressChange={handleAddressChange}
+            />
             
-            <div className="space-y-4">
-              {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center space-x-3">
-                  <img
-                    src={item.product_image}
-                    alt={item.product_name}
-                    className="w-12 h-12 object-cover rounded"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm truncate">{item.product_name}</p>
-                    <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
-                  </div>
-                  <span className="font-medium text-sm">{item.product_price}</span>
-                </div>
-              ))}
-            </div>
+            <DeliveryOptions
+              selectedOption={deliveryOption}
+              onOptionChange={setDeliveryOption}
+            />
 
-            <div className="border-t mt-4 pt-4 space-y-2">
-              <div className="flex justify-between">
-                <span>Subtotal ({cartItems.length} items)</span>
-                <span>₹ {totalAmount.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Delivery Charges</span>
-                <span className={deliveryCharges === 0 ? 'text-green-600' : ''}>
-                  {deliveryCharges === 0 ? 'FREE' : `₹ ${deliveryCharges}`}
-                </span>
-              </div>
-              <div className="border-t pt-2">
-                <div className="flex justify-between font-bold text-lg">
-                  <span>Total Amount</span>
-                  <span>₹ {finalAmount.toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
+            <PaymentOptions
+              selectedMethod={paymentMethod}
+              onMethodChange={setPaymentMethod}
+            />
+          </div>
+
+          {/* Right Column - Order Summary */}
+          <div className="space-y-6">
+            <OrderSummary
+              cartItems={cartItems}
+              totalAmount={totalAmount}
+              deliveryCharges={deliveryCharges}
+              finalAmount={finalAmount}
+            />
 
             <Button
-              className="w-full mt-6 h-12 bg-luxury-black hover:bg-luxury-brown text-white"
+              className="w-full h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg tracking-wide"
               onClick={handlePlaceOrder}
               disabled={!isAddressValid}
             >
-              Place Order
+              PLACE ORDER
             </Button>
 
             {!isAddressValid && (
-              <p className="text-sm text-red-500 mt-2 text-center">
+              <p className="text-sm text-red-500 text-center">
                 Please fill in all required address fields
               </p>
             )}
+
+            <div className="text-center text-xs text-gray-500">
+              By placing your order, you agree to our{' '}
+              <button className="text-blue-600 hover:underline">Terms & Conditions</button>
+            </div>
           </div>
         </div>
       </div>
