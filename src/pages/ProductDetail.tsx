@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -617,7 +616,6 @@ const ProductDetail = () => {
       return;
     }
 
-    // Add to cart first, then navigate to checkout
     await addToCart({
       product_id: product.id,
       product_name: product.name,
@@ -632,7 +630,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
       <div className="container mx-auto px-4 py-8">
@@ -640,17 +638,17 @@ const ProductDetail = () => {
         <Button 
           variant="ghost" 
           onClick={() => navigate('/')}
-          className="mb-6 text-luxury-gray hover:text-luxury-black"
+          className="mb-6 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Products
         </Button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image Gallery */}
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg shadow-sm overflow-hidden">
+          {/* Left Side - Images */}
+          <div className="bg-black p-8">
             {/* Main Image */}
-            <div className="aspect-square overflow-hidden rounded-lg bg-luxury-cream">
+            <div className="aspect-square mb-4 bg-black rounded-lg overflow-hidden">
               <img
                 src={product.images[selectedImageIndex]?.url}
                 alt={product.images[selectedImageIndex]?.alt}
@@ -660,15 +658,15 @@ const ProductDetail = () => {
 
             {/* Thumbnail Images */}
             {product.images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-4 gap-2">
                 {product.images.map((image, index) => (
                   <button
                     key={image.id}
                     onClick={() => setSelectedImageIndex(index)}
-                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-colors ${
+                    className={`aspect-square overflow-hidden rounded border-2 transition-colors ${
                       selectedImageIndex === index 
-                        ? 'border-luxury-gold' 
-                        : 'border-luxury-beige hover:border-luxury-brown'
+                        ? 'border-yellow-400' 
+                        : 'border-gray-600 hover:border-gray-400'
                     }`}
                   >
                     <img
@@ -682,20 +680,16 @@ const ProductDetail = () => {
             )}
           </div>
 
-          {/* Product Information */}
-          <div className="space-y-6">
+          {/* Right Side - Product Details */}
+          <div className="p-8 space-y-6">
+            {/* Product Title and Price */}
             <div>
-              <h1 className="text-3xl font-luxury font-bold text-luxury-black mb-4">
+              <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
                 {product.name}
               </h1>
-              <div className="flex items-center space-x-4 mb-4">
-                <span className="text-2xl font-bold text-luxury-black">{product.price}</span>
-                {product.originalPrice && (
-                  <span className="text-xl text-luxury-gray line-through">{product.originalPrice}</span>
-                )}
-              </div>
+              <div className="text-3xl font-bold text-gray-900 mb-2">{product.price}</div>
               {product.inStock && (
-                <div className="flex items-center text-red-500 text-sm mb-4">
+                <div className="flex items-center text-red-500 text-sm">
                   <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
                   A few left in stock!
                 </div>
@@ -704,16 +698,16 @@ const ProductDetail = () => {
 
             {/* Size Selection */}
             <div>
-              <h3 className="text-lg font-medium text-luxury-black mb-3">SIZE: {selectedSize}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">SIZE:</h3>
               <div className="grid grid-cols-6 gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`py-2 px-4 border rounded transition-colors ${
+                    className={`py-3 px-4 border-2 rounded transition-colors font-medium ${
                       selectedSize === size
-                        ? 'border-luxury-black bg-luxury-black text-white'
-                        : 'border-luxury-beige hover:border-luxury-brown'
+                        ? 'border-gray-900 bg-gray-900 text-white'
+                        : 'border-gray-300 hover:border-gray-500 text-gray-700'
                     }`}
                   >
                     {size}
@@ -724,17 +718,16 @@ const ProductDetail = () => {
 
             {/* Color Selection */}
             <div>
-              <h3 className="text-lg font-medium text-luxury-black mb-3">
-                COLOR: {selectedColor ? product.colors.find(c => c.value === selectedColor)?.name : ''}
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">COLOR:</h3>
               <div className="flex space-x-3">
                 {product.colors.map((color) => (
                   <button
                     key={color.value}
                     onClick={() => setSelectedColor(color.value)}
-                    className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
-                      selectedColor === color.value ? 'border-luxury-black' : 'border-gray-300'
-                    } ${color.value === 'gold' ? 'bg-luxury-gold' : color.value === 'rosegold' ? 'bg-rose-400' : color.value === 'whitegold' ? 'bg-gray-200' : color.value === 'platinum' ? 'bg-gray-400' : 'bg-gray-300'}`}
+                    className={`w-10 h-10 rounded-full border-3 transition-transform hover:scale-110 ${
+                      selectedColor === color.value ? 'border-gray-900 ring-2 ring-gray-900 ring-offset-2' : 'border-gray-300'
+                    } ${color.value === 'gold' ? 'bg-yellow-400' : 'bg-gray-300'}`}
+                    title={color.name}
                   />
                 ))}
               </div>
@@ -742,29 +735,33 @@ const ProductDetail = () => {
 
             {/* Material */}
             <div>
-              <h3 className="text-lg font-medium text-luxury-black mb-2">MATERIAL: {product.material}</h3>
+              <h3 className="text-lg font-semibold text-gray-900">
+                MATERIAL: <span className="font-normal">{product.material}</span>
+              </h3>
             </div>
 
             {/* Quantity */}
             <div>
-              <h3 className="text-lg font-medium text-luxury-black mb-3">Quantity</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Quantity</h3>
               <div className="flex items-center space-x-4">
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1}
+                  className="w-12 h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
                 >
-                  <Minus size={16} />
+                  <Minus size={20} />
                 </Button>
-                <span className="text-xl font-medium px-4">{quantity}</span>
+                <span className="text-2xl font-semibold px-6">{quantity}</span>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setQuantity(quantity + 1)}
                   disabled={quantity >= product.stockCount}
+                  className="w-12 h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
                 >
-                  <Plus size={16} />
+                  <Plus size={20} />
                 </Button>
               </div>
             </div>
@@ -772,7 +769,7 @@ const ProductDetail = () => {
             {/* Action Buttons */}
             <div className="space-y-4 pt-6">
               <Button
-                className="w-full h-12 bg-luxury-black hover:bg-luxury-brown text-white font-medium tracking-wide"
+                className="w-full h-14 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-lg tracking-wide"
                 onClick={handleBuyNow}
                 disabled={!selectedSize || !selectedColor}
               >
@@ -781,64 +778,22 @@ const ProductDetail = () => {
               
               <div className="grid grid-cols-2 gap-4">
                 <Button
-                  variant="outline"
-                  className="h-12 border-luxury-black text-luxury-black hover:bg-luxury-black hover:text-white"
+                  className="h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0"
                   onClick={handleAddToCart}
                   disabled={!selectedSize || !selectedColor}
                 >
-                  <ShoppingBag size={18} className="mr-2" />
+                  <ShoppingBag size={20} className="mr-2" />
                   ADD TO CART
                 </Button>
                 
                 <Button
-                  variant="outline"
-                  className={`h-12 ${
-                    isWishlisted 
-                      ? 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white' 
-                      : 'border-luxury-black text-luxury-black hover:bg-luxury-black hover:text-white'
-                  }`}
+                  className="h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0"
                   onClick={handleWishlistToggle}
                 >
-                  <Heart size={18} className="mr-2" fill={isWishlisted ? 'currentColor' : 'none'} />
-                  {isWishlisted ? 'WISHLISTED' : 'ADD TO WISHLIST'}
+                  <Heart size={20} className="mr-2" fill={isWishlisted ? 'currentColor' : 'none'} />
+                  ADD TO WISHLIST
                 </Button>
               </div>
-            </div>
-
-            {/* Product Details */}
-            <div className="space-y-4 pt-6 border-t border-luxury-beige">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer text-lg font-medium text-luxury-black">
-                  Description
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <p className="mt-4 text-luxury-gray leading-relaxed">{product.description}</p>
-              </details>
-
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer text-lg font-medium text-luxury-black">
-                  Care Instructions
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-4 text-luxury-gray">
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>Clean with soft jewelry cloth</li>
-                    <li>Store in provided jewelry box</li>
-                    <li>Avoid contact with chemicals and perfumes</li>
-                    <li>Remove before swimming or showering</li>
-                  </ul>
-                </div>
-              </details>
-
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer text-lg font-medium text-luxury-black">
-                  Return & Exchange Information
-                  <span className="group-open:rotate-180 transition-transform">▼</span>
-                </summary>
-                <div className="mt-4 text-luxury-gray">
-                  <p>30-day return policy. Items must be in original condition with tags attached.</p>
-                </div>
-              </details>
             </div>
           </div>
         </div>
