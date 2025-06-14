@@ -8,6 +8,9 @@ import UserManagement from '@/components/admin/UserManagement';
 import ProductManagement from '@/components/admin/ProductManagement';
 import OrderManagement from '@/components/admin/OrderManagement';
 import ReviewsManagement from '@/components/admin/ReviewsManagement';
+import PaymentManagement from '@/components/admin/PaymentManagement';
+import SecuritySettings from '@/components/admin/SecuritySettings';
+import NotificationManagement from '@/components/admin/NotificationManagement';
 import AddProduct from '@/components/admin/AddProduct';
 import { Moon, Sun, Search, MessageSquare, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -60,11 +63,11 @@ const Admin = () => {
       case 'reports':
         return <div className="p-6"><h2 className="text-2xl font-bold">Reports Coming Soon</h2></div>;
       case 'notifications':
-        return <div className="p-6"><h2 className="text-2xl font-bold">Notifications Management</h2></div>;
+        return <NotificationManagement />;
       case 'payments':
-        return <div className="p-6"><h2 className="text-2xl font-bold">Payment Management</h2></div>;
+        return <PaymentManagement />;
       case 'security':
-        return <div className="p-6"><h2 className="text-2xl font-bold">Security Settings</h2></div>;
+        return <SecuritySettings />;
       case 'settings':
         return <div className="p-6"><h2 className="text-2xl font-bold">System Settings</h2></div>;
       default:

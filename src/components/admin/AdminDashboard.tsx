@@ -8,52 +8,73 @@ import { TrendingUp, Users, Package, ShoppingCart, DollarSign, ArrowUpIcon, Arro
 import { Progress } from '@/components/ui/progress';
 
 const AdminDashboard = () => {
-  // Fetch dashboard data
+  // Fetch real dashboard data from Supabase
   const { data: stats, isLoading } = useQuery({
-    queryKey: ['admin-stats'],
+    queryKey: ['admin-dashboard-stats'],
     queryFn: async () => {
-      const [products, orders, reviews] = await Promise.all([
+      const [products, orders, reviews, profiles, payments, analytics] = await Promise.all([
         supabase.from('products').select('*'),
         supabase.from('orders').select('*'),
-        supabase.from('reviews').select('*')
+        supabase.from('reviews').select('*'),
+        supabase.from('profiles').select('*'),
+        supabase.from('payments').select('*'),
+        supabase.from('analytics_data').select('*').order('metric_date', { ascending: false })
       ]);
 
       const totalRevenue = orders.data?.reduce((sum, order) => sum + parseFloat(String(order.total_amount || '0')), 0) || 0;
+      const totalPayments = payments.data?.reduce((sum, payment) => sum + parseFloat(String(payment.amount || '0')), 0) || 0;
+      
+      // Process analytics data for charts
+      const revenueData = analytics.data?.filter(a => a.metric_name === 'daily_revenue').slice(0, 7).reverse() || [];
+      const ordersData = analytics.data?.filter(a => a.metric_name === 'daily_orders').slice(0, 7).reverse() || [];
+      
+      const chartData = revenueData.map((revenue, index) => ({
+        date: new Date(revenue.metric_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        revenue: parseFloat(String(revenue.metric_value)),
+        orders: ordersData[index] ? parseFloat(String(ordersData[index].metric_value)) : 0
+      }));
       
       return {
         totalProducts: products.data?.length || 0,
         totalOrders: orders.data?.length || 0,
-        totalUsers: 0,
+        totalUsers: profiles.data?.length || 0,
         totalReviews: reviews.data?.length || 0,
         totalRevenue,
+        totalPayments,
         orders: orders.data || [],
-        products: products.data || []
+        products: products.data || [],
+        chartData
       };
     }
   });
 
-  // Enhanced sample data for charts
-  const salesData = [
-    { month: 'Jan', sales: 4000, revenue: 2400, growth: 12 },
-    { month: 'Feb', sales: 3000, revenue: 1398, growth: -8 },
-    { month: 'Mar', sales: 2000, revenue: 9800, growth: 25 },
-    { month: 'Apr', sales: 2780, revenue: 3908, growth: 15 },
-    { month: 'May', sales: 1890, revenue: 4800, growth: 20 },
-    { month: 'Jun', sales: 2390, revenue: 3800, growth: 18 },
-  ];
+  const { data: notifications } = useQuery({
+    queryKey: ['admin-notifications'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('notifications')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(5);
+      
+      if (error) throw error;
+      return data;
+    }
+  });
 
+  // Sample data for other charts
   const categoryData = [
-    { name: 'Rings', value: 400, color: '#374151' },
-    { name: 'Necklaces', value: 300, color: '#6B7280' },
-    { name: 'Earrings', value: 200, color: '#9CA3AF' },
-    { name: 'Bracelets', value: 100, color: '#D1D5DB' },
+    { name: 'Rings', value: stats?.products.filter(p => p.category === 'rings').length || 0, color: '#374151' },
+    { name: 'Necklaces', value: stats?.products.filter(p => p.category === 'necklaces').length || 0, color: '#6B7280' },
+    { name: 'Earrings', value: stats?.products.filter(p => p.category === 'earrings').length || 0, color: '#9CA3AF' },
+    { name: 'Bracelets', value: stats?.products.filter(p => p.category === 'bracelets').length || 0, color: '#D1D5DB' },
   ];
 
   const orderStatusData = [
-    { status: 'Pending', count: 12, color: '#f59e0b' },
-    { status: 'Processing', count: 8, color: '#3b82f6' },
-    { status: 'Shipped', count: 15, color: '#8b5cf6' },
-    { status: 'Delivered', count: 25, color: '#10b981' },
+    { status: 'Pending', count: stats?.orders.filter(o => o.status === 'pending').length || 0, color: '#f59e0b' },
+    { status: 'Processing', count: stats?.orders.filter(o => o.status === 'processing').length || 0, color: '#3b82f6' },
+    { status: 'Shipped', count: stats?.orders.filter(o => o.status === 'shipped').length || 0, color: '#8b5cf6' },
+    { status: 'Delivered', count: stats?.orders.filter(o => o.status === 'delivered').length || 0, color: '#10b981' },
   ];
 
   const performanceData = [
@@ -61,14 +82,6 @@ const AdminDashboard = () => {
     { metric: 'Customer Satisfaction', current: 92, target: 100 },
     { metric: 'Product Quality', current: 88, target: 100 },
     { metric: 'Delivery Time', current: 95, target: 100 },
-  ];
-
-  const recentActivities = [
-    { id: 1, type: 'order', message: 'New order #1234 received', time: '2 minutes ago', status: 'success' },
-    { id: 2, type: 'product', message: 'Diamond Ring stock low', time: '5 minutes ago', status: 'warning' },
-    { id: 3, type: 'user', message: 'New customer registered', time: '10 minutes ago', status: 'info' },
-    { id: 4, type: 'review', message: '5-star review received', time: '15 minutes ago', status: 'success' },
-    { id: 5, type: 'alert', message: 'Server maintenance scheduled', time: '1 hour ago', status: 'warning' },
   ];
 
   if (isLoading) {
@@ -87,7 +100,7 @@ const AdminDashboard = () => {
         <p className="text-gray-600">Welcome back! Here's what's happening with your store today.</p>
       </div>
 
-      {/* Stats Cards with Enhanced Design */}
+      {/* Stats Cards with Real Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -160,12 +173,12 @@ const AdminDashboard = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-gray-900">
               <Activity className="h-5 w-5 text-gray-700" />
-              Sales Analytics
+              Sales Analytics (Real Data)
             </CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={350}>
-              <AreaChart data={salesData}>
+              <AreaChart data={stats?.chartData || []}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#374151" stopOpacity={0.8}/>
@@ -173,7 +186,7 @@ const AdminDashboard = () => {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
-                <XAxis dataKey="month" />
+                <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip 
                   contentStyle={{ 
@@ -184,7 +197,7 @@ const AdminDashboard = () => {
                   }} 
                 />
                 <Area type="monotone" dataKey="revenue" stroke="#374151" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={3} />
-                <Line type="monotone" dataKey="sales" stroke="#6B7280" strokeWidth={2} />
+                <Line type="monotone" dataKey="orders" stroke="#6B7280" strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
@@ -262,7 +275,7 @@ const AdminDashboard = () => {
         </Card>
       </div>
 
-      {/* Recent Activity Feed */}
+      {/* Recent Activity Feed with Real Notifications */}
       <Card className="shadow-lg border-gray-200">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-gray-900">
@@ -272,20 +285,21 @@ const AdminDashboard = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {recentActivities.map((activity) => (
-              <div key={activity.id} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50 border border-gray-200">
+            {notifications?.map((notification) => (
+              <div key={notification.id} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50 border border-gray-200">
                 <div className={`p-2 rounded-full ${
-                  activity.status === 'success' ? 'bg-green-100 text-green-600' :
-                  activity.status === 'warning' ? 'bg-yellow-100 text-yellow-600' :
+                  notification.type === 'success' ? 'bg-green-100 text-green-600' :
+                  notification.type === 'warning' ? 'bg-yellow-100 text-yellow-600' :
                   'bg-blue-100 text-blue-600'
                 }`}>
-                  {activity.status === 'success' ? <CheckCircle className="h-4 w-4" /> :
-                   activity.status === 'warning' ? <AlertCircle className="h-4 w-4" /> :
+                  {notification.type === 'success' ? <CheckCircle className="h-4 w-4" /> :
+                   notification.type === 'warning' ? <AlertCircle className="h-4 w-4" /> :
                    <Activity className="h-4 w-4" />}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">{activity.message}</p>
-                  <p className="text-xs text-gray-500">{activity.time}</p>
+                  <p className="text-sm font-medium text-gray-900">{notification.title}</p>
+                  <p className="text-xs text-gray-500">{notification.message}</p>
+                  <p className="text-xs text-gray-400">{new Date(notification.created_at).toLocaleDateString()}</p>
                 </div>
               </div>
             ))}

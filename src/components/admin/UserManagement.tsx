@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Search, Edit, Trash2, Ban, UserCheck } from 'lucide-react';
+import { Search, Edit, Trash2, Ban, UserCheck, Users, Calendar, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const UserManagement = () => {
@@ -28,6 +28,35 @@ const UserManagement = () => {
     }
   });
 
+  const { data: userStats } = useQuery({
+    queryKey: ['user-stats'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('created_at');
+      
+      if (error) throw error;
+      
+      const totalUsers = data.length;
+      const today = new Date().toDateString();
+      const newUsersToday = data.filter(user => 
+        new Date(user.created_at).toDateString() === today
+      ).length;
+      
+      const thisWeek = new Date();
+      thisWeek.setDate(thisWeek.getDate() - 7);
+      const newUsersThisWeek = data.filter(user => 
+        new Date(user.created_at) >= thisWeek
+      ).length;
+      
+      return {
+        totalUsers,
+        newUsersToday,
+        newUsersThisWeek
+      };
+    }
+  });
+
   const deleteUserMutation = useMutation({
     mutationFn: async (userId: string) => {
       const { error } = await supabase
@@ -39,6 +68,7 @@ const UserManagement = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-users'] });
+      queryClient.invalidateQueries({ queryKey: ['user-stats'] });
       toast({
         title: "Success",
         description: "User deleted successfully",
@@ -62,13 +92,46 @@ const UserManagement = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-luxury-gold"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Users</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{userStats?.totalUsers || 0}</div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">New Today</CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-green-600">{userStats?.newUsersToday || 0}</div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">New This Week</CardTitle>
+            <Mail className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-600">{userStats?.newUsersThisWeek || 0}</div>
+          </CardContent>
+        </Card>
+      </div>
+
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
@@ -105,7 +168,7 @@ const UserManagement = () => {
                   <TableRow key={user.id}>
                     <TableCell>
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-luxury-gold rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center">
                           <span className="text-white text-sm font-semibold">
                             {user.first_name?.charAt(0) || user.email?.charAt(0) || 'U'}
                           </span>

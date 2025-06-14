@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Search, Edit, Trash2, Plus, Eye } from 'lucide-react';
+import { Search, Edit, Trash2, Plus, Eye, Package, DollarSign, Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const ProductManagement = () => {
@@ -28,6 +28,29 @@ const ProductManagement = () => {
     }
   });
 
+  const { data: productStats } = useQuery({
+    queryKey: ['product-stats'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('price, stock, category');
+      
+      if (error) throw error;
+      
+      const totalProducts = data.length;
+      const totalValue = data.reduce((sum, product) => sum + parseFloat(String(product.price)), 0);
+      const lowStockProducts = data.filter(product => (product.stock || 0) < 10).length;
+      const categories = [...new Set(data.map(product => product.category))].length;
+      
+      return {
+        totalProducts,
+        totalValue,
+        lowStockProducts,
+        categories
+      };
+    }
+  });
+
   const deleteProductMutation = useMutation({
     mutationFn: async (productId: number) => {
       const { error } = await supabase
@@ -39,6 +62,7 @@ const ProductManagement = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-products'] });
+      queryClient.invalidateQueries({ queryKey: ['product-stats'] });
       toast({
         title: "Success",
         description: "Product deleted successfully",
@@ -61,20 +85,63 @@ const ProductManagement = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-luxury-gold"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Products</CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{productStats?.totalProducts || 0}</div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Value</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">${productStats?.totalValue?.toFixed(2) || '0.00'}</div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Low Stock</CardTitle>
+            <Package className="h-4 w-4 text-yellow-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-yellow-600">{productStats?.lowStockProducts || 0}</div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Categories</CardTitle>
+            <Star className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{productStats?.categories || 0}</div>
+          </CardContent>
+        </Card>
+      </div>
+
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span>Product Management</span>
             <div className="flex items-center space-x-2">
               <Badge variant="secondary">{products?.length || 0} Total Products</Badge>
-              <Button className="bg-luxury-gold hover:bg-luxury-gold/90">
+              <Button className="bg-gray-900 hover:bg-gray-800">
                 <Plus className="h-4 w-4 mr-2" />
                 Add Product
               </Button>
