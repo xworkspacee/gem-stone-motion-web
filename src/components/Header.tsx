@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X, User, LogOut } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, User, LogOut, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -24,6 +23,9 @@ const Header = () => {
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const { cartCount } = useCart();
+
+  // Check if current user is admin
+  const isAdmin = user?.email === 'vanshichoudhary@gmail.com';
 
   const collectionCategories = [
     {
@@ -259,6 +261,19 @@ const Header = () => {
               )}
             </Button>
             
+            {/* Admin Panel Button - Only visible for admin */}
+            {isAdmin && (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="hover:text-luxury-gold text-luxury-gold"
+                onClick={() => navigate('/admin')}
+              >
+                <Settings size={20} />
+                <span className="ml-1 hidden sm:inline">Admin Panel</span>
+              </Button>
+            )}
+            
             {/* User Authentication */}
             {user ? (
               <DropdownMenu>
@@ -299,6 +314,9 @@ const Header = () => {
               <Link to="/collections/rings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">RINGS</Link>
               <Link to="/collections/earrings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">EARRINGS</Link>
               <Link to="/collections/necklaces" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NECKLACES</Link>
+              {isAdmin && (
+                <button onClick={() => navigate('/admin')} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left text-luxury-gold">ADMIN PANEL</button>
+              )}
               {!user && (
                 <button onClick={() => navigate('/auth')} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SIGN IN</button>
               )}
