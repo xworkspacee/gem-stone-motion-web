@@ -2,25 +2,29 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const collections = [
   {
     title: "THE ESSENTIALS COLLECTION",
     description: "Our signature pieces designed to be worn everyday with subtle details in contemporary shapes.",
     buttonText: "SHOP CLASSICS",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=600&fit=crop"
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=600&fit=crop",
+    route: "/collections/rings"
   },
   {
     title: "MODERN STATEMENT",
     description: "Timeless and wearable earrings with a modern twist that add a touch of style to any outfit.",
     buttonText: "SHOP EARRINGS",
-    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=600&fit=crop"
+    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=600&fit=crop",
+    route: "/collections/earrings"
   },
   {
     title: "MADE-TO-ORDER JEWELERY",
     description: "Handmade pieces that are carefully crafted to ensure that you'll love for a lifetime.",
     buttonText: "SHOP NOW",
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=600&fit=crop"
+    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=600&fit=crop",
+    route: "/collections/necklaces"
   }
 ];
 
@@ -30,7 +34,12 @@ const CollectionShowcase = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {collections.map((collection, index) => (
-            <div key={index} className="group cursor-pointer animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+            <Link 
+              key={index} 
+              to={collection.route}
+              className="group cursor-pointer animate-fade-in block" 
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
               {/* Image */}
               <div className="relative overflow-hidden rounded-lg mb-6 aspect-[3/4]">
                 <img
@@ -57,7 +66,7 @@ const CollectionShowcase = () => {
                   <ArrowRight size={16} className="ml-2 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

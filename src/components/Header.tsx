@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { Search, Heart, ShoppingBag, Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCart } from '@/contexts/CartContext';
 import {
@@ -26,42 +27,86 @@ const Header = () => {
 
   const collectionCategories = [
     {
-      title: "ALL DRESSES",
-      items: ["PARTY DRESS", "MAXI DRESS", "SHORT & SASSY", "BODYCON DRESS", "SLIT DRESS", "BLACK DRESS", "SHIRT DRESS", "CO-ORDS"]
+      title: "JEWELRY TYPES",
+      items: [
+        { name: "RINGS", route: "/collections/rings" },
+        { name: "EARRINGS", route: "/collections/earrings" },
+        { name: "NECKLACES", route: "/collections/necklaces" },
+        { name: "BRACELETS", route: "/collections/rings" },
+        { name: "PENDANTS", route: "/collections/necklaces" },
+        { name: "CHARM JEWELRY", route: "/collections/rings" },
+        { name: "WEDDING RINGS", route: "/collections/rings" },
+        { name: "GEMSTONE JEWELRY", route: "/collections/rings" }
+      ]
     },
     {
-      title: "PARTY WEAR", 
-      items: ["PARTY CO-ORDS", "BLACK PARTY DRESS", "SHORT & SASSY", "LONG DRESS", "OFF SHOULDER", "ONE SHOULDER", "BODYCON DRESS", "SLIT DRESS"]
+      title: "SPECIAL COLLECTIONS", 
+      items: [
+        { name: "SIGNATURE RINGS", route: "/collections/rings" },
+        { name: "ELEGANT EARRINGS", route: "/collections/earrings" },
+        { name: "STATEMENT NECKLACES", route: "/collections/necklaces" },
+        { name: "VINTAGE COLLECTION", route: "/collections/rings" },
+        { name: "MODERN MINIMALIST", route: "/collections/earrings" },
+        { name: "LUXURY SERIES", route: "/collections/necklaces" },
+        { name: "BRIDAL COLLECTION", route: "/collections/rings" },
+        { name: "CUSTOM DESIGNS", route: "/collections/necklaces" }
+      ]
     }
   ];
 
   const colorCategories = [
     {
       title: "WARM COLORS",
-      items: ["RED COLLECTION", "ORANGE COLLECTION", "YELLOW COLLECTION", "PINK COLLECTION", "GOLD COLLECTION", "ROSE GOLD", "COPPER COLLECTION"]
+      items: [
+        { name: "RED COLLECTION", route: "/collections/rings" },
+        { name: "ORANGE COLLECTION", route: "/collections/earrings" },
+        { name: "YELLOW COLLECTION", route: "/collections/necklaces" },
+        { name: "PINK COLLECTION", route: "/collections/rings" },
+        { name: "GOLD COLLECTION", route: "/collections/earrings" },
+        { name: "ROSE GOLD", route: "/collections/necklaces" },
+        { name: "COPPER COLLECTION", route: "/collections/rings" }
+      ]
     },
     {
       title: "COOL COLORS", 
-      items: ["BLUE COLLECTION", "GREEN COLLECTION", "PURPLE COLLECTION", "SILVER COLLECTION", "WHITE COLLECTION", "BLACK COLLECTION", "GREY COLLECTION"]
+      items: [
+        { name: "BLUE COLLECTION", route: "/collections/earrings" },
+        { name: "GREEN COLLECTION", route: "/collections/necklaces" },
+        { name: "PURPLE COLLECTION", route: "/collections/rings" },
+        { name: "SILVER COLLECTION", route: "/collections/earrings" },
+        { name: "WHITE COLLECTION", route: "/collections/necklaces" },
+        { name: "BLACK COLLECTION", route: "/collections/rings" },
+        { name: "GREY COLLECTION", route: "/collections/earrings" }
+      ]
     }
   ];
 
   const newInCategories = [
     {
       title: "LATEST ARRIVALS",
-      items: ["SPRING COLLECTION", "SUMMER TRENDS", "FESTIVE SPECIAL", "BRIDAL COLLECTION", "CASUAL WEAR", "OFFICE WEAR", "EVENING WEAR"]
+      items: [
+        { name: "SPRING COLLECTION", route: "/collections/rings" },
+        { name: "SUMMER TRENDS", route: "/collections/earrings" },
+        { name: "FESTIVE SPECIAL", route: "/collections/necklaces" },
+        { name: "BRIDAL COLLECTION", route: "/collections/rings" },
+        { name: "CASUAL WEAR", route: "/collections/earrings" },
+        { name: "OFFICE WEAR", route: "/collections/necklaces" },
+        { name: "EVENING WEAR", route: "/collections/rings" }
+      ]
     },
     {
       title: "TRENDING NOW", 
-      items: ["BESTSELLERS", "CELEBRITY CHOICE", "EDITOR'S PICK", "FLASH SALE", "LIMITED EDITION", "EXCLUSIVE DESIGNS", "PRE-ORDER"]
+      items: [
+        { name: "BESTSELLERS", route: "/collections/earrings" },
+        { name: "CELEBRITY CHOICE", route: "/collections/necklaces" },
+        { name: "EDITOR'S PICK", route: "/collections/rings" },
+        { name: "FLASH SALE", route: "/collections/earrings" },
+        { name: "LIMITED EDITION", route: "/collections/necklaces" },
+        { name: "EXCLUSIVE DESIGNS", route: "/collections/rings" },
+        { name: "PRE-ORDER", route: "/collections/earrings" }
+      ]
     }
   ];
-
-  const handleItemClick = (item: string) => {
-    // Navigate to product page - you can customize this logic
-    const productId = Math.floor(Math.random() * 10) + 1;
-    navigate(`/product/${productId}`);
-  };
 
   const handleSignOut = async () => {
     await signOut();
@@ -113,12 +158,12 @@ const Header = () => {
                           <ul className="space-y-3">
                             {category.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <button 
-                                  onClick={() => handleItemClick(item)}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
+                                <Link 
+                                  to={item.route}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
-                                  {item}
-                                </button>
+                                  {item.name}
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -146,12 +191,12 @@ const Header = () => {
                           <ul className="space-y-3">
                             {category.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <button 
-                                  onClick={() => handleItemClick(item)}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
+                                <Link 
+                                  to={item.route}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
-                                  {item}
-                                </button>
+                                  {item.name}
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -179,12 +224,12 @@ const Header = () => {
                           <ul className="space-y-3">
                             {category.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <button 
-                                  onClick={() => handleItemClick(item)}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
+                                <Link 
+                                  to={item.route}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
-                                  {item}
-                                </button>
+                                  {item.name}
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -251,9 +296,9 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-luxury-beige/30 py-4 animate-fade-in">
             <nav className="flex flex-col space-y-4">
-              <button onClick={() => handleItemClick("NEW IN")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NEW IN</button>
-              <button onClick={() => handleItemClick("ALL COLLECTION")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">ALL COLLECTION</button>
-              <button onClick={() => handleItemClick("SHOP BY COLOR")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SHOP BY COLOR</button>
+              <Link to="/collections/rings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">RINGS</Link>
+              <Link to="/collections/earrings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">EARRINGS</Link>
+              <Link to="/collections/necklaces" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NECKLACES</Link>
               {!user && (
                 <button onClick={() => navigate('/auth')} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SIGN IN</button>
               )}
