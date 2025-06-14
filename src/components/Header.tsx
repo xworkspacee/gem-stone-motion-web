@@ -24,8 +24,8 @@ const Header = () => {
   const { user, signOut } = useAuth();
   const { cartCount } = useCart();
 
-  // Check if current user is admin
-  const isAdmin = user?.email === 'vanshichoudhary@gmail.com';
+  // Check if current user is admin - updated to match your email
+  const isAdmin = user?.email === 'vanshichoudhary40@gmail.com';
 
   const collectionCategories = [
     {
