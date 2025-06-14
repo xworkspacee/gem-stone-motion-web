@@ -8,7 +8,11 @@ const featuredProducts = [
     id: 1,
     name: "Ilona Earrings in Gold",
     price: "$168.00",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=500&fit=crop"
+    ],
     colors: ["silver", "gold"],
     category: "earrings"
   },
@@ -16,7 +20,11 @@ const featuredProducts = [
     id: 2,
     name: "Adelaide Hoops in Sterling Silver", 
     price: "$115.00",
-    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=400&h=500&fit=crop"
+    ],
     colors: ["silver", "gold"],
     category: "earrings"
   },
@@ -24,7 +32,11 @@ const featuredProducts = [
     id: 3,
     name: "Classic Square Earrings",
     price: "$145.00",
-    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=500&fit=crop"
+    ],
     colors: ["silver"],
     badge: "BEST SELLER",
     category: "earrings"
@@ -33,7 +45,11 @@ const featuredProducts = [
     id: 4,
     name: "Golden Chain Necklace",
     price: "$210.00", 
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=500&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=500&fit=crop"
+    ],
     colors: ["gold"],
     category: "necklaces"
   }
@@ -55,7 +71,7 @@ const PromotionalSection = () => {
                   </span>
                 )}
                 <img
-                  src={product.image}
+                  src={product.images[0]}
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />

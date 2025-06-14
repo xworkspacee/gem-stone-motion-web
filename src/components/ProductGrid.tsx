@@ -10,7 +10,7 @@ interface Product {
   name: string;
   price: string;
   originalPrice?: string;
-  image: string;
+  images: string[];
   isNew?: boolean;
   isBestSeller?: boolean;
   colors?: string[];
@@ -21,7 +21,11 @@ const products: Product[] = [
     id: 1,
     name: "Miro Signet Ring in Sterling Silver",
     price: "$168.00",
-    image: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop"
+    ],
     isNew: true,
     colors: ["silver", "gold"]
   },
@@ -29,35 +33,55 @@ const products: Product[] = [
     id: 2,
     name: "Emerald Grande Ring in Sterling Silver", 
     price: "$115.00",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=600&fit=crop"
+    ],
     colors: ["silver", "gold"]
   },
   {
     id: 3,
     name: "Sonder Ring in Gold",
     price: "$198.00",
-    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=500&h=600&fit=crop"
+    ],
     colors: ["gold", "silver"]
   },
   {
     id: 4,
     name: "Ophidian Signet Ring in Gold",
     price: "$225.00",
-    image: "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop"
+    ],
     colors: ["gold"]
   },
   {
     id: 5,
     name: "Ilona Earrings in Gold",
     price: "$168.00",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop"
+    ],
     colors: ["gold", "silver"]
   },
   {
     id: 6,
     name: "Adelaide Hoops in Sterling Silver",
     price: "$115.00",
-    image: "https://images.unsplash.com/photo-1633810543702-7b8d29b3d1ce?w=500&h=600&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1633810543702-7b8d29b3d1ce?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=500&h=600&fit=crop"
+    ],
     isNew: true,
     colors: ["silver", "gold"]
   }
@@ -119,7 +143,7 @@ const ProductGrid = () => {
 
                       {/* Product Image */}
                       <img
-                        src={product.image}
+                        src={product.images[0]}
                         alt={product.name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
