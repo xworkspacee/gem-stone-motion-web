@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Eye, Edit } from 'lucide-react';
+import { Search, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const OrderManagement = () => {
@@ -22,7 +22,7 @@ const OrderManagement = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('orders')
-        .select('*, profiles(first_name, last_name, email)')
+        .select('*')
         .order('created_at', { ascending: false });
       
       if (error) throw error;
@@ -73,8 +73,7 @@ const OrderManagement = () => {
   };
 
   const filteredOrders = orders?.filter(order => {
-    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.profiles?.email?.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -101,7 +100,7 @@ const OrderManagement = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
-                placeholder="Search orders by ID or customer email..."
+                placeholder="Search orders by ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -127,7 +126,7 @@ const OrderManagement = () => {
               <TableHeader>
                 <TableRow>
                   <TableHead>Order ID</TableHead>
-                  <TableHead>Customer</TableHead>
+                  <TableHead>Customer ID</TableHead>
                   <TableHead>Total</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Date</TableHead>
@@ -143,18 +142,12 @@ const OrderManagement = () => {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div>
-                        <div className="font-medium">
-                          {order.profiles?.first_name && order.profiles?.last_name
-                            ? `${order.profiles.first_name} ${order.profiles.last_name}`
-                            : 'Unknown Customer'
-                          }
-                        </div>
-                        <div className="text-sm text-gray-500">{order.profiles?.email}</div>
+                      <div className="font-mono text-sm">
+                        {order.user_id.slice(0, 8)}...
                       </div>
                     </TableCell>
                     <TableCell>
-                      <div className="font-medium">${parseFloat(order.total_amount).toFixed(2)}</div>
+                      <div className="font-medium">${parseFloat(String(order.total_amount)).toFixed(2)}</div>
                     </TableCell>
                     <TableCell>
                       <Badge className={getStatusColor(order.status)}>

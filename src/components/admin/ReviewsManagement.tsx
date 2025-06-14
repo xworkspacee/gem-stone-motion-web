@@ -20,7 +20,7 @@ const ReviewsManagement = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from('reviews')
-        .select('*, products(name), profiles(first_name, last_name, email)')
+        .select('*, products(name)')
         .order('created_at', { ascending: false });
       
       if (error) throw error;
@@ -64,7 +64,7 @@ const ReviewsManagement = () => {
 
   const filteredReviews = reviews?.filter(review =>
     review.products?.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    review.profiles?.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    review.user_id.toLowerCase().includes(searchTerm.toLowerCase()) ||
     review.comment?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -90,7 +90,7 @@ const ReviewsManagement = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
               <Input
-                placeholder="Search reviews by product, customer, or content..."
+                placeholder="Search reviews by product, customer ID, or content..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -102,7 +102,7 @@ const ReviewsManagement = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Customer</TableHead>
+                  <TableHead>Customer ID</TableHead>
                   <TableHead>Product</TableHead>
                   <TableHead>Rating</TableHead>
                   <TableHead>Comment</TableHead>
@@ -114,14 +114,8 @@ const ReviewsManagement = () => {
                 {filteredReviews?.map((review) => (
                   <TableRow key={review.id}>
                     <TableCell>
-                      <div>
-                        <div className="font-medium">
-                          {review.profiles?.first_name && review.profiles?.last_name
-                            ? `${review.profiles.first_name} ${review.profiles.last_name}`
-                            : 'Unknown Customer'
-                          }
-                        </div>
-                        <div className="text-sm text-gray-500">{review.profiles?.email}</div>
+                      <div className="font-mono text-sm">
+                        {review.user_id.slice(0, 8)}...
                       </div>
                     </TableCell>
                     <TableCell>

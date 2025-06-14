@@ -11,19 +11,18 @@ const AdminDashboard = () => {
   const { data: stats, isLoading } = useQuery({
     queryKey: ['admin-stats'],
     queryFn: async () => {
-      const [products, orders, users, reviews] = await Promise.all([
+      const [products, orders, reviews] = await Promise.all([
         supabase.from('products').select('*'),
         supabase.from('orders').select('*'),
-        supabase.from('profiles').select('*'),
         supabase.from('reviews').select('*')
       ]);
 
-      const totalRevenue = orders.data?.reduce((sum, order) => sum + parseFloat(order.total_amount || '0'), 0) || 0;
+      const totalRevenue = orders.data?.reduce((sum, order) => sum + parseFloat(String(order.total_amount || '0')), 0) || 0;
       
       return {
         totalProducts: products.data?.length || 0,
         totalOrders: orders.data?.length || 0,
-        totalUsers: users.data?.length || 0,
+        totalUsers: 0, // We'll show 0 since we can't access auth.users directly
         totalReviews: reviews.data?.length || 0,
         totalRevenue,
         orders: orders.data || [],
@@ -75,7 +74,7 @@ const AdminDashboard = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.totalUsers}</div>
-            <p className="text-xs opacity-90">+12% from last month</p>
+            <p className="text-xs opacity-90">Contact admin for user stats</p>
           </CardContent>
         </Card>
 
