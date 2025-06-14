@@ -8,7 +8,7 @@ const FullScreenImage = () => {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/5ff61515-6fcb-48d0-a236-db536d417c12.png')`
+          backgroundImage: `url('/gemstone-hero-bg.png')`
         }}
       >
         {/* Subtle overlay for better contrast if needed */}
@@ -20,7 +20,7 @@ const FullScreenImage = () => {
         <div className="text-right text-white">
           <div className="bg-black/20 backdrop-blur-sm px-6 py-3 rounded-lg">
             <p className="text-lg md:text-xl font-luxury tracking-wider">
-              DROP ALERT
+              PREMIUM COLLECTION
             </p>
           </div>
         </div>
