@@ -17,7 +17,7 @@ const Hero = () => {
           minHeight: '100%',
         }}
       >
-        <source src="https://ik.imagekit.io/cn0lbrbin/0613(2).mp4?updatedAt=1749927732238" type="video/mp4" />
+        <source src="https://ik.imagekit.io/cn0lbrbin/0613(3).mp4?updatedAt=1749928371734" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
