@@ -9,9 +9,14 @@ import {
   Plus, 
   Settings,
   TrendingUp,
-  BarChart3
+  BarChart3,
+  FileText,
+  Bell,
+  CreditCard,
+  Shield
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 interface AdminSidebarProps {
   activeTab: string;
@@ -20,41 +25,99 @@ interface AdminSidebarProps {
 
 const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) => {
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'users', label: 'User Management', icon: Users },
-    { id: 'products', label: 'Products', icon: Package },
-    { id: 'add-product', label: 'Add Product', icon: Plus },
-    { id: 'orders', label: 'Orders', icon: ShoppingCart },
-    { id: 'reviews', label: 'Reviews', icon: Star },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, badge: null },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, badge: 'New' },
+    { id: 'users', label: 'User Management', icon: Users, badge: null },
+    { id: 'products', label: 'Products', icon: Package, badge: '24' },
+    { id: 'add-product', label: 'Add Product', icon: Plus, badge: null },
+    { id: 'orders', label: 'Orders', icon: ShoppingCart, badge: '12' },
+    { id: 'reviews', label: 'Reviews', icon: Star, badge: '5' },
+    { id: 'reports', label: 'Reports', icon: FileText, badge: null },
+    { id: 'notifications', label: 'Notifications', icon: Bell, badge: '3' },
+    { id: 'payments', label: 'Payments', icon: CreditCard, badge: null },
+    { id: 'security', label: 'Security', icon: Shield, badge: null },
+    { id: 'settings', label: 'Settings', icon: Settings, badge: null },
   ];
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-800 shadow-lg border-r border-gray-200 dark:border-gray-700 min-h-screen">
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-xl font-bold text-luxury-gold">GEM STONE</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400">Admin Panel</p>
+    <div className="w-64 bg-white dark:bg-gray-900 shadow-2xl border-r border-gray-200 dark:border-gray-700 min-h-screen">
+      {/* Header */}
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-luxury-gold to-yellow-500">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
+            <TrendingUp className="h-6 w-6 text-luxury-gold" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-white">GEM STONE</h2>
+            <p className="text-sm text-white/80">Admin Panel</p>
+          </div>
+        </div>
       </div>
       
-      <nav className="mt-6">
-        {menuItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Button
-              key={item.id}
-              variant="ghost"
-              className={`w-full justify-start px-6 py-3 text-left rounded-none ${
-                activeTab === item.id
-                  ? 'bg-luxury-gold/10 text-luxury-gold border-r-2 border-luxury-gold'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-              onClick={() => setActiveTab(item.id)}
-            >
-              <Icon size={20} className="mr-3" />
-              {item.label}
-            </Button>
-          );
-        })}
+      {/* Quick Stats */}
+      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+            <div className="text-xs text-green-600 dark:text-green-400 font-medium">Revenue</div>
+            <div className="text-lg font-bold text-green-700 dark:text-green-300">$12,500</div>
+          </div>
+          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+            <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">Orders</div>
+            <div className="text-lg font-bold text-blue-700 dark:text-blue-300">145</div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Navigation */}
+      <nav className="mt-4 px-3">
+        <div className="space-y-1">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Button
+                key={item.id}
+                variant="ghost"
+                className={`w-full justify-start px-4 py-3 text-left rounded-xl transition-all duration-200 ${
+                  activeTab === item.id
+                    ? 'bg-luxury-gold/15 text-luxury-gold border-l-4 border-luxury-gold font-semibold shadow-lg'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-luxury-gold'
+                }`}
+                onClick={() => setActiveTab(item.id)}
+              >
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center">
+                    <Icon size={20} className="mr-3" />
+                    <span className="text-sm">{item.label}</span>
+                  </div>
+                  {item.badge && (
+                    <Badge 
+                      variant={item.badge === 'New' ? 'default' : 'secondary'} 
+                      className={`text-xs px-2 py-0.5 ${
+                        item.badge === 'New' 
+                          ? 'bg-luxury-gold text-white' 
+                          : 'bg-gray-200 text-gray-700'
+                      }`}
+                    >
+                      {item.badge}
+                    </Badge>
+                  )}
+                </div>
+              </Button>
+            );
+          })}
+        </div>
       </nav>
+
+      {/* Bottom Section */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-4 text-white">
+          <h4 className="font-semibold text-sm mb-1">Upgrade to Pro</h4>
+          <p className="text-xs opacity-90 mb-3">Get advanced analytics and more features</p>
+          <Button size="sm" className="w-full bg-white text-purple-600 hover:bg-gray-100">
+            Upgrade Now
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
