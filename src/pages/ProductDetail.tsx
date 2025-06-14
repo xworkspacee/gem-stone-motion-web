@@ -37,7 +37,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,899.00",
     description: "Crafted with precision and elegance, this stunning diamond solitaire ring features intricate detailing that captures light beautifully. Made from premium sterling silver for lasting durability.",
     material: "Sterling Silver with Diamond",
-    sizes: ["5", "6", "7", "8", "9", "10"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -57,7 +57,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,599.00",
     description: "A timeless gold band ring with elegant design. Perfect for everyday wear or special occasions.",
     material: "18K Gold",
-    sizes: ["5", "6", "7", "8", "9", "10"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Rose Gold", value: "rosegold" }
@@ -76,7 +76,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,199.00",
     description: "Elegant pearl statement ring that adds sophistication to any outfit.",
     material: "Sterling Silver with Pearl",
-    sizes: ["5", "6", "7", "8", "9"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -95,7 +95,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,749.00",
     description: "Beautiful vintage-inspired ring set with intricate detailing.",
     material: "Sterling Silver",
-    sizes: ["5", "6", "7", "8", "9", "10"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Antique Gold", value: "gold" }
@@ -114,7 +114,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,299.00",
     description: "Stunning crystal drop earrings that catch the light beautifully.",
     material: "Sterling Silver with Crystal",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -133,7 +133,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 999.00",
     description: "Classic gold hoop earrings, perfect for any occasion.",
     material: "18K Gold",
-    sizes: ["Small", "Medium", "Large"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Rose Gold", value: "rosegold" }
@@ -152,7 +152,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,449.00",
     description: "Elegant pearl stud earrings for a classic look.",
     material: "Sterling Silver with Pearl",
-    sizes: ["Small", "Medium"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -171,7 +171,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,299.00",
     description: "Luxurious diamond cluster earrings for special occasions.",
     material: "Sterling Silver with Diamonds",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "White Gold", value: "whitegold" }
@@ -190,7 +190,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,649.00",
     description: "Trendy layered chain necklace perfect for modern styling.",
     material: "Sterling Silver",
-    sizes: ["16 inch", "18 inch", "20 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -209,7 +209,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,199.00",
     description: "Classic pearl choker necklace for elegant occasions.",
     material: "Sterling Silver with Pearls",
-    sizes: ["14 inch", "16 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -228,7 +228,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,849.00",
     description: "Beautiful gold pendant necklace with intricate design.",
     material: "18K Gold",
-    sizes: ["16 inch", "18 inch", "20 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Rose Gold", value: "rosegold" }
@@ -247,7 +247,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,499.00",
     description: "Bold statement chain necklace for fashion-forward individuals.",
     material: "Sterling Silver",
-    sizes: ["18 inch", "20 inch", "22 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -266,7 +266,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 3,299.00",
     description: "Stunning emerald cut diamond ring with exceptional clarity and brilliance.",
     material: "Platinum with Diamond",
-    sizes: ["5", "6", "7", "8", "9", "10"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Platinum", value: "platinum" },
       { name: "White Gold", value: "whitegold" }
@@ -285,7 +285,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,899.00",
     description: "Romantic rose gold engagement ring with vintage-inspired details.",
     material: "18K Rose Gold with Diamond",
-    sizes: ["5", "6", "7", "8", "9"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Rose Gold", value: "rosegold" },
       { name: "Gold", value: "gold" }
@@ -304,7 +304,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,199.00",
     description: "Classic platinum wedding band with smooth finish and comfortable fit.",
     material: "Platinum",
-    sizes: ["5", "6", "7", "8", "9", "10", "11"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Platinum", value: "platinum" }
     ],
@@ -322,7 +322,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,699.00",
     description: "Elegant sapphire halo ring surrounded by sparkling diamonds.",
     material: "White Gold with Sapphire",
-    sizes: ["5", "6", "7", "8", "9"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "White Gold", value: "whitegold" },
       { name: "Yellow Gold", value: "gold" }
@@ -341,7 +341,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,999.00",
     description: "Timeless solitaire ring and band set perfect for engagement and wedding.",
     material: "Sterling Silver with CZ",
-    sizes: ["5", "6", "7", "8", "9", "10"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -360,7 +360,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,399.00",
     description: "Vintage-inspired art deco ring with geometric patterns and diamonds.",
     material: "White Gold with Diamonds",
-    sizes: ["5", "6", "7", "8", "9"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "White Gold", value: "whitegold" },
       { name: "Rose Gold", value: "rosegold" }
@@ -379,7 +379,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,899.00",
     description: "Dramatic chandelier earrings perfect for formal occasions.",
     material: "Sterling Silver with Crystals",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -398,7 +398,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 899.00",
     description: "Modern geometric stud earrings with clean lines and contemporary design.",
     material: "Sterling Silver",
-    sizes: ["Small", "Medium"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Rose Gold", value: "rosegold" }
@@ -417,7 +417,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,199.00",
     description: "Bohemian-style tassel drop earrings with movement and texture.",
     material: "Gold Plated with Silk Tassels",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Silver", value: "silver" }
@@ -436,7 +436,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,599.00",
     description: "Elegant vintage-style clip-on earrings for non-pierced ears.",
     material: "Gold Plated with Pearls",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Silver", value: "silver" }
@@ -455,7 +455,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,799.00",
     description: "Bold statement hoop earrings with textured finish.",
     material: "Sterling Silver",
-    sizes: ["Medium", "Large"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -474,7 +474,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 699.00",
     description: "Simple and elegant minimalist bar earrings for everyday wear.",
     material: "Sterling Silver",
-    sizes: ["One Size"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Rose Gold", value: "rosegold" }
@@ -493,7 +493,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 3,999.00",
     description: "Luxurious diamond tennis necklace with perfectly matched stones.",
     material: "White Gold with Diamonds",
-    sizes: ["16 inch", "18 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "White Gold", value: "whitegold" },
       { name: "Yellow Gold", value: "gold" }
@@ -512,7 +512,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,399.00",
     description: "Romantic vintage locket necklace perfect for treasured memories.",
     material: "Gold Plated Sterling Silver",
-    sizes: ["18 inch", "20 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Silver", value: "silver" }
@@ -531,7 +531,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,099.00",
     description: "Free-spirited bohemian pendant necklace with natural stones.",
     material: "Silver with Semi-Precious Stones",
-    sizes: ["20 inch", "22 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Silver", value: "silver" },
       { name: "Antique Brass", value: "brass" }
@@ -550,7 +550,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,299.00",
     description: "Stunning crystal collar necklace that makes a bold statement.",
     material: "Sterling Silver with Crystals",
-    sizes: ["16 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
@@ -569,7 +569,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 1,799.00",
     description: "Symbolic infinity chain necklace representing eternal love.",
     material: "18K Gold",
-    sizes: ["18 inch", "20 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Rose Gold", value: "rosegold" }
@@ -588,7 +588,7 @@ const productData: { [key: string]: ProductData } = {
     price: "₹ 2,899.00",
     description: "Elegant multi-strand pearl necklace for sophisticated occasions.",
     material: "Sterling Silver with Cultured Pearls",
-    sizes: ["16-18 inch"],
+    sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "White Pearls", value: "white" },
       { name: "Cream Pearls", value: "cream" }
