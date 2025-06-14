@@ -1,24 +1,28 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const galleryItems = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop",
     title: "Signature Rings",
-    subtitle: "Handcrafted Excellence"
+    subtitle: "Handcrafted Excellence",
+    category: "rings"
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=600&h=800&fit=crop",
     title: "Elegant Earrings",
-    subtitle: "Modern Sophistication"
+    subtitle: "Modern Sophistication",
+    category: "earrings"
   },
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=800&fit=crop",
     title: "Statement Necklaces",
-    subtitle: "Timeless Beauty"
+    subtitle: "Timeless Beauty",
+    category: "necklaces"
   }
 ];
 
@@ -45,9 +49,10 @@ const MotionGallery = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {galleryItems.map((item, index) => (
-            <div
+            <Link
               key={item.id}
-              className="group cursor-pointer animate-scale-in"
+              to={`/collections/${item.category}`}
+              className="group cursor-pointer animate-scale-in block"
               style={{ animationDelay: `${index * 0.2}s` }}
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
@@ -77,7 +82,7 @@ const MotionGallery = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
