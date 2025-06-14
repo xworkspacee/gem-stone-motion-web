@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Heart, ShoppingCart } from 'lucide-react';
@@ -244,6 +244,7 @@ const Collections = () => {
   const { user } = useAuth();
   const { addToCart } = useCart();
   const [favorites, setFavorites] = useState<number[]>([]);
+  const navigate = useNavigate();
 
   const currentCollection = category && collectionsData[category as keyof typeof collectionsData];
 
@@ -262,7 +263,9 @@ const Collections = () => {
     );
   }
 
-  const handleAddToCart = async (product: any) => {
+  const handleAddToCart = async (product: any, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking add to cart
+    
     if (!user) {
       toast.error("Please sign in to add items to cart");
       return;
@@ -284,12 +287,17 @@ const Collections = () => {
     }
   };
 
-  const toggleFavorite = (productId: number) => {
+  const toggleFavorite = (productId: number, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking favorite
     setFavorites(prev => 
       prev.includes(productId) 
         ? prev.filter(id => id !== productId)
         : [...prev, productId]
     );
+  };
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
   };
 
   return (
@@ -322,7 +330,11 @@ const Collections = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {currentCollection.products.map((product) => (
-              <div key={product.id} className="group relative bg-white">
+              <div 
+                key={product.id} 
+                className="group relative bg-white cursor-pointer"
+                onClick={() => handleProductClick(product.id)}
+              >
                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-lg">
                   <img
                     src={product.image}
@@ -332,7 +344,7 @@ const Collections = () => {
                   
                   {/* Favorite Button */}
                   <button
-                    onClick={() => toggleFavorite(product.id)}
+                    onClick={(e) => toggleFavorite(product.id, e)}
                     className="absolute top-4 right-4 p-2 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
                   >
                     <Heart 
@@ -342,7 +354,7 @@ const Collections = () => {
 
                   {/* Add to Cart Button */}
                   <button
-                    onClick={() => handleAddToCart(product)}
+                    onClick={(e) => handleAddToCart(product, e)}
                     className="absolute bottom-4 left-4 right-4 bg-luxury-black/80 text-white py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-luxury-black flex items-center justify-center gap-2"
                   >
                     <ShoppingCart className="w-4 h-4" />
@@ -352,14 +364,9 @@ const Collections = () => {
 
                 {/* Product Info */}
                 <div className="mt-4 space-y-2">
-                  <Link 
-                    to={`/product/${product.id}`}
-                    className="block hover:text-luxury-gold transition-colors"
-                  >
-                    <h3 className="font-medium text-luxury-black uppercase tracking-wide text-sm">
-                      {product.name}
-                    </h3>
-                  </Link>
+                  <h3 className="font-medium text-luxury-black uppercase tracking-wide text-sm group-hover:text-luxury-gold transition-colors">
+                    {product.name}
+                  </h3>
                   <p className="text-luxury-black font-semibold">
                     {product.price}
                   </p>
