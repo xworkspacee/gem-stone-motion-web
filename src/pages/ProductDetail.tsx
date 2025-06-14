@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -235,6 +234,311 @@ const productData: { [key: string]: ProductData } = {
     ],
     inStock: true,
     stockCount: 5
+  },
+  "13": {
+    id: 13,
+    name: "Emerald Cut Diamond Ring",
+    price: "₹ 3,299.00",
+    description: "Stunning emerald cut diamond ring with exceptional clarity and brilliance.",
+    material: "Platinum with Diamond",
+    sizes: ["5", "6", "7", "8", "9", "10"],
+    colors: [
+      { name: "Platinum", value: "platinum" },
+      { name: "White Gold", value: "whitegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 3
+  },
+  "14": {
+    id: 14,
+    name: "Rose Gold Engagement Ring",
+    price: "₹ 2,899.00",
+    description: "Romantic rose gold engagement ring with vintage-inspired details.",
+    material: "18K Rose Gold with Diamond",
+    sizes: ["5", "6", "7", "8", "9"],
+    colors: [
+      { name: "Rose Gold", value: "rosegold" },
+      { name: "Gold", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 4
+  },
+  "15": {
+    id: 15,
+    name: "Platinum Wedding Band",
+    price: "₹ 2,199.00",
+    description: "Classic platinum wedding band with smooth finish and comfortable fit.",
+    material: "Platinum",
+    sizes: ["5", "6", "7", "8", "9", "10", "11"],
+    colors: [
+      { name: "Platinum", value: "platinum" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 8
+  },
+  "16": {
+    id: 16,
+    name: "Sapphire Halo Ring",
+    price: "₹ 2,699.00",
+    description: "Elegant sapphire halo ring surrounded by sparkling diamonds.",
+    material: "White Gold with Sapphire",
+    sizes: ["5", "6", "7", "8", "9"],
+    colors: [
+      { name: "White Gold", value: "whitegold" },
+      { name: "Yellow Gold", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 5
+  },
+  "17": {
+    id: 17,
+    name: "Classic Solitaire Set",
+    price: "₹ 1,999.00",
+    description: "Timeless solitaire ring and band set perfect for engagement and wedding.",
+    material: "Sterling Silver with CZ",
+    sizes: ["5", "6", "7", "8", "9", "10"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 10
+  },
+  "18": {
+    id: 18,
+    name: "Art Deco Ring",
+    price: "₹ 2,399.00",
+    description: "Vintage-inspired art deco ring with geometric patterns and diamonds.",
+    material: "White Gold with Diamonds",
+    sizes: ["5", "6", "7", "8", "9"],
+    colors: [
+      { name: "White Gold", value: "whitegold" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 6
+  },
+  "19": {
+    id: 19,
+    name: "Chandelier Earrings",
+    price: "₹ 1,899.00",
+    description: "Dramatic chandelier earrings perfect for formal occasions.",
+    material: "Sterling Silver with Crystals",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 7
+  },
+  "20": {
+    id: 20,
+    name: "Geometric Studs",
+    price: "₹ 899.00",
+    description: "Modern geometric stud earrings with clean lines and contemporary design.",
+    material: "Sterling Silver",
+    sizes: ["Small", "Medium"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 15
+  },
+  "21": {
+    id: 21,
+    name: "Tassel Drop Earrings",
+    price: "₹ 1,199.00",
+    description: "Bohemian-style tassel drop earrings with movement and texture.",
+    material: "Gold Plated with Silk Tassels",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Silver", value: "silver" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 12
+  },
+  "22": {
+    id: 22,
+    name: "Vintage Clip-On Earrings",
+    price: "₹ 1,599.00",
+    description: "Elegant vintage-style clip-on earrings for non-pierced ears.",
+    material: "Gold Plated with Pearls",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Silver", value: "silver" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 8
+  },
+  "23": {
+    id: 23,
+    name: "Statement Hoops",
+    price: "₹ 1,799.00",
+    description: "Bold statement hoop earrings with textured finish.",
+    material: "Sterling Silver",
+    sizes: ["Medium", "Large"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 9
+  },
+  "24": {
+    id: 24,
+    name: "Minimalist Bars",
+    price: "₹ 699.00",
+    description: "Simple and elegant minimalist bar earrings for everyday wear.",
+    material: "Sterling Silver",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 20
+  },
+  "25": {
+    id: 25,
+    name: "Diamond Tennis Necklace",
+    price: "₹ 3,999.00",
+    description: "Luxurious diamond tennis necklace with perfectly matched stones.",
+    material: "White Gold with Diamonds",
+    sizes: ["16 inch", "18 inch"],
+    colors: [
+      { name: "White Gold", value: "whitegold" },
+      { name: "Yellow Gold", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 2
+  },
+  "26": {
+    id: 26,
+    name: "Vintage Locket Necklace",
+    price: "₹ 1,399.00",
+    description: "Romantic vintage locket necklace perfect for treasured memories.",
+    material: "Gold Plated Sterling Silver",
+    sizes: ["18 inch", "20 inch"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Silver", value: "silver" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 11
+  },
+  "27": {
+    id: 27,
+    name: "Bohemian Pendant Set",
+    price: "₹ 1,099.00",
+    description: "Free-spirited bohemian pendant necklace with natural stones.",
+    material: "Silver with Semi-Precious Stones",
+    sizes: ["20 inch", "22 inch"],
+    colors: [
+      { name: "Silver", value: "silver" },
+      { name: "Antique Brass", value: "brass" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 14
+  },
+  "28": {
+    id: 28,
+    name: "Crystal Collar Necklace",
+    price: "₹ 2,299.00",
+    description: "Stunning crystal collar necklace that makes a bold statement.",
+    material: "Sterling Silver with Crystals",
+    sizes: ["16 inch"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 5
+  },
+  "29": {
+    id: 29,
+    name: "Infinity Chain Necklace",
+    price: "₹ 1,799.00",
+    description: "Symbolic infinity chain necklace representing eternal love.",
+    material: "18K Gold",
+    sizes: ["18 inch", "20 inch"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 7
+  },
+  "30": {
+    id: 30,
+    name: "Multi-Strand Pearl Necklace",
+    price: "₹ 2,899.00",
+    description: "Elegant multi-strand pearl necklace for sophisticated occasions.",
+    material: "Sterling Silver with Cultured Pearls",
+    sizes: ["16-18 inch"],
+    colors: [
+      { name: "White Pearls", value: "white" },
+      { name: "Cream Pearls", value: "cream" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 6
   }
 };
 
@@ -398,7 +702,7 @@ const ProductDetail = () => {
                     onClick={() => setSelectedColor(color.value)}
                     className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
                       selectedColor === color.value ? 'border-luxury-black' : 'border-gray-300'
-                    } ${color.value === 'gold' ? 'bg-luxury-gold' : color.value === 'rosegold' ? 'bg-rose-400' : color.value === 'whitegold' ? 'bg-gray-200' : 'bg-gray-300'}`}
+                    } ${color.value === 'gold' ? 'bg-luxury-gold' : color.value === 'rosegold' ? 'bg-rose-400' : color.value === 'whitegold' ? 'bg-gray-200' : color.value === 'platinum' ? 'bg-gray-400' : 'bg-gray-300'}`}
                   />
                 ))}
               </div>

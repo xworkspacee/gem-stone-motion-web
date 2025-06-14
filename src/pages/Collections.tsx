@@ -40,6 +40,48 @@ const collectionsData = {
         price: "₹ 1,749.00",
         image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=800&fit=crop",
         category: "rings"
+      },
+      {
+        id: 13,
+        name: "Emerald Cut Diamond Ring",
+        price: "₹ 3,299.00",
+        image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=600&h=800&fit=crop",
+        category: "rings"
+      },
+      {
+        id: 14,
+        name: "Rose Gold Engagement Ring",
+        price: "₹ 2,899.00",
+        image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600&h=800&fit=crop",
+        category: "rings"
+      },
+      {
+        id: 15,
+        name: "Platinum Wedding Band",
+        price: "₹ 2,199.00",
+        image: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=600&h=800&fit=crop",
+        category: "rings"
+      },
+      {
+        id: 16,
+        name: "Sapphire Halo Ring",
+        price: "₹ 2,699.00",
+        image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=800&fit=crop",
+        category: "rings"
+      },
+      {
+        id: 17,
+        name: "Classic Solitaire Set",
+        price: "₹ 1,999.00",
+        image: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=800&fit=crop",
+        category: "rings"
+      },
+      {
+        id: 18,
+        name: "Art Deco Ring",
+        price: "₹ 2,399.00",
+        image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=800&fit=crop",
+        category: "rings"
       }
     ]
   },
@@ -74,6 +116,48 @@ const collectionsData = {
         price: "₹ 2,299.00",
         image: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=600&h=800&fit=crop",
         category: "earrings"
+      },
+      {
+        id: 19,
+        name: "Chandelier Earrings",
+        price: "₹ 1,899.00",
+        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop",
+        category: "earrings"
+      },
+      {
+        id: 20,
+        name: "Geometric Studs",
+        price: "₹ 899.00",
+        image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=800&fit=crop",
+        category: "earrings"
+      },
+      {
+        id: 21,
+        name: "Tassel Drop Earrings",
+        price: "₹ 1,199.00",
+        image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=800&fit=crop",
+        category: "earrings"
+      },
+      {
+        id: 22,
+        name: "Vintage Clip-On Earrings",
+        price: "₹ 1,599.00",
+        image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=800&fit=crop",
+        category: "earrings"
+      },
+      {
+        id: 23,
+        name: "Statement Hoops",
+        price: "₹ 1,799.00",
+        image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=800&fit=crop",
+        category: "earrings"
+      },
+      {
+        id: 24,
+        name: "Minimalist Bars",
+        price: "₹ 699.00",
+        image: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=800&fit=crop",
+        category: "earrings"
       }
     ]
   },
@@ -107,6 +191,48 @@ const collectionsData = {
         name: "Statement Chain Necklace",
         price: "₹ 2,499.00",
         image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 25,
+        name: "Diamond Tennis Necklace",
+        price: "₹ 3,999.00",
+        image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 26,
+        name: "Vintage Locket Necklace",
+        price: "₹ 1,399.00",
+        image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 27,
+        name: "Bohemian Pendant Set",
+        price: "₹ 1,099.00",
+        image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 28,
+        name: "Crystal Collar Necklace",
+        price: "₹ 2,299.00",
+        image: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 29,
+        name: "Infinity Chain Necklace",
+        price: "₹ 1,799.00",
+        image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=800&fit=crop",
+        category: "necklaces"
+      },
+      {
+        id: 30,
+        name: "Multi-Strand Pearl Necklace",
+        price: "₹ 2,899.00",
+        image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=800&fit=crop",
         category: "necklaces"
       }
     ]
