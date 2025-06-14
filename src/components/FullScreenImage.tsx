@@ -8,7 +8,7 @@ const FullScreenImage = () => {
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/lovable-uploads/ae4cd20a-866b-442f-a7d3-5519f3ba5bf3.png')`
+          backgroundImage: `url('/lovable-uploads/5ff61515-6fcb-48d0-a236-db536d417c12.png')`
         }}
       >
         {/* Subtle overlay for better contrast if needed */}
