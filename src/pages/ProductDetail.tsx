@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Heart, ArrowLeft, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 import { useAuth } from '@/contexts/AuthContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -549,9 +551,9 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { user } = useAuth();
 
   const product = id ? productData[id] : null;
@@ -566,6 +568,8 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  const isWishlisted = isInWishlist(product.id);
 
   const handleAddToCart = async () => {
     if (!user) {
@@ -584,19 +588,47 @@ const ProductDetail = () => {
     });
   };
 
-  const handleBuyNow = () => {
+  const handleWishlistToggle = async () => {
     if (!user) {
       navigate('/auth');
       return;
     }
 
-    console.log('Buy now:', {
-      product: product.name,
-      size: selectedSize,
-      color: selectedColor,
-      quantity
+    if (isWishlisted) {
+      const wishlistItem = await import('@/contexts/WishlistContext').then(module => 
+        module.useWishlist().wishlistItems.find(item => item.product_id === product.id)
+      );
+      if (wishlistItem) {
+        await removeFromWishlist(wishlistItem.id);
+      }
+    } else {
+      await addToWishlist({
+        product_id: product.id,
+        product_name: product.name,
+        product_price: product.price,
+        product_image: product.images[0]?.url || '',
+      });
+    }
+  };
+
+  const handleBuyNow = async () => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    // Add to cart first, then navigate to checkout
+    await addToCart({
+      product_id: product.id,
+      product_name: product.name,
+      product_price: product.price,
+      product_image: product.images[0]?.url || '',
+      quantity,
+      selected_size: selectedSize,
+      selected_color: selectedColor,
     });
-    // Here you would typically redirect to checkout
+    
+    navigate('/checkout');
   };
 
   return (
@@ -765,7 +797,7 @@ const ProductDetail = () => {
                       ? 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white' 
                       : 'border-luxury-black text-luxury-black hover:bg-luxury-black hover:text-white'
                   }`}
-                  onClick={() => setIsWishlisted(!isWishlisted)}
+                  onClick={handleWishlistToggle}
                 >
                   <Heart size={18} className="mr-2" fill={isWishlisted ? 'currentColor' : 'none'} />
                   {isWishlisted ? 'WISHLISTED' : 'ADD TO WISHLIST'}
