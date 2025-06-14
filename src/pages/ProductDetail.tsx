@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -611,7 +612,7 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   
   const { addToCart } = useCart();
-  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const { addToWishlist, removeFromWishlist, isInWishlist, wishlistItems } = useWishlist();
   const { user } = useAuth();
   const { toast } = useToast();
 
@@ -629,6 +630,10 @@ const ProductDetail = () => {
   }
 
   const isWishlisted = isInWishlist(product.id);
+
+  // Calculate total price based on quantity
+  const basePrice = parseFloat(product.price.replace('₹ ', '').replace(',', ''));
+  const totalPrice = basePrice * quantity;
 
   const handleAddToCart = async () => {
     if (!user) {
@@ -673,9 +678,7 @@ const ProductDetail = () => {
     }
 
     if (isWishlisted) {
-      const wishlistItem = await import('@/contexts/WishlistContext').then(module => 
-        module.useWishlist().wishlistItems.find(item => item.product_id === product.id)
-      );
+      const wishlistItem = wishlistItems.find(item => item.product_id === product.id);
       if (wishlistItem) {
         await removeFromWishlist(wishlistItem.id);
       }
@@ -742,7 +745,7 @@ const ProductDetail = () => {
       {/* Top Banner */}
       <div className="bg-gray-100 py-3">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center space-x-8 text-sm text-gray-600">
+          <div className="flex justify-center items-center space-x-4 md:space-x-8 text-xs md:text-sm text-gray-600">
             <span>FREE SHIPPING</span>
             <span>•</span>
             <span>30-DAY RETURNS</span>
@@ -752,12 +755,12 @@ const ProductDetail = () => {
         </div>
       </div>
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 md:py-8">
         {/* Back Button */}
         <Button 
           variant="ghost" 
           onClick={() => navigate('/')}
-          className="mb-6 text-gray-600 hover:text-gray-900"
+          className="mb-4 md:mb-6 text-gray-600 hover:text-gray-900"
         >
           <ArrowLeft size={20} className="mr-2" />
           Back to Products
@@ -765,9 +768,9 @@ const ProductDetail = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-lg shadow-sm overflow-hidden min-h-[600px]">
           {/* Left Side - Images */}
-          <div className="bg-gray-900 p-8 flex flex-col">
+          <div className="bg-gray-900 p-4 md:p-8 flex flex-col">
             {/* Main Image with Navigation */}
-            <div className="flex-1 mb-4 bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center relative">
+            <div className="flex-1 mb-4 bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center relative min-h-[300px] md:min-h-[400px]">
               <img
                 src={product.images[selectedImageIndex]?.url}
                 alt={product.images[selectedImageIndex]?.alt}
@@ -781,24 +784,24 @@ const ProductDetail = () => {
                     onClick={() => setSelectedImageIndex((prev) => 
                       prev === 0 ? product.images.length - 1 : prev - 1
                     )}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
                   >
-                    <ChevronLeft className="w-6 h-6 text-white" />
+                    <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-white" />
                   </button>
                   <button
                     onClick={() => setSelectedImageIndex((prev) => 
                       prev === product.images.length - 1 ? 0 : prev + 1
                     )}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
                   >
-                    <ChevronRight className="w-6 h-6 text-white" />
+                    <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-white" />
                   </button>
                 </>
               )}
               
               {/* Image Counter */}
               {product.images.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
                   {selectedImageIndex + 1} / {product.images.length}
                 </div>
               )}
@@ -829,13 +832,20 @@ const ProductDetail = () => {
           </div>
 
           {/* Right Side - Product Details */}
-          <div className="p-8 space-y-6 bg-white">
+          <div className="p-4 md:p-8 space-y-4 md:space-y-6 bg-white">
             {/* Product Title and Price */}
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 md:mb-4">
                 {product.name}
               </h1>
-              <div className="text-3xl font-bold text-gray-900 mb-2">{product.price}</div>
+              <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                ₹ {totalPrice.toLocaleString()}
+                {quantity > 1 && (
+                  <span className="text-sm md:text-base text-gray-500 ml-2">
+                    ({product.price} each)
+                  </span>
+                )}
+              </div>
               {product.inStock && (
                 <div className="flex items-center text-red-500 text-sm">
                   <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
@@ -846,13 +856,13 @@ const ProductDetail = () => {
 
             {/* Size Selection */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">SIZE:</h3>
-              <div className="grid grid-cols-6 gap-2">
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3">SIZE:</h3>
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
                 {product.sizes.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`py-3 px-4 border-2 rounded transition-colors font-medium ${
+                    className={`py-2 md:py-3 px-2 md:px-4 border-2 rounded transition-colors font-medium text-sm md:text-base ${
                       selectedSize === size
                         ? 'border-gray-900 bg-gray-900 text-white'
                         : 'border-gray-300 hover:border-gray-500 text-gray-700'
@@ -866,15 +876,15 @@ const ProductDetail = () => {
 
             {/* Color Selection */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">COLOR:</h3>
-              <div className="flex space-x-3">
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3">COLOR:</h3>
+              <div className="flex flex-wrap gap-3">
                 {product.colors.map((color) => (
                   <button
                     key={color.value}
                     onClick={() => setSelectedColor(color.value)}
-                    className={`w-10 h-10 rounded-full border-3 transition-transform hover:scale-110 ${
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full border-3 transition-transform hover:scale-110 ${
                       selectedColor === color.value ? 'border-gray-900 ring-2 ring-gray-900 ring-offset-2' : 'border-gray-300'
-                    } ${color.value === 'gold' ? 'bg-yellow-400' : 'bg-gray-300'}`}
+                    } ${color.value === 'gold' ? 'bg-yellow-400' : color.value === 'rosegold' ? 'bg-pink-300' : color.value === 'silver' ? 'bg-gray-300' : color.value === 'platinum' ? 'bg-gray-400' : color.value === 'whitegold' ? 'bg-gray-200' : 'bg-gray-300'}`}
                     title={color.name}
                   />
                 ))}
@@ -883,33 +893,33 @@ const ProductDetail = () => {
 
             {/* Material */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                MATERIAL: <span className="font-normal">{product.material}</span>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900">
+                MATERIAL: <span className="font-normal text-sm md:text-base">{product.material}</span>
               </h3>
             </div>
 
             {/* Quantity */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Quantity</h3>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3">Quantity</h3>
               <div className="flex items-center space-x-4">
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1}
-                  className="w-12 h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
                 >
-                  <Minus size={20} />
+                  <Minus size={16} className="md:w-5 md:h-5" />
                 </Button>
-                <span className="text-2xl font-semibold px-6">{quantity}</span>
+                <span className="text-xl md:text-2xl font-semibold px-4 md:px-6 min-w-[60px] text-center">{quantity}</span>
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={() => setQuantity(quantity + 1)}
                   disabled={quantity >= product.stockCount}
-                  className="w-12 h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-yellow-300 hover:bg-yellow-400 border-yellow-300"
                 >
-                  <Plus size={20} />
+                  <Plus size={16} className="md:w-5 md:h-5" />
                 </Button>
               </div>
             </div>
@@ -924,33 +934,41 @@ const ProductDetail = () => {
             )}
 
             {/* Action Buttons */}
-            <div className="space-y-4 pt-6">
+            <div className="space-y-3 md:space-y-4 pt-4 md:pt-6">
               <Button
-                className="w-full h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg tracking-wide"
+                className="w-full h-12 md:h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base md:text-lg tracking-wide"
                 onClick={handleBuyNow}
                 disabled={!selectedSize || !selectedColor || !product.inStock}
               >
                 BUY NOW
               </Button>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <Button
-                  className="h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0"
+                  className="h-12 md:h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0 text-sm md:text-base"
                   onClick={handleAddToCart}
                   disabled={!selectedSize || !selectedColor || !product.inStock}
                 >
-                  <ShoppingBag size={20} className="mr-2" />
+                  <ShoppingBag size={18} className="mr-2 md:w-5 md:h-5" />
                   ADD TO CART
                 </Button>
                 
                 <Button
-                  className="h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0"
+                  className="h-12 md:h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0 text-sm md:text-base"
                   onClick={handleWishlistToggle}
                 >
-                  <Heart size={20} className="mr-2" fill={isWishlisted ? 'currentColor' : 'none'} />
-                  ADD TO WISHLIST
+                  <Heart size={18} className="mr-2 md:w-5 md:h-5" fill={isWishlisted ? 'currentColor' : 'none'} />
+                  {isWishlisted ? 'REMOVE FROM WISHLIST' : 'ADD TO WISHLIST'}
                 </Button>
               </div>
+            </div>
+
+            {/* Product Description */}
+            <div className="pt-4 md:pt-6 border-t">
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-3">Description</h3>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                {product.description}
+              </p>
             </div>
           </div>
         </div>

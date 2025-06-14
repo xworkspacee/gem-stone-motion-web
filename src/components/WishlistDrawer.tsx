@@ -37,16 +37,16 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ children }) => {
       <DrawerTrigger asChild>
         {children}
       </DrawerTrigger>
-      <DrawerContent className="h-[90vh]">
-        <DrawerHeader className="border-b">
+      <DrawerContent className="h-[90vh] max-h-[90vh]">
+        <DrawerHeader className="border-b px-4 py-3">
           <div className="flex items-center justify-between">
-            <DrawerTitle className="flex items-center gap-2">
+            <DrawerTitle className="flex items-center gap-2 text-lg">
               <Heart size={20} />
               Wishlist ({wishlistItems.length})
             </DrawerTitle>
             <DrawerClose asChild>
-              <Button variant="ghost" size="icon">
-                <X size={20} />
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <X size={18} />
               </Button>
             </DrawerClose>
           </div>
@@ -60,22 +60,22 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ children }) => {
               <p className="text-gray-500">Save items you love for later</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {wishlistItems.map((item) => (
-                <div key={item.id} className="border rounded-lg p-4 space-y-3">
+                <div key={item.id} className="border rounded-lg p-3 space-y-3 bg-white">
                   <img
                     src={item.product_image}
                     alt={item.product_name}
-                    className="w-full h-48 object-cover rounded"
+                    className="w-full h-40 md:h-48 object-cover rounded"
                   />
-                  <div>
-                    <h4 className="font-medium text-sm">{item.product_name}</h4>
-                    <p className="text-sm text-gray-500">{item.product_price}</p>
+                  <div className="space-y-1">
+                    <h4 className="font-medium text-sm md:text-base line-clamp-2">{item.product_name}</h4>
+                    <p className="text-sm md:text-base text-gray-900 font-semibold">{item.product_price}</p>
                   </div>
-                  <div className="flex space-x-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <Button
                       size="sm"
-                      className="flex-1 bg-luxury-black hover:bg-luxury-brown text-white"
+                      className="flex-1 bg-luxury-black hover:bg-luxury-brown text-white text-xs md:text-sm"
                       onClick={() => handleMoveToCart(item)}
                     >
                       <ShoppingBag size={14} className="mr-1" />
@@ -84,7 +84,7 @@ const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ children }) => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="text-red-500 hover:text-red-700"
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 px-2 sm:px-3"
                       onClick={() => removeFromWishlist(item.id)}
                     >
                       <Trash2 size={14} />
