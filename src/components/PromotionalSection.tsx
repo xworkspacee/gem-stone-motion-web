@@ -1,28 +1,41 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
-const promotions = [
+const featuredProducts = [
   {
-    title: "Sale!",
-    subtitle: "LOVE INSPIRES",
-    buttonText: "MORE INFO",
-    color: "text-red-600",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop"
+    id: 1,
+    name: "Ilona Earrings in Gold",
+    price: "$168.00",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=500&fit=crop",
+    colors: ["silver", "gold"],
+    category: "earrings"
   },
   {
-    title: "Pendant!",
-    subtitle: "CLASSIC HITS", 
-    buttonText: "MORE INFO",
-    color: "text-luxury-black",
-    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=300&fit=crop"
+    id: 2,
+    name: "Adelaide Hoops in Sterling Silver", 
+    price: "$115.00",
+    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=500&fit=crop",
+    colors: ["silver", "gold"],
+    category: "earrings"
   },
   {
-    title: "Discover!",
-    subtitle: "NEW ARRIVAL",
-    buttonText: "MORE INFO", 
-    color: "text-luxury-black",
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=300&fit=crop"
+    id: 3,
+    name: "Classic Square Earrings",
+    price: "$145.00",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=500&fit=crop",
+    colors: ["silver"],
+    badge: "BEST SELLER",
+    category: "earrings"
+  },
+  {
+    id: 4,
+    name: "Golden Chain Necklace",
+    price: "$210.00", 
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=500&fit=crop",
+    colors: ["gold"],
+    category: "necklaces"
   }
 ];
 
@@ -30,51 +43,85 @@ const PromotionalSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {promotions.map((promo, index) => (
-            <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
-              {/* Background Image */}
-              <div className="aspect-[4/3] relative">
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {featuredProducts.map((product) => (
+            <div key={product.id} className="group relative">
+              {/* Product Image */}
+              <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-4">
+                {product.badge && (
+                  <span className="absolute top-3 left-3 bg-black text-white text-xs px-2 py-1 rounded z-10">
+                    {product.badge}
+                  </span>
+                )}
                 <img
-                  src={promo.image}
-                  alt={promo.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-white/80 group-hover:bg-white/70 transition-colors duration-300"></div>
               </div>
 
-              {/* Content Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-8">
-                <h3 className={`text-4xl font-luxury font-bold mb-2 ${promo.color}`}>
-                  {promo.title}
-                </h3>
-                <p className="text-sm font-medium text-luxury-black mb-6 tracking-widest">
-                  {promo.subtitle}
-                </p>
-                <Button 
-                  variant="ghost" 
-                  className="text-luxury-black hover:text-luxury-gold border-b border-luxury-black hover:border-luxury-gold transition-colors font-medium text-sm tracking-wide"
+              {/* Product Info */}
+              <div className="space-y-2">
+                <Link 
+                  to={`/product/${product.id}`}
+                  className="block hover:text-luxury-gold transition-colors"
                 >
-                  {promo.buttonText}
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Button>
+                  <h3 className="font-medium text-luxury-black text-sm">
+                    {product.name}
+                  </h3>
+                </Link>
+                <p className="text-luxury-black font-medium text-sm">
+                  {product.price}
+                </p>
+                
+                {/* Color Options */}
+                <div className="flex gap-2 mt-3">
+                  {product.colors.map((color) => (
+                    <button
+                      key={color}
+                      className={`w-4 h-4 rounded-full border-2 border-gray-300 ${
+                        color === 'gold' 
+                          ? 'bg-yellow-400' 
+                          : 'bg-gray-300'
+                      }`}
+                      title={color}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA Section */}
-        <div className="mt-16 text-center luxury-gradient rounded-2xl py-16 px-8">
-          <h2 className="text-3xl md:text-4xl font-luxury font-bold text-luxury-black mb-4">
-            Discover The Collection
-          </h2>
-          <p className="text-luxury-gray max-w-2xl mx-auto mb-8 leading-relaxed">
-            Proin ullamcorper pretium orci donec nec scelerisque leo nam massa dolor 
-            imperdiet nec consequata congue idsem.
-          </p>
-          <div className="w-16 h-0.5 bg-luxury-gold mx-auto"></div>
+        {/* Bottom Hero Section */}
+        <div className="relative rounded-2xl overflow-hidden">
+          <div className="aspect-[16/9] lg:aspect-[21/9] relative">
+            <img
+              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop"
+              alt="The Essentials Collection"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 flex items-center justify-center text-center text-white">
+              <div className="max-w-2xl px-4">
+                <h2 className="text-3xl md:text-5xl font-luxury font-bold mb-4">
+                  THE ESSENTIALS COLLECTION
+                </h2>
+                <p className="text-lg md:text-xl mb-8 opacity-90">
+                  Recycled gold, AAA-grade gemstones, and ethically sourced diamonds
+                </p>
+                <Button 
+                  asChild
+                  className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-sm font-medium tracking-wide"
+                >
+                  <Link to="/collections/rings">
+                    EXPLORE COLLECTION
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
