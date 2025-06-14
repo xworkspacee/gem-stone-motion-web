@@ -56,7 +56,16 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         .eq('user_id', user.id);
 
       if (error) throw error;
-      setWishlistItems(data || []);
+      
+      const typedData: WishlistItem[] = (data || []).map(item => ({
+        id: item.id,
+        product_id: item.product_id,
+        product_name: item.product_name,
+        product_price: item.product_price,
+        product_image: item.product_image,
+      }));
+      
+      setWishlistItems(typedData);
     } catch (error) {
       console.error('Error loading wishlist items:', error);
     } finally {
@@ -77,12 +86,27 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     try {
       const { data, error } = await supabase
         .from('wishlist_items')
-        .insert([{ ...item, user_id: user.id }])
+        .insert([{ 
+          product_id: item.product_id,
+          product_name: item.product_name,
+          product_price: item.product_price,
+          product_image: item.product_image,
+          user_id: user.id 
+        }])
         .select()
         .single();
 
       if (error) throw error;
-      setWishlistItems(prev => [...prev, data]);
+      
+      const newItem: WishlistItem = {
+        id: data.id,
+        product_id: data.product_id,
+        product_name: data.product_name,
+        product_price: data.product_price,
+        product_image: data.product_image,
+      };
+      
+      setWishlistItems(prev => [...prev, newItem]);
 
       toast({
         title: "Added to wishlist",
