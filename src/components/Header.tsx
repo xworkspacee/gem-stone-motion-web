@@ -1,8 +1,9 @@
-
 import React, { useState } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { useCart } from '@/contexts/CartContext';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,10 +11,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+  const { cartCount } = useCart();
 
   const collectionCategories = [
     {
@@ -52,6 +61,11 @@ const Header = () => {
     // Navigate to product page - you can customize this logic
     const productId = Math.floor(Math.random() * 10) + 1;
     navigate(`/product/${productId}`);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
   };
 
   return (
@@ -191,9 +205,45 @@ const Header = () => {
             <Button variant="ghost" size="sm" className="hover:text-luxury-gold">
               <Heart size={20} />
             </Button>
-            <Button variant="ghost" size="sm" className="hover:text-luxury-gold">
+            <Button variant="ghost" size="sm" className="hover:text-luxury-gold relative">
               <ShoppingBag size={20} />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-luxury-gold text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </Button>
+            
+            {/* User Authentication */}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="hover:text-luxury-gold">
+                    <User size={20} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuItem className="cursor-pointer">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer" onClick={handleSignOut}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sign out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="hover:text-luxury-gold"
+                onClick={() => navigate('/auth')}
+              >
+                <User size={20} />
+                <span className="ml-1 hidden sm:inline">Sign In</span>
+              </Button>
+            )}
           </div>
         </div>
 
@@ -204,6 +254,12 @@ const Header = () => {
               <button onClick={() => handleItemClick("NEW IN")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NEW IN</button>
               <button onClick={() => handleItemClick("ALL COLLECTION")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">ALL COLLECTION</button>
               <button onClick={() => handleItemClick("SHOP BY COLOR")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SHOP BY COLOR</button>
+              {!user && (
+                <button onClick={() => navigate('/auth')} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SIGN IN</button>
+              )}
+              {user && (
+                <button onClick={handleSignOut} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SIGN OUT</button>
+              )}
             </nav>
           </div>
         )}

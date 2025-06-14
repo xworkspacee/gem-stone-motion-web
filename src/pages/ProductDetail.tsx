@@ -1,8 +1,9 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Heart, ArrowLeft, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -76,6 +77,9 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  
+  const { addToCart } = useCart();
+  const { user } = useAuth();
 
   const product = id ? productData[id] : null;
 
@@ -90,17 +94,29 @@ const ProductDetail = () => {
     );
   }
 
-  const handleAddToCart = () => {
-    console.log('Added to cart:', {
-      product: product.name,
-      size: selectedSize,
-      color: selectedColor,
-      quantity
+  const handleAddToCart = async () => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    await addToCart({
+      product_id: product.id,
+      product_name: product.name,
+      product_price: product.price,
+      product_image: product.images[0]?.url || '',
+      quantity,
+      selected_size: selectedSize,
+      selected_color: selectedColor,
     });
-    // Here you would typically integrate with your cart system
   };
 
   const handleBuyNow = () => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
     console.log('Buy now:', {
       product: product.name,
       size: selectedSize,
