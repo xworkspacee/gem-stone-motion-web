@@ -22,9 +22,9 @@ const Admin = () => {
   // Show loading while checking authentication
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-luxury-gold border-t-transparent mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-900 border-t-transparent mx-auto mb-4"></div>
           <p className="text-gray-600 font-medium">Loading Admin Panel...</p>
         </div>
       </div>
@@ -73,20 +73,20 @@ const Admin = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gray-50 dark:bg-gray-900 ${darkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen bg-gray-50 ${darkMode ? 'dark' : ''}`}>
       <div className="flex">
         <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Enhanced Top Header */}
-          <header className="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
+          <header className="bg-white shadow-md border-b border-gray-200">
             <div className="flex items-center justify-between px-6 py-4">
               <div className="flex items-center space-x-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <Input 
                     placeholder="Search anything..." 
-                    className="pl-10 w-80 bg-gray-50 dark:bg-gray-700 border-0 focus:ring-2 focus:ring-luxury-gold"
+                    className="pl-10 w-80 bg-gray-50 border-gray-200 focus:ring-2 focus:ring-gray-900"
                   />
                 </div>
               </div>
@@ -107,7 +107,7 @@ const Admin = () => {
                   variant="ghost"
                   size="sm"
                   onClick={toggleDarkMode}
-                  className="text-gray-600 dark:text-gray-400"
+                  className="text-gray-600"
                 >
                   {darkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </Button>
@@ -116,12 +116,12 @@ const Admin = () => {
                   <Settings className="h-5 w-5" />
                 </Button>
                 
-                <div className="flex items-center space-x-3 pl-4 border-l border-gray-200 dark:border-gray-700">
+                <div className="flex items-center space-x-3 pl-4 border-l border-gray-200">
                   <div className="text-right">
-                    <div className="text-sm font-medium text-gray-900 dark:text-white">Admin User</div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">{user.email}</div>
+                    <div className="text-sm font-medium text-gray-900">Admin User</div>
+                    <div className="text-xs text-gray-500">{user.email}</div>
                   </div>
-                  <div className="w-10 h-10 bg-gradient-to-br from-luxury-gold to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-white text-sm font-semibold">A</span>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ const Admin = () => {
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 overflow-x-hidden overflow-y-auto">
+          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50">
             {renderActiveComponent()}
           </main>
         </div>

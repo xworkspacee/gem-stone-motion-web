@@ -40,30 +40,30 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) 
   ];
 
   return (
-    <div className="w-64 bg-white dark:bg-gray-900 shadow-2xl border-r border-gray-200 dark:border-gray-700 min-h-screen">
+    <div className="w-64 bg-white shadow-xl border-r border-gray-200 min-h-screen">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-luxury-gold to-yellow-500">
+      <div className="p-6 border-b border-gray-200 bg-white">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
-            <TrendingUp className="h-6 w-6 text-luxury-gold" />
+          <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center shadow-lg">
+            <TrendingUp className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-xl font-bold text-white">GEM STONE</h2>
-            <p className="text-sm text-white/80">Admin Panel</p>
+            <h2 className="text-xl font-bold text-gray-900">GEM STONE</h2>
+            <p className="text-sm text-gray-600">Admin Panel</p>
           </div>
         </div>
       </div>
       
       {/* Quick Stats */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-4 border-b border-gray-200">
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
-            <div className="text-xs text-green-600 dark:text-green-400 font-medium">Revenue</div>
-            <div className="text-lg font-bold text-green-700 dark:text-green-300">$12,500</div>
+          <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+            <div className="text-xs text-gray-600 font-medium">Revenue</div>
+            <div className="text-lg font-bold text-gray-900">$12,500</div>
           </div>
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-            <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">Orders</div>
-            <div className="text-lg font-bold text-blue-700 dark:text-blue-300">145</div>
+          <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+            <div className="text-xs text-gray-600 font-medium">Orders</div>
+            <div className="text-lg font-bold text-gray-900">145</div>
           </div>
         </div>
       </div>
@@ -79,8 +79,8 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) 
                 variant="ghost"
                 className={`w-full justify-start px-4 py-3 text-left rounded-xl transition-all duration-200 ${
                   activeTab === item.id
-                    ? 'bg-luxury-gold/15 text-luxury-gold border-l-4 border-luxury-gold font-semibold shadow-lg'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-luxury-gold'
+                    ? 'bg-gray-900 text-white font-semibold shadow-lg'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 }`}
                 onClick={() => setActiveTab(item.id)}
               >
@@ -94,7 +94,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) 
                       variant={item.badge === 'New' ? 'default' : 'secondary'} 
                       className={`text-xs px-2 py-0.5 ${
                         item.badge === 'New' 
-                          ? 'bg-luxury-gold text-white' 
+                          ? 'bg-gray-900 text-white' 
                           : 'bg-gray-200 text-gray-700'
                       }`}
                     >

@@ -43,10 +43,10 @@ const AdminDashboard = () => {
   ];
 
   const categoryData = [
-    { name: 'Rings', value: 400, color: '#D4AF37' },
-    { name: 'Necklaces', value: 300, color: '#B8860B' },
-    { name: 'Earrings', value: 200, color: '#DAA520' },
-    { name: 'Bracelets', value: 100, color: '#FFD700' },
+    { name: 'Rings', value: 400, color: '#374151' },
+    { name: 'Necklaces', value: 300, color: '#6B7280' },
+    { name: 'Earrings', value: 200, color: '#9CA3AF' },
+    { name: 'Bracelets', value: 100, color: '#D1D5DB' },
   ];
 
   const orderStatusData = [
@@ -74,79 +74,79 @@ const AdminDashboard = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-luxury-gold"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+    <div className="space-y-6 p-6 bg-white min-h-screen">
       {/* Header with Welcome Message */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Dashboard Overview</h1>
-        <p className="text-gray-600 dark:text-gray-400">Welcome back! Here's what's happening with your store today.</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard Overview</h1>
+        <p className="text-gray-600">Welcome back! Here's what's happening with your store today.</p>
       </div>
 
       {/* Stats Cards with Enhanced Design */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 shadow-xl">
+        <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium opacity-90">Total Users</CardTitle>
-            <div className="p-2 bg-white/20 rounded-lg">
-              <Users className="h-5 w-5" />
+            <CardTitle className="text-sm font-medium text-gray-600">Total Users</CardTitle>
+            <div className="p-2 bg-gray-100 rounded-lg">
+              <Users className="h-5 w-5 text-gray-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold mb-1">{stats?.totalUsers}</div>
-            <div className="flex items-center text-sm opacity-90">
+            <div className="text-3xl font-bold mb-1 text-gray-900">{stats?.totalUsers}</div>
+            <div className="flex items-center text-sm text-green-600">
               <ArrowUpIcon className="h-4 w-4 mr-1" />
               <span>+5% from last month</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white border-0 shadow-xl">
+        <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium opacity-90">Total Products</CardTitle>
-            <div className="p-2 bg-white/20 rounded-lg">
-              <Package className="h-5 w-5" />
+            <CardTitle className="text-sm font-medium text-gray-600">Total Products</CardTitle>
+            <div className="p-2 bg-gray-100 rounded-lg">
+              <Package className="h-5 w-5 text-gray-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold mb-1">{stats?.totalProducts}</div>
-            <div className="flex items-center text-sm opacity-90">
+            <div className="text-3xl font-bold mb-1 text-gray-900">{stats?.totalProducts}</div>
+            <div className="flex items-center text-sm text-green-600">
               <ArrowUpIcon className="h-4 w-4 mr-1" />
               <span>+12% from last month</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0 shadow-xl">
+        <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium opacity-90">Total Orders</CardTitle>
-            <div className="p-2 bg-white/20 rounded-lg">
-              <ShoppingCart className="h-5 w-5" />
+            <CardTitle className="text-sm font-medium text-gray-600">Total Orders</CardTitle>
+            <div className="p-2 bg-gray-100 rounded-lg">
+              <ShoppingCart className="h-5 w-5 text-gray-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold mb-1">{stats?.totalOrders}</div>
-            <div className="flex items-center text-sm opacity-90">
+            <div className="text-3xl font-bold mb-1 text-gray-900">{stats?.totalOrders}</div>
+            <div className="flex items-center text-sm text-green-600">
               <ArrowUpIcon className="h-4 w-4 mr-1" />
               <span>+18% from last month</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0 shadow-xl">
+        <Card className="bg-white border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium opacity-90">Total Revenue</CardTitle>
-            <div className="p-2 bg-white/20 rounded-lg">
-              <DollarSign className="h-5 w-5" />
+            <CardTitle className="text-sm font-medium text-gray-600">Total Revenue</CardTitle>
+            <div className="p-2 bg-gray-100 rounded-lg">
+              <DollarSign className="h-5 w-5 text-gray-700" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold mb-1">${stats?.totalRevenue?.toFixed(2)}</div>
-            <div className="flex items-center text-sm opacity-90">
+            <div className="text-3xl font-bold mb-1 text-gray-900">${stats?.totalRevenue?.toFixed(2)}</div>
+            <div className="flex items-center text-sm text-green-600">
               <ArrowUpIcon className="h-4 w-4 mr-1" />
               <span>+23% from last month</span>
             </div>
@@ -156,10 +156,10 @@ const AdminDashboard = () => {
 
       {/* Performance Metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <Card className="lg:col-span-2 shadow-lg">
+        <Card className="lg:col-span-2 shadow-lg border-gray-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5 text-luxury-gold" />
+            <CardTitle className="flex items-center gap-2 text-gray-900">
+              <Activity className="h-5 w-5 text-gray-700" />
               Sales Analytics
             </CardTitle>
           </CardHeader>
@@ -168,8 +168,8 @@ const AdminDashboard = () => {
               <AreaChart data={salesData}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#D4AF37" stopOpacity={0.1}/>
+                    <stop offset="5%" stopColor="#374151" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#374151" stopOpacity={0.1}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
@@ -178,27 +178,27 @@ const AdminDashboard = () => {
                 <Tooltip 
                   contentStyle={{ 
                     backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                    border: 'none', 
+                    border: '1px solid #e5e7eb', 
                     borderRadius: '8px', 
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' 
                   }} 
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#D4AF37" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={3} />
-                <Line type="monotone" dataKey="sales" stroke="#B8860B" strokeWidth={2} />
+                <Area type="monotone" dataKey="revenue" stroke="#374151" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={3} />
+                <Line type="monotone" dataKey="sales" stroke="#6B7280" strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-lg border-gray-200">
           <CardHeader>
-            <CardTitle>Performance Metrics</CardTitle>
+            <CardTitle className="text-gray-900">Performance Metrics</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {performanceData.map((item, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="font-medium">{item.metric}</span>
+                  <span className="font-medium text-gray-900">{item.metric}</span>
                   <span className="text-gray-600">{item.current}%</span>
                 </div>
                 <Progress value={item.current} className="h-2" />
@@ -210,9 +210,9 @@ const AdminDashboard = () => {
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card className="shadow-lg">
+        <Card className="shadow-lg border-gray-200">
           <CardHeader>
-            <CardTitle>Product Categories Distribution</CardTitle>
+            <CardTitle className="text-gray-900">Product Categories Distribution</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -237,9 +237,9 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-lg">
+        <Card className="shadow-lg border-gray-200">
           <CardHeader>
-            <CardTitle>Order Status Overview</CardTitle>
+            <CardTitle className="text-gray-900">Order Status Overview</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -250,12 +250,12 @@ const AdminDashboard = () => {
                 <Tooltip 
                   contentStyle={{ 
                     backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                    border: 'none', 
+                    border: '1px solid #e5e7eb', 
                     borderRadius: '8px', 
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' 
                   }} 
                 />
-                <Bar dataKey="count" fill="#D4AF37" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#374151" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
@@ -263,17 +263,17 @@ const AdminDashboard = () => {
       </div>
 
       {/* Recent Activity Feed */}
-      <Card className="shadow-lg">
+      <Card className="shadow-lg border-gray-200">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Clock className="h-5 w-5 text-luxury-gold" />
+          <CardTitle className="flex items-center gap-2 text-gray-900">
+            <Clock className="h-5 w-5 text-gray-700" />
             Recent Activity
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
             {recentActivities.map((activity) => (
-              <div key={activity.id} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+              <div key={activity.id} className="flex items-center space-x-4 p-3 rounded-lg bg-gray-50 border border-gray-200">
                 <div className={`p-2 rounded-full ${
                   activity.status === 'success' ? 'bg-green-100 text-green-600' :
                   activity.status === 'warning' ? 'bg-yellow-100 text-yellow-600' :
@@ -284,8 +284,8 @@ const AdminDashboard = () => {
                    <Activity className="h-4 w-4" />}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{activity.message}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{activity.time}</p>
+                  <p className="text-sm font-medium text-gray-900">{activity.message}</p>
+                  <p className="text-xs text-gray-500">{activity.time}</p>
                 </div>
               </div>
             ))}
