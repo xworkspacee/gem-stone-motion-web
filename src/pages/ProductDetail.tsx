@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -30,42 +31,210 @@ interface ProductData {
 const productData: { [key: string]: ProductData } = {
   "1": {
     id: 1,
-    name: "Miro Signet Ring in Sterling Silver",
-    price: "$168.00",
-    description: "Crafted with precision and elegance, this stunning signet ring features intricate detailing that captures light beautifully. Made from premium sterling silver for lasting durability.",
-    material: "Sterling Silver",
+    name: "Diamond Solitaire Ring",
+    price: "₹ 1,899.00",
+    description: "Crafted with precision and elegance, this stunning diamond solitaire ring features intricate detailing that captures light beautifully. Made from premium sterling silver for lasting durability.",
+    material: "Sterling Silver with Diamond",
     sizes: ["5", "6", "7", "8", "9", "10"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" },
       { id: 2, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" },
-      { id: 4, url: "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=800&h=1000&fit=crop", alt: "Lifestyle view" }
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" }
     ],
     inStock: true,
     stockCount: 5
   },
   "2": {
     id: 2,
-    name: "Emerald Grande Ring in Sterling Silver",
-    price: "$115.00",
-    description: "A magnificent emerald centerpiece surrounded by brilliant sterling silver craftsmanship. This ring embodies luxury and sophistication.",
-    material: "Sterling Silver with Emerald",
+    name: "Gold Band Ring",
+    price: "₹ 1,599.00",
+    description: "A timeless gold band ring with elegant design. Perfect for everyday wear or special occasions.",
+    material: "18K Gold",
     sizes: ["5", "6", "7", "8", "9", "10"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Side view" }
+    ],
+    inStock: true,
+    stockCount: 8
+  },
+  "3": {
+    id: 3,
+    name: "Pearl Statement Ring",
+    price: "₹ 2,199.00",
+    description: "Elegant pearl statement ring that adds sophistication to any outfit.",
+    material: "Sterling Silver with Pearl",
+    sizes: ["5", "6", "7", "8", "9"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 3
+  },
+  "4": {
+    id: 4,
+    name: "Vintage Ring Set",
+    price: "₹ 1,749.00",
+    description: "Beautiful vintage-inspired ring set with intricate detailing.",
+    material: "Sterling Silver",
+    sizes: ["5", "6", "7", "8", "9", "10"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Antique Gold", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 6
+  },
+  "5": {
+    id: 5,
+    name: "Crystal Drop Earrings",
+    price: "₹ 1,299.00",
+    description: "Stunning crystal drop earrings that catch the light beautifully.",
+    material: "Sterling Silver with Crystal",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 10
+  },
+  "6": {
+    id: 6,
+    name: "Gold Hoop Earrings",
+    price: "₹ 999.00",
+    description: "Classic gold hoop earrings, perfect for any occasion.",
+    material: "18K Gold",
+    sizes: ["Small", "Medium", "Large"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 15
+  },
+  "7": {
+    id: 7,
+    name: "Pearl Stud Earrings",
+    price: "₹ 1,449.00",
+    description: "Elegant pearl stud earrings for a classic look.",
+    material: "Sterling Silver with Pearl",
+    sizes: ["Small", "Medium"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 12
+  },
+  "8": {
+    id: 8,
+    name: "Diamond Cluster Earrings",
+    price: "₹ 2,299.00",
+    description: "Luxurious diamond cluster earrings for special occasions.",
+    material: "Sterling Silver with Diamonds",
+    sizes: ["One Size"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "White Gold", value: "whitegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 4
+  },
+  "9": {
+    id: 9,
+    name: "Layered Chain Necklace",
+    price: "₹ 1,649.00",
+    description: "Trendy layered chain necklace perfect for modern styling.",
+    material: "Sterling Silver",
+    sizes: ["16 inch", "18 inch", "20 inch"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
     ],
     inStock: true,
     stockCount: 8
+  },
+  "10": {
+    id: 10,
+    name: "Pearl Choker Necklace",
+    price: "₹ 1,199.00",
+    description: "Classic pearl choker necklace for elegant occasions.",
+    material: "Sterling Silver with Pearls",
+    sizes: ["14 inch", "16 inch"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 6
+  },
+  "11": {
+    id: 11,
+    name: "Gold Pendant Necklace",
+    price: "₹ 1,849.00",
+    description: "Beautiful gold pendant necklace with intricate design.",
+    material: "18K Gold",
+    sizes: ["16 inch", "18 inch", "20 inch"],
+    colors: [
+      { name: "Gold", value: "gold" },
+      { name: "Rose Gold", value: "rosegold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 7
+  },
+  "12": {
+    id: 12,
+    name: "Statement Chain Necklace",
+    price: "₹ 2,499.00",
+    description: "Bold statement chain necklace for fashion-forward individuals.",
+    material: "Sterling Silver",
+    sizes: ["18 inch", "20 inch", "22 inch"],
+    colors: [
+      { name: "Sterling Silver", value: "silver" },
+      { name: "Gold Plated", value: "gold" }
+    ],
+    images: [
+      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" }
+    ],
+    inStock: true,
+    stockCount: 5
   }
 };
 
@@ -154,25 +323,27 @@ const ProductDetail = () => {
             </div>
 
             {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-4">
-              {product.images.map((image, index) => (
-                <button
-                  key={image.id}
-                  onClick={() => setSelectedImageIndex(index)}
-                  className={`aspect-square overflow-hidden rounded-lg border-2 transition-colors ${
-                    selectedImageIndex === index 
-                      ? 'border-luxury-gold' 
-                      : 'border-luxury-beige hover:border-luxury-brown'
-                  }`}
-                >
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
+            {product.images.length > 1 && (
+              <div className="grid grid-cols-4 gap-4">
+                {product.images.map((image, index) => (
+                  <button
+                    key={image.id}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`aspect-square overflow-hidden rounded-lg border-2 transition-colors ${
+                      selectedImageIndex === index 
+                        ? 'border-luxury-gold' 
+                        : 'border-luxury-beige hover:border-luxury-brown'
+                    }`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Information */}
@@ -227,7 +398,7 @@ const ProductDetail = () => {
                     onClick={() => setSelectedColor(color.value)}
                     className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
                       selectedColor === color.value ? 'border-luxury-black' : 'border-gray-300'
-                    } ${color.value === 'gold' ? 'bg-luxury-gold' : 'bg-gray-300'}`}
+                    } ${color.value === 'gold' ? 'bg-luxury-gold' : color.value === 'rosegold' ? 'bg-rose-400' : color.value === 'whitegold' ? 'bg-gray-200' : 'bg-gray-300'}`}
                   />
                 ))}
               </div>

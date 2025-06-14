@@ -144,12 +144,13 @@ const Collections = () => {
 
     try {
       await addToCart({
-        productId: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        selectedSize: 'One Size',
-        selectedColor: 'Default'
+        product_id: product.id,
+        product_name: product.name,
+        product_price: product.price,
+        product_image: product.image,
+        quantity: 1,
+        selected_size: 'One Size',
+        selected_color: 'Default'
       });
       toast.success(`${product.name} added to cart!`);
     } catch (error) {
