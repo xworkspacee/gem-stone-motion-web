@@ -182,3 +182,14 @@
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
 }
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+}

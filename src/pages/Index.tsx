@@ -2,7 +2,6 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import VideoHero from '@/components/VideoHero';
 import ProductGrid from '@/components/ProductGrid';
 import MotionGallery from '@/components/MotionGallery';
 import CollectionShowcase from '@/components/CollectionShowcase';
@@ -17,7 +16,6 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <Hero />
-      <VideoHero />
       <ProductGrid />
       <MotionGallery />
       <CollectionShowcase />
