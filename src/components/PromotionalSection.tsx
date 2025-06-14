@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const featuredProducts = [
   {
@@ -56,13 +56,23 @@ const featuredProducts = [
 ];
 
 const PromotionalSection = () => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId: number) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {featuredProducts.map((product) => (
-            <div key={product.id} className="group relative">
+            <div 
+              key={product.id} 
+              className="group relative cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
+            >
               {/* Product Image */}
               <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-4">
                 {product.badge && (
@@ -79,14 +89,9 @@ const PromotionalSection = () => {
 
               {/* Product Info */}
               <div className="space-y-2">
-                <Link 
-                  to={`/product/${product.id}`}
-                  className="block hover:text-luxury-gold transition-colors"
-                >
-                  <h3 className="font-medium text-luxury-black text-sm">
-                    {product.name}
-                  </h3>
-                </Link>
+                <h3 className="font-medium text-luxury-black text-sm group-hover:text-luxury-gold transition-colors">
+                  {product.name}
+                </h3>
                 <p className="text-luxury-black font-medium text-sm">
                   {product.price}
                 </p>
@@ -102,6 +107,7 @@ const PromotionalSection = () => {
                           : 'bg-gray-300'
                       }`}
                       title={color}
+                      onClick={(e) => e.stopPropagation()}
                     />
                   ))}
                 </div>
