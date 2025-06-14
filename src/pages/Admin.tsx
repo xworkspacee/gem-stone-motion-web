@@ -13,13 +13,25 @@ import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Admin = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [darkMode, setDarkMode] = useState(false);
 
-  // Check if user is admin
-  if (!user || user.email !== 'vanshichoudhary@gmail.com') {
-    return <Navigate to="/" replace />;
+  // Show loading while checking authentication
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-luxury-gold mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Check if user is admin - updated to match Header.tsx
+  if (!user || user.email !== 'vanshichoudhary40@gmail.com') {
+    return <Navigate to="/auth" replace />;
   }
 
   const toggleDarkMode = () => {
@@ -57,7 +69,7 @@ const Admin = () => {
             <div className="flex items-center justify-between px-6 py-4">
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Panel</h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Welcome back, Admin</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Welcome back, {user.email}</p>
               </div>
               
               <div className="flex items-center space-x-4">

@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { AlertCircle, Info } from 'lucide-react';
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -36,11 +37,18 @@ const Auth = () => {
         
         toast({
           title: "Account created!",
-          description: "Please check your email to verify your account.",
+          description: "Please check your email to verify your account, or ask admin to disable email confirmation.",
         });
       } else {
         const { error } = await signIn(email, password);
-        if (error) throw error;
+        if (error) {
+          if (error.message.includes('Invalid login credentials')) {
+            throw new Error('Invalid email or password. Please check your credentials or sign up if you don\'t have an account.');
+          } else if (error.message.includes('Email not confirmed')) {
+            throw new Error('Please confirm your email address or ask admin to disable email confirmation in Supabase settings.');
+          }
+          throw error;
+        }
         
         toast({
           title: "Welcome back!",
@@ -49,8 +57,9 @@ const Auth = () => {
         navigate('/');
       }
     } catch (error: any) {
+      console.error('Auth error:', error);
       toast({
-        title: "Error",
+        title: "Authentication Error",
         description: error.message,
         variant: "destructive"
       });
@@ -68,6 +77,17 @@ const Auth = () => {
           <h1 className="text-2xl font-luxury font-bold text-luxury-black mb-6 text-center">
             {isSignUp ? 'Create Account' : 'Sign In'}
           </h1>
+          
+          {/* Admin info notice */}
+          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-start space-x-2">
+              <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+              <div className="text-sm text-blue-800">
+                <p className="font-medium">Admin Access:</p>
+                <p>Use email: vanshichoudhary40@gmail.com to access admin panel</p>
+              </div>
+            </div>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-4">
             {isSignUp && (
@@ -112,6 +132,7 @@ const Auth = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 border border-luxury-beige rounded-md focus:outline-none focus:ring-2 focus:ring-luxury-gold"
                 required
+                placeholder="Enter your email address"
               />
             </div>
             
@@ -127,6 +148,7 @@ const Auth = () => {
                 className="w-full px-3 py-2 border border-luxury-beige rounded-md focus:outline-none focus:ring-2 focus:ring-luxury-gold"
                 required
                 minLength={6}
+                placeholder="Enter your password"
               />
             </div>
             
@@ -149,6 +171,21 @@ const Auth = () => {
                 : "Don't have an account? Sign up"
               }
             </button>
+          </div>
+
+          {/* Troubleshooting section */}
+          <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="flex items-start space-x-2">
+              <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+              <div className="text-sm text-yellow-800">
+                <p className="font-medium">Having trouble signing in?</p>
+                <ul className="mt-2 list-disc list-inside space-y-1">
+                  <li>Make sure you've created an account first</li>
+                  <li>Check if email confirmation is required in Supabase</li>
+                  <li>Verify your email and password are correct</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
