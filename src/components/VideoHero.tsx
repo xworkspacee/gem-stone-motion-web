@@ -3,18 +3,20 @@ import React from 'react';
 
 const VideoHero = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-luxury-black to-luxury-brown">
-      {/* Video Background */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Full Screen Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover"
           style={{
-            objectPosition: 'center center'
+            objectPosition: 'center center',
+            minWidth: '100%',
+            minHeight: '100%'
           }}
         >
           <source src="https://ik.imagekit.io/cn0lbrbin/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4?updatedAt=1749900056126" type="video/mp4" />
@@ -22,8 +24,20 @@ const VideoHero = () => {
         </video>
       </div>
 
-      {/* Overlay for better contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-luxury-black/30 to-luxury-black/50"></div>
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/20"></div>
+
+      {/* Content overlay - optional text/branding */}
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+        <div className="text-center text-white px-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-luxury font-bold mb-4 drop-shadow-lg">
+            GEM STONE
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl font-light tracking-wide drop-shadow-md">
+            Crafting Timeless Elegance
+          </p>
+        </div>
+      </div>
 
       {/* Floating Motion Elements */}
       <div className="absolute inset-0 pointer-events-none">
