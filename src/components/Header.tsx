@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Search, Heart, ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,6 +13,7 @@ import {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const collectionCategories = [
     {
@@ -23,6 +25,34 @@ const Header = () => {
       items: ["PARTY CO-ORDS", "BLACK PARTY DRESS", "SHORT & SASSY", "LONG DRESS", "OFF SHOULDER", "ONE SHOULDER", "BODYCON DRESS", "SLIT DRESS"]
     }
   ];
+
+  const colorCategories = [
+    {
+      title: "WARM COLORS",
+      items: ["RED COLLECTION", "ORANGE COLLECTION", "YELLOW COLLECTION", "PINK COLLECTION", "GOLD COLLECTION", "ROSE GOLD", "COPPER COLLECTION"]
+    },
+    {
+      title: "COOL COLORS", 
+      items: ["BLUE COLLECTION", "GREEN COLLECTION", "PURPLE COLLECTION", "SILVER COLLECTION", "WHITE COLLECTION", "BLACK COLLECTION", "GREY COLLECTION"]
+    }
+  ];
+
+  const newInCategories = [
+    {
+      title: "LATEST ARRIVALS",
+      items: ["SPRING COLLECTION", "SUMMER TRENDS", "FESTIVE SPECIAL", "BRIDAL COLLECTION", "CASUAL WEAR", "OFFICE WEAR", "EVENING WEAR"]
+    },
+    {
+      title: "TRENDING NOW", 
+      items: ["BESTSELLERS", "CELEBRITY CHOICE", "EDITOR'S PICK", "FLASH SALE", "LIMITED EDITION", "EXCLUSIVE DESIGNS", "PRE-ORDER"]
+    }
+  ];
+
+  const handleItemClick = (item: string) => {
+    // Navigate to product page - you can customize this logic
+    const productId = Math.floor(Math.random() * 10) + 1;
+    navigate(`/product/${productId}`);
+  };
 
   return (
     <header className="relative w-full bg-white/95 backdrop-blur-sm border-b border-luxury-beige/30 sticky top-0 z-50">
@@ -46,14 +76,45 @@ const Header = () => {
 
           {/* Logo */}
           <div className="flex-1 md:flex-none">
-            <h1 className="text-2xl md:text-3xl font-luxury font-bold text-luxury-black tracking-wide">
+            <h1 className="text-2xl md:text-3xl font-luxury font-bold text-luxury-black tracking-wide cursor-pointer" onClick={() => navigate('/')}>
               GEM STONE
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 mx-8">
-            <a href="#" className="text-sm font-medium hover:text-luxury-gold transition-colors">NEW IN</a>
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium hover:text-luxury-gold transition-colors bg-transparent">
+                    NEW IN
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="min-w-[500px] p-6 bg-white shadow-xl border border-luxury-beige/20">
+                    <div className="grid grid-cols-2 gap-8">
+                      {newInCategories.map((category, index) => (
+                        <div key={index} className="space-y-4">
+                          <h3 className="font-semibold text-luxury-black text-sm tracking-wide">
+                            {category.title}
+                          </h3>
+                          <ul className="space-y-3">
+                            {category.items.map((item, itemIndex) => (
+                              <li key={itemIndex}>
+                                <button 
+                                  onClick={() => handleItemClick(item)}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
+                                >
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
             
             <NavigationMenu>
               <NavigationMenuList>
@@ -71,12 +132,12 @@ const Header = () => {
                           <ul className="space-y-3">
                             {category.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <a 
-                                  href="#" 
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
+                                <button 
+                                  onClick={() => handleItemClick(item)}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
                                 >
                                   {item}
-                                </a>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -88,12 +149,38 @@ const Header = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <div className="relative group">
-              <a href="#" className="text-sm font-medium hover:text-luxury-gold transition-colors flex items-center">
-                SHOP BY COLOR
-                <ChevronDown className="ml-1 w-3 h-3" />
-              </a>
-            </div>
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-sm font-medium hover:text-luxury-gold transition-colors bg-transparent">
+                    SHOP BY COLOR
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="min-w-[500px] p-6 bg-white shadow-xl border border-luxury-beige/20">
+                    <div className="grid grid-cols-2 gap-8">
+                      {colorCategories.map((category, index) => (
+                        <div key={index} className="space-y-4">
+                          <h3 className="font-semibold text-luxury-black text-sm tracking-wide">
+                            {category.title}
+                          </h3>
+                          <ul className="space-y-3">
+                            {category.items.map((item, itemIndex) => (
+                              <li key={itemIndex}>
+                                <button 
+                                  onClick={() => handleItemClick(item)}
+                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1 text-left w-full"
+                                >
+                                  {item}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </nav>
 
           {/* Right Icons */}
@@ -114,9 +201,9 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-luxury-beige/30 py-4 animate-fade-in">
             <nav className="flex flex-col space-y-4">
-              <a href="#" className="text-sm font-medium hover:text-luxury-gold transition-colors">NEW IN</a>
-              <a href="#" className="text-sm font-medium hover:text-luxury-gold transition-colors">ALL COLLECTION</a>
-              <a href="#" className="text-sm font-medium hover:text-luxury-gold transition-colors">SHOP BY COLOR</a>
+              <button onClick={() => handleItemClick("NEW IN")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NEW IN</button>
+              <button onClick={() => handleItemClick("ALL COLLECTION")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">ALL COLLECTION</button>
+              <button onClick={() => handleItemClick("SHOP BY COLOR")} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">SHOP BY COLOR</button>
             </nav>
           </div>
         )}
