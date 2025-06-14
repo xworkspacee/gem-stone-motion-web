@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, Heart, ShoppingBag, Menu, X, User, LogOut, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -29,56 +30,70 @@ const Header = () => {
 
   const collectionCategories = [
     {
-      title: "JEWELRY TYPES",
+      title: "PRECIOUS GEMSTONES",
       items: [
-        { name: "RINGS", route: "/collections/rings" },
-        { name: "EARRINGS", route: "/collections/earrings" },
-        { name: "NECKLACES", route: "/collections/necklaces" },
-        { name: "BRACELETS", route: "/collections/rings" },
-        { name: "PENDANTS", route: "/collections/necklaces" },
-        { name: "CHARM JEWELRY", route: "/collections/rings" },
-        { name: "WEDDING RINGS", route: "/collections/rings" },
-        { name: "GEMSTONE JEWELRY", route: "/collections/rings" }
+        { name: "BLUE SAPPHIRE (NEELAM)", route: "/collections/blue-sapphire", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "CATS EYE (VAIDURYAM)", route: "/collections/cats-eye", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
+        { name: "EMERALD (MARAGADHAM)", route: "/collections/emerald", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
+        { name: "RUBY (MANIK)", route: "/collections/ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "YELLOW SAPPHIRE (PUSHPARAG)", route: "/collections/yellow-sapphire", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "PEARL (MUTHU)", route: "/collections/pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" },
+        { name: "RED CORAL (PAVALAM)", route: "/collections/red-coral", image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=400&fit=crop" },
+        { name: "HESSONITE (GOMED)", route: "/collections/hessonite", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=400&fit=crop" }
       ]
     },
     {
-      title: "SPECIAL COLLECTIONS", 
+      title: "PREMIUM GEMSTONES", 
       items: [
-        { name: "SIGNATURE RINGS", route: "/collections/rings" },
-        { name: "ELEGANT EARRINGS", route: "/collections/earrings" },
-        { name: "STATEMENT NECKLACES", route: "/collections/necklaces" },
-        { name: "VINTAGE COLLECTION", route: "/collections/rings" },
-        { name: "MODERN MINIMALIST", route: "/collections/earrings" },
-        { name: "LUXURY SERIES", route: "/collections/necklaces" },
-        { name: "BRIDAL COLLECTION", route: "/collections/rings" },
-        { name: "CUSTOM DESIGNS", route: "/collections/necklaces" }
+        { name: "ALEXANDRITE", route: "/collections/alexandrite", image: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop" },
+        { name: "BURMESE RUBY", route: "/collections/burmese-ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "PADPARADSCHA SAPPHIRE", route: "/collections/padparadscha", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "TANZANITE", route: "/collections/tanzanite", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "GREEN SAPPHIRE", route: "/collections/green-sapphire", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
+        { name: "STAR RUBY", route: "/collections/star-ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "NAVRATNA", route: "/collections/navratna", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
+        { name: "KESHI PEARL", route: "/collections/keshi-pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" }
       ]
     }
   ];
 
   const colorCategories = [
     {
-      title: "WARM COLORS",
+      title: "BLUE GEMSTONES",
       items: [
-        { name: "RED COLLECTION", route: "/collections/rings" },
-        { name: "ORANGE COLLECTION", route: "/collections/earrings" },
-        { name: "YELLOW COLLECTION", route: "/collections/necklaces" },
-        { name: "PINK COLLECTION", route: "/collections/rings" },
-        { name: "GOLD COLLECTION", route: "/collections/earrings" },
-        { name: "ROSE GOLD", route: "/collections/necklaces" },
-        { name: "COPPER COLLECTION", route: "/collections/rings" }
+        { name: "BLUE SAPPHIRE", route: "/collections/blue-sapphire", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "AQUAMARINE", route: "/collections/aquamarine", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
+        { name: "BLUE TOPAZ", route: "/collections/blue-topaz", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "TANZANITE", route: "/collections/tanzanite", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "SAPPHIRE", route: "/collections/sapphire", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" }
       ]
     },
     {
-      title: "COOL COLORS", 
+      title: "RED & PINK GEMSTONES", 
       items: [
-        { name: "BLUE COLLECTION", route: "/collections/earrings" },
-        { name: "GREEN COLLECTION", route: "/collections/necklaces" },
-        { name: "PURPLE COLLECTION", route: "/collections/rings" },
-        { name: "SILVER COLLECTION", route: "/collections/earrings" },
-        { name: "WHITE COLLECTION", route: "/collections/necklaces" },
-        { name: "BLACK COLLECTION", route: "/collections/rings" },
-        { name: "GREY COLLECTION", route: "/collections/earrings" }
+        { name: "RUBY", route: "/collections/ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "PINK SAPPHIRE", route: "/collections/pink-sapphire", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "RED CORAL", route: "/collections/red-coral", image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=400&fit=crop" },
+        { name: "CARNELIAN", route: "/collections/carnelian", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "BLOODSTONE", route: "/collections/bloodstone", image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=400&fit=crop" }
+      ]
+    },
+    {
+      title: "GREEN GEMSTONES",
+      items: [
+        { name: "EMERALD", route: "/collections/emerald", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
+        { name: "GREEN SAPPHIRE", route: "/collections/green-sapphire", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
+        { name: "AVENTURINE", route: "/collections/aventurine", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" }
+      ]
+    },
+    {
+      title: "YELLOW & WHITE GEMSTONES",
+      items: [
+        { name: "YELLOW SAPPHIRE", route: "/collections/yellow-sapphire", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "CITRINE", route: "/collections/citrine", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "WHITE SAPPHIRE", route: "/collections/white-sapphire", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" },
+        { name: "PEARL", route: "/collections/pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" },
+        { name: "WHITE CORAL", route: "/collections/white-coral", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" }
       ]
     }
   ];
@@ -87,25 +102,24 @@ const Header = () => {
     {
       title: "LATEST ARRIVALS",
       items: [
-        { name: "SPRING COLLECTION", route: "/collections/rings" },
-        { name: "SUMMER TRENDS", route: "/collections/earrings" },
-        { name: "FESTIVE SPECIAL", route: "/collections/necklaces" },
-        { name: "BRIDAL COLLECTION", route: "/collections/rings" },
-        { name: "CASUAL WEAR", route: "/collections/earrings" },
-        { name: "OFFICE WEAR", route: "/collections/necklaces" },
-        { name: "EVENING WEAR", route: "/collections/rings" }
+        { name: "BURMESE RUBY", route: "/collections/burmese-ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
+        { name: "PADPARADSCHA SAPPHIRE", route: "/collections/padparadscha", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "ALEXANDRITE CATS EYE", route: "/collections/alexandrite-cats-eye", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
+        { name: "STAR SAPPHIRE", route: "/collections/star-sapphire", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "PITAMBARI NEELAM", route: "/collections/pitambari-neelam", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "KESHI PEARL", route: "/collections/keshi-pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" }
       ]
     },
     {
-      title: "TRENDING NOW", 
+      title: "TRENDING GEMSTONES", 
       items: [
-        { name: "BESTSELLERS", route: "/collections/earrings" },
-        { name: "CELEBRITY CHOICE", route: "/collections/necklaces" },
-        { name: "EDITOR'S PICK", route: "/collections/rings" },
-        { name: "FLASH SALE", route: "/collections/earrings" },
-        { name: "LIMITED EDITION", route: "/collections/necklaces" },
-        { name: "EXCLUSIVE DESIGNS", route: "/collections/rings" },
-        { name: "PRE-ORDER", route: "/collections/earrings" }
+        { name: "TANZANITE", route: "/collections/tanzanite", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "AMETHYST", route: "/collections/amethyst", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
+        { name: "AMBER", route: "/collections/amber", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
+        { name: "BLACK TOURMALINE", route: "/collections/black-tourmaline", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=400&fit=crop" },
+        { name: "AZURITE", route: "/collections/azurite", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
+        { name: "CHALCEDONY", route: "/collections/chalcedony", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" },
+        { name: "AGATE", route: "/collections/agate", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" }
       ]
     }
   ];
@@ -150,7 +164,7 @@ const Header = () => {
                   <NavigationMenuTrigger className="text-sm font-medium hover:text-luxury-gold transition-colors bg-transparent">
                     NEW IN
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="min-w-[500px] p-6 bg-white shadow-xl border border-luxury-beige/20">
+                  <NavigationMenuContent className="min-w-[600px] p-6 bg-white shadow-xl border border-luxury-beige/20">
                     <div className="grid grid-cols-2 gap-8">
                       {newInCategories.map((category, index) => (
                         <div key={index} className="space-y-4">
@@ -162,8 +176,13 @@ const Header = () => {
                               <li key={itemIndex}>
                                 <Link 
                                   to={item.route}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
+                                  className="flex items-center gap-3 text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
+                                  <img 
+                                    src={item.image} 
+                                    alt={item.name}
+                                    className="w-8 h-8 rounded-md object-cover"
+                                  />
                                   {item.name}
                                 </Link>
                               </li>
@@ -183,7 +202,7 @@ const Header = () => {
                   <NavigationMenuTrigger className="text-sm font-medium hover:text-luxury-gold transition-colors bg-transparent">
                     ALL COLLECTION
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="min-w-[500px] p-6 bg-white shadow-xl border border-luxury-beige/20">
+                  <NavigationMenuContent className="min-w-[600px] p-6 bg-white shadow-xl border border-luxury-beige/20">
                     <div className="grid grid-cols-2 gap-8">
                       {collectionCategories.map((category, index) => (
                         <div key={index} className="space-y-4">
@@ -195,8 +214,13 @@ const Header = () => {
                               <li key={itemIndex}>
                                 <Link 
                                   to={item.route}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
+                                  className="flex items-center gap-3 text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
+                                  <img 
+                                    src={item.image} 
+                                    alt={item.name}
+                                    className="w-8 h-8 rounded-md object-cover"
+                                  />
                                   {item.name}
                                 </Link>
                               </li>
@@ -216,7 +240,7 @@ const Header = () => {
                   <NavigationMenuTrigger className="text-sm font-medium hover:text-luxury-gold transition-colors bg-transparent">
                     SHOP BY COLOR
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="min-w-[500px] p-6 bg-white shadow-xl border border-luxury-beige/20">
+                  <NavigationMenuContent className="min-w-[700px] p-6 bg-white shadow-xl border border-luxury-beige/20">
                     <div className="grid grid-cols-2 gap-8">
                       {colorCategories.map((category, index) => (
                         <div key={index} className="space-y-4">
@@ -228,8 +252,13 @@ const Header = () => {
                               <li key={itemIndex}>
                                 <Link 
                                   to={item.route}
-                                  className="text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
+                                  className="flex items-center gap-3 text-sm text-gray-600 hover:text-luxury-gold transition-colors block py-1"
                                 >
+                                  <img 
+                                    src={item.image} 
+                                    alt={item.name}
+                                    className="w-8 h-8 rounded-md object-cover"
+                                  />
                                   {item.name}
                                 </Link>
                               </li>
@@ -311,9 +340,10 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-luxury-beige/30 py-4 animate-fade-in">
             <nav className="flex flex-col space-y-4">
-              <Link to="/collections/rings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">RINGS</Link>
-              <Link to="/collections/earrings" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">EARRINGS</Link>
-              <Link to="/collections/necklaces" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">NECKLACES</Link>
+              <Link to="/collections/blue-sapphire" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">BLUE SAPPHIRE</Link>
+              <Link to="/collections/emerald" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">EMERALD</Link>
+              <Link to="/collections/ruby" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">RUBY</Link>
+              <Link to="/collections/yellow-sapphire" className="text-sm font-medium hover:text-luxury-gold transition-colors text-left">YELLOW SAPPHIRE</Link>
               {isAdmin && (
                 <button onClick={() => navigate('/admin')} className="text-sm font-medium hover:text-luxury-gold transition-colors text-left text-luxury-gold">ADMIN PANEL</button>
               )}
