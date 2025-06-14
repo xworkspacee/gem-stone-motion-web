@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, Heart, ShoppingBag, Menu, X, User, LogOut, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -32,27 +31,92 @@ const Header = () => {
     {
       title: "PRECIOUS GEMSTONES",
       items: [
-        { name: "BLUE SAPPHIRE (NEELAM)", route: "/collections/blue-sapphire", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
-        { name: "CATS EYE (VAIDURYAM)", route: "/collections/cats-eye", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
-        { name: "EMERALD (MARAGADHAM)", route: "/collections/emerald", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
-        { name: "RUBY (MANIK)", route: "/collections/ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
-        { name: "YELLOW SAPPHIRE (PUSHPARAG)", route: "/collections/yellow-sapphire", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
-        { name: "PEARL (MUTHU)", route: "/collections/pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" },
-        { name: "RED CORAL (PAVALAM)", route: "/collections/red-coral", image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=400&fit=crop" },
-        { name: "HESSONITE (GOMED)", route: "/collections/hessonite", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=400&fit=crop" }
+        {
+          name: "BLUE SAPPHIRE (NEELAM)",
+          route: "/collections/blue-sapphire",
+          // From your uploaded blue gem image
+          image: "/lovable-uploads/85ba3cfe-0163-46c4-a711-1bd9d1821414.png"
+        },
+        {
+          name: "CATS EYE (VAIDURYAM)",
+          route: "/collections/cats-eye",
+          image: "https://gemstonedictionarynp.com/wp-content/uploads/2021/01/cats-eye-800x800-1.jpg"
+        },
+        {
+          name: "EMERALD (MARAGADHAM)",
+          route: "/collections/emerald",
+          image: "/lovable-uploads/a1e75b6a-5fce-4c2d-b162-35756ef29598.png"
+        },
+        {
+          name: "RUBY (MANIK)",
+          route: "/collections/ruby",
+          image: "/lovable-uploads/8f2f1506-de28-4f4d-a711-1bd9d1821414.png"
+        },
+        {
+          name: "YELLOW SAPPHIRE (PUSHPARAG)",
+          route: "/collections/yellow-sapphire",
+          image: "/lovable-uploads/6d9e3e01-303f-4a24-9f5b-84756a3b1371.png"
+        },
+        {
+          name: "PEARL (MUTHU)",
+          route: "/collections/pearl",
+          image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600&h=400&fit=crop"
+        },
+        {
+          name: "RED CORAL (PAVALAM)",
+          route: "/collections/red-coral",
+          image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=600"
+        },
+        {
+          name: "HESSONITE (GOMED)",
+          route: "/collections/hessonite",
+          image: "/lovable-uploads/ede2277d-e387-4e3a-aec5-b2fce2270211.png"
+        }
       ]
     },
     {
       title: "PREMIUM GEMSTONES", 
       items: [
-        { name: "ALEXANDRITE", route: "/collections/alexandrite", image: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&h=400&fit=crop" },
-        { name: "BURMESE RUBY", route: "/collections/burmese-ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
-        { name: "PADPARADSCHA SAPPHIRE", route: "/collections/padparadscha", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop" },
-        { name: "TANZANITE", route: "/collections/tanzanite", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&h=400&fit=crop" },
-        { name: "GREEN SAPPHIRE", route: "/collections/green-sapphire", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=400&fit=crop" },
-        { name: "STAR RUBY", route: "/collections/star-ruby", image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop" },
-        { name: "NAVRATNA", route: "/collections/navratna", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600&h=400&fit=crop" },
-        { name: "KESHI PEARL", route: "/collections/keshi-pearl", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=400&fit=crop" }
+        {
+          name: "ALEXANDRITE",
+          route: "/collections/alexandrite",
+          image: "https://www.gia.edu/images/alexandrite-gallery-1.jpg"
+        },
+        {
+          name: "BURMESE RUBY",
+          route: "/collections/burmese-ruby",
+          image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop"
+        },
+        {
+          name: "PADPARADSCHA SAPPHIRE",
+          route: "/collections/padparadscha",
+          image: "https://www.gia.edu/images/padparadscha-970x600.jpg"
+        },
+        {
+          name: "TANZANITE",
+          route: "/collections/tanzanite",
+          image: "/lovable-uploads/e7b771fd-5cfc-4623-822b-c7dfd20b82ae.png"
+        },
+        {
+          name: "GREEN SAPPHIRE",
+          route: "/collections/green-sapphire",
+          image: "/lovable-uploads/a1e75b6a-5fce-4c2d-b162-35756ef29598.png"
+        },
+        {
+          name: "STAR RUBY",
+          route: "/collections/star-ruby",
+          image: "https://starruby.in/image/cache/catalog/Ruby/red-star-ruby-gemstone-1.10-carat-1-800x800.jpg"
+        },
+        {
+          name: "NAVRATNA",
+          route: "/collections/navratna",
+          image: "https://assets.gemselect.com/product/navaratna-gemstone/navaratna-gemstone.jpg"
+        },
+        {
+          name: "KESHI PEARL",
+          route: "/collections/keshi-pearl",
+          image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"
+        }
       ]
     }
   ];
