@@ -44,7 +44,8 @@ const productData: { [key: string]: ProductData } = {
     images: [
       { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" },
       { id: 2, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" }
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" },
+      { id: 4, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Close-up view" }
     ],
     inStock: true,
     stockCount: 5
@@ -62,7 +63,8 @@ const productData: { [key: string]: ProductData } = {
     ],
     images: [
       { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Side view" }
+      { id: 2, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Side view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Hand wearing view" }
     ],
     inStock: true,
     stockCount: 8
@@ -79,7 +81,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Side angle" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Detail view" }
     ],
     inStock: true,
     stockCount: 3
@@ -96,7 +100,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Antique Gold", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Set arrangement" },
+      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Individual rings" }
     ],
     inStock: true,
     stockCount: 6
@@ -113,7 +119,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Wearing view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Close-up detail" }
     ],
     inStock: true,
     stockCount: 10
@@ -130,7 +138,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Side view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Size comparison" }
     ],
     inStock: true,
     stockCount: 15
@@ -147,7 +157,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Pair view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Wearing example" }
     ],
     inStock: true,
     stockCount: 12
@@ -164,7 +176,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "White Gold", value: "whitegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Diamond detail" },
+      { id: 3, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Light reflection" }
     ],
     inStock: true,
     stockCount: 4
@@ -181,7 +195,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Layered view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Wearing style" }
     ],
     inStock: true,
     stockCount: 8
@@ -198,7 +214,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Pearl detail" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Neck view" }
     ],
     inStock: true,
     stockCount: 6
@@ -215,7 +233,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Pendant close-up" },
+      { id: 3, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Chain detail" }
     ],
     inStock: true,
     stockCount: 7
@@ -232,7 +252,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Chain links" },
+      { id: 3, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Statement view" }
     ],
     inStock: true,
     stockCount: 5
@@ -249,7 +271,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "White Gold", value: "whitegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Diamond cut view" },
+      { id: 3, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Ring profile" }
     ],
     inStock: true,
     stockCount: 3
@@ -266,7 +290,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Rose gold tone" },
+      { id: 3, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Vintage details" }
     ],
     inStock: true,
     stockCount: 4
@@ -282,7 +308,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Platinum", value: "platinum" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Smooth finish" },
+      { id: 3, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Band thickness" }
     ],
     inStock: true,
     stockCount: 8
@@ -299,7 +327,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Yellow Gold", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Sapphire center" },
+      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Halo diamonds" }
     ],
     inStock: true,
     stockCount: 5
@@ -316,7 +346,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Set together" },
+      { id: 3, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Individual rings" }
     ],
     inStock: true,
     stockCount: 10
@@ -333,7 +365,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Geometric pattern" },
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Art deco details" }
     ],
     inStock: true,
     stockCount: 6
@@ -350,7 +384,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Crystal details" },
+      { id: 3, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Movement view" }
     ],
     inStock: true,
     stockCount: 7
@@ -367,7 +403,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Geometric shape" },
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Modern design" }
     ],
     inStock: true,
     stockCount: 15
@@ -384,7 +422,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Silver", value: "silver" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Tassel detail" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Movement flow" }
     ],
     inStock: true,
     stockCount: 12
@@ -401,7 +441,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Silver", value: "silver" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Pearl detail" },
+      { id: 3, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Clip mechanism" }
     ],
     inStock: true,
     stockCount: 8
@@ -418,7 +460,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Textured finish" },
+      { id: 3, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Size perspective" }
     ],
     inStock: true,
     stockCount: 9
@@ -435,7 +479,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Minimalist design" },
+      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Bar shape" }
     ],
     inStock: true,
     stockCount: 20
@@ -452,7 +498,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Yellow Gold", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Diamond line" },
+      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Tennis setting" }
     ],
     inStock: true,
     stockCount: 2
@@ -469,7 +517,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Silver", value: "silver" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Locket detail" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Vintage engraving" }
     ],
     inStock: true,
     stockCount: 11
@@ -486,7 +536,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Antique Brass", value: "brass" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Natural stones" },
+      { id: 3, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Bohemian style" }
     ],
     inStock: true,
     stockCount: 14
@@ -503,7 +555,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Crystal arrangement" },
+      { id: 3, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Collar style" }
     ],
     inStock: true,
     stockCount: 5
@@ -520,7 +574,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=1000&fit=crop", alt: "Infinity symbol" },
+      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Chain detail" }
     ],
     inStock: true,
     stockCount: 7
@@ -537,7 +593,9 @@ const productData: { [key: string]: ProductData } = {
       { name: "Cream Pearls", value: "cream" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" }
+      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" },
+      { id: 2, url: "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=800&h=1000&fit=crop", alt: "Pearl strands" },
+      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Multi-layer view" }
     ],
     inStock: true,
     stockCount: 6
