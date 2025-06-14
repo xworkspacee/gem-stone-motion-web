@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Heart, ArrowLeft, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { Heart, ArrowLeft, Minus, Plus, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { useAuth } from '@/contexts/AuthContext';
@@ -630,6 +630,18 @@ const ProductDetail = () => {
     navigate('/checkout');
   };
 
+  const nextImage = () => {
+    setSelectedImageIndex((prev) => 
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setSelectedImageIndex((prev) => 
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -661,13 +673,38 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-lg shadow-sm overflow-hidden min-h-[600px]">
           {/* Left Side - Images */}
           <div className="bg-gray-900 p-8 flex flex-col">
-            {/* Main Image */}
-            <div className="flex-1 mb-4 bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center">
+            {/* Main Image with Navigation */}
+            <div className="flex-1 mb-4 bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center relative">
               <img
                 src={product.images[selectedImageIndex]?.url}
                 alt={product.images[selectedImageIndex]?.alt}
                 className="max-w-full max-h-full object-contain"
               />
+              
+              {/* Image Navigation Arrows */}
+              {product.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-white" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+                  >
+                    <ChevronRight className="w-6 h-6 text-white" />
+                  </button>
+                </>
+              )}
+              
+              {/* Image Counter */}
+              {product.images.length > 1 && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                  {selectedImageIndex + 1} / {product.images.length}
+                </div>
+              )}
             </div>
 
             {/* Thumbnail Images */}
