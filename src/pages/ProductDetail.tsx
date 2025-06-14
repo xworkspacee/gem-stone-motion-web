@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { Heart, ArrowLeft, Minus, Plus, ShoppingBag, ChevronLeft, ChevronRight }
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
 import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -613,6 +613,7 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { user } = useAuth();
+  const { toast } = useToast();
 
   const product = id ? productData[id] : null;
 
@@ -631,7 +632,21 @@ const ProductDetail = () => {
 
   const handleAddToCart = async () => {
     if (!user) {
+      toast({
+        title: "Please sign in",
+        description: "You need to be signed in to add items to cart",
+        variant: "destructive"
+      });
       navigate('/auth');
+      return;
+    }
+
+    if (!selectedSize || !selectedColor) {
+      toast({
+        title: "Please select options",
+        description: "Please select both size and color before adding to cart",
+        variant: "destructive"
+      });
       return;
     }
 
@@ -648,6 +663,11 @@ const ProductDetail = () => {
 
   const handleWishlistToggle = async () => {
     if (!user) {
+      toast({
+        title: "Please sign in",
+        description: "You need to be signed in to add items to wishlist",
+        variant: "destructive"
+      });
       navigate('/auth');
       return;
     }
@@ -670,34 +690,49 @@ const ProductDetail = () => {
   };
 
   const handleBuyNow = async () => {
+    console.log('Buy Now clicked');
+    
     if (!user) {
+      toast({
+        title: "Please sign in",
+        description: "You need to be signed in to make a purchase",
+        variant: "destructive"
+      });
       navigate('/auth');
       return;
     }
 
-    await addToCart({
-      product_id: product.id,
-      product_name: product.name,
-      product_price: product.price,
-      product_image: product.images[0]?.url || '',
-      quantity,
-      selected_size: selectedSize,
-      selected_color: selectedColor,
-    });
-    
-    navigate('/checkout');
-  };
+    if (!selectedSize || !selectedColor) {
+      toast({
+        title: "Please select options",
+        description: "Please select both size and color before proceeding",
+        variant: "destructive"
+      });
+      return;
+    }
 
-  const nextImage = () => {
-    setSelectedImageIndex((prev) => 
-      prev === product.images.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevImage = () => {
-    setSelectedImageIndex((prev) => 
-      prev === 0 ? product.images.length - 1 : prev - 1
-    );
+    try {
+      console.log('Adding to cart before checkout');
+      await addToCart({
+        product_id: product.id,
+        product_name: product.name,
+        product_price: product.price,
+        product_image: product.images[0]?.url || '',
+        quantity,
+        selected_size: selectedSize,
+        selected_color: selectedColor,
+      });
+      
+      console.log('Navigating to checkout');
+      navigate('/checkout');
+    } catch (error) {
+      console.error('Error in Buy Now:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -743,13 +778,17 @@ const ProductDetail = () => {
               {product.images.length > 1 && (
                 <>
                   <button
-                    onClick={prevImage}
+                    onClick={() => setSelectedImageIndex((prev) => 
+                      prev === 0 ? product.images.length - 1 : prev - 1
+                    )}
                     className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
                   >
                     <ChevronLeft className="w-6 h-6 text-white" />
                   </button>
                   <button
-                    onClick={nextImage}
+                    onClick={() => setSelectedImageIndex((prev) => 
+                      prev === product.images.length - 1 ? 0 : prev + 1
+                    )}
                     className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
                   >
                     <ChevronRight className="w-6 h-6 text-white" />
@@ -875,12 +914,21 @@ const ProductDetail = () => {
               </div>
             </div>
 
+            {/* Validation Message */}
+            {(!selectedSize || !selectedColor) && (
+              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded">
+                <p className="text-sm text-yellow-700">
+                  Please select both size and color to proceed
+                </p>
+              </div>
+            )}
+
             {/* Action Buttons */}
             <div className="space-y-4 pt-6">
               <Button
-                className="w-full h-14 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-lg tracking-wide"
+                className="w-full h-14 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-lg tracking-wide"
                 onClick={handleBuyNow}
-                disabled={!selectedSize || !selectedColor}
+                disabled={!selectedSize || !selectedColor || !product.inStock}
               >
                 BUY NOW
               </Button>
@@ -889,7 +937,7 @@ const ProductDetail = () => {
                 <Button
                   className="h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0"
                   onClick={handleAddToCart}
-                  disabled={!selectedSize || !selectedColor}
+                  disabled={!selectedSize || !selectedColor || !product.inStock}
                 >
                   <ShoppingBag size={20} className="mr-2" />
                   ADD TO CART
