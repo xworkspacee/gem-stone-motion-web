@@ -107,17 +107,6 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ activeTab, setActiveTab }) 
           })}
         </div>
       </nav>
-
-      {/* Bottom Section */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
-        <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-4 text-white">
-          <h4 className="font-semibold text-sm mb-1">Upgrade to Pro</h4>
-          <p className="text-xs opacity-90 mb-3">Get advanced analytics and more features</p>
-          <Button size="sm" className="w-full bg-white text-purple-600 hover:bg-gray-100">
-            Upgrade Now
-          </Button>
-        </div>
-      </div>
     </div>
   );
 };
