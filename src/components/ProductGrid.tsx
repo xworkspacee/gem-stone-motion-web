@@ -19,71 +19,71 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    name: "Miro Signet Ring in Sterling Silver",
-    price: "$168.00",
+    name: "Blue Sapphire (Neelam)",
+    price: "₹ 25,000.00",
     images: [
-      "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
     ],
     isNew: true,
-    colors: ["silver", "gold"]
+    colors: ["blue", "sapphire"]
   },
   {
     id: 2,
-    name: "Emerald Grande Ring in Sterling Silver", 
-    price: "$115.00",
+    name: "Emerald (Maragadham)", 
+    price: "₹ 35,000.00",
     images: [
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
     ],
-    colors: ["silver", "gold"]
+    colors: ["green", "emerald"]
   },
   {
     id: 3,
-    name: "Sonder Ring in Gold",
-    price: "$198.00",
+    name: "Ruby (Manik)",
+    price: "₹ 45,000.00",
     images: [
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop"
     ],
-    colors: ["gold", "silver"]
+    colors: ["red", "ruby"]
   },
   {
     id: 4,
-    name: "Ophidian Signet Ring in Gold",
-    price: "$225.00",
+    name: "Yellow Sapphire (Pushparag)",
+    price: "₹ 28,000.00",
     images: [
-      "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop"
     ],
-    colors: ["gold"]
+    colors: ["yellow", "gold"]
   },
   {
     id: 5,
-    name: "Ilona Earrings in Gold",
-    price: "$168.00",
+    name: "Cat's Eye (Vaidurya)",
+    price: "₹ 18,000.00",
     images: [
-      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
     ],
-    colors: ["gold", "silver"]
+    colors: ["golden", "brown"]
   },
   {
     id: 6,
-    name: "Adelaide Hoops in Sterling Silver",
-    price: "$115.00",
+    name: "Pearl (Muthu)",
+    price: "₹ 12,000.00",
     images: [
-      "https://images.unsplash.com/photo-1633810543702-7b8d29b3d1ce?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop"
     ],
     isNew: true,
-    colors: ["silver", "gold"]
+    colors: ["white", "cream"]
   }
 ];
 
@@ -100,17 +100,17 @@ const ProductGrid = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-luxury font-bold text-luxury-black mb-4">
-            EXCEPTIONAL PIECES
+            PRECIOUS GEMSTONES
           </h2>
           <p className="text-luxury-gray max-w-md mx-auto">
-            Soon-to-be staples in your rotation
+            Authentic gemstones for your spiritual and astrological needs
           </p>
           <div className="flex justify-center items-center mt-6 space-x-8">
             <button className="text-sm font-medium text-luxury-black border-b-2 border-luxury-gold pb-1">
-              RINGS
+              PRECIOUS STONES
             </button>
             <button className="text-sm font-medium text-luxury-gray hover:text-luxury-black transition-colors">
-              EARRINGS
+              SEMI-PRECIOUS
             </button>
           </div>
         </div>
@@ -193,7 +193,12 @@ const ProductGrid = () => {
                             <div
                               key={color}
                               className={`w-4 h-4 rounded-full border-2 border-gray-300 cursor-pointer hover:scale-110 transition-transform ${
-                                color === 'gold' ? 'bg-luxury-gold' : 'bg-gray-300'
+                                color === 'gold' || color === 'yellow' ? 'bg-luxury-gold' : 
+                                color === 'blue' ? 'bg-blue-500' :
+                                color === 'green' || color === 'emerald' ? 'bg-green-500' :
+                                color === 'red' || color === 'ruby' ? 'bg-red-500' :
+                                color === 'white' || color === 'cream' ? 'bg-white' :
+                                'bg-gray-300'
                               }`}
                             />
                           ))}
