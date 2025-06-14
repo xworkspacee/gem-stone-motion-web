@@ -610,6 +610,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [isWishlistLoading, setIsWishlistLoading] = useState(false);
   
   const { addToCart } = useCart();
   const { addToWishlist, removeFromWishlist, isInWishlist, wishlistItems } = useWishlist();
@@ -677,18 +678,31 @@ const ProductDetail = () => {
       return;
     }
 
-    if (isWishlisted) {
-      const wishlistItem = wishlistItems.find(item => item.product_id === product.id);
-      if (wishlistItem) {
-        await removeFromWishlist(wishlistItem.id);
+    setIsWishlistLoading(true);
+    
+    try {
+      if (isWishlisted) {
+        const wishlistItem = wishlistItems.find(item => item.product_id === product.id);
+        if (wishlistItem) {
+          await removeFromWishlist(wishlistItem.id);
+        }
+      } else {
+        await addToWishlist({
+          product_id: product.id,
+          product_name: product.name,
+          product_price: product.price,
+          product_image: product.images[0]?.url || '',
+        });
       }
-    } else {
-      await addToWishlist({
-        product_id: product.id,
-        product_name: product.name,
-        product_price: product.price,
-        product_image: product.images[0]?.url || '',
+    } catch (error) {
+      console.error('Error toggling wishlist:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive"
       });
+    } finally {
+      setIsWishlistLoading(false);
     }
   };
 
@@ -954,11 +968,27 @@ const ProductDetail = () => {
                 </Button>
                 
                 <Button
-                  className="h-12 md:h-14 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-semibold border-0 text-sm md:text-base"
+                  className={`h-12 md:h-14 font-semibold border-0 text-sm md:text-base transition-all duration-200 ${
+                    isWishlisted 
+                      ? 'bg-red-100 hover:bg-red-200 text-red-700 border-red-300' 
+                      : 'bg-yellow-300 hover:bg-yellow-400 text-gray-900'
+                  }`}
                   onClick={handleWishlistToggle}
+                  disabled={isWishlistLoading}
                 >
-                  <Heart size={18} className="mr-2 md:w-5 md:h-5" fill={isWishlisted ? 'currentColor' : 'none'} />
-                  {isWishlisted ? 'REMOVE FROM WISHLIST' : 'ADD TO WISHLIST'}
+                  <Heart 
+                    size={18} 
+                    className={`mr-2 md:w-5 md:h-5 transition-all duration-200 ${
+                      isWishlisted ? 'text-red-500' : ''
+                    }`} 
+                    fill={isWishlisted ? 'currentColor' : 'none'} 
+                  />
+                  {isWishlistLoading 
+                    ? 'UPDATING...' 
+                    : isWishlisted 
+                      ? 'REMOVE FROM WISHLIST' 
+                      : 'ADD TO WISHLIST'
+                  }
                 </Button>
               </div>
             </div>
