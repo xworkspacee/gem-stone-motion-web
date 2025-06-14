@@ -7,6 +7,7 @@ import ProductGrid from '@/components/ProductGrid';
 import MotionGallery from '@/components/MotionGallery';
 import CollectionShowcase from '@/components/CollectionShowcase';
 import BrandStory from '@/components/BrandStory';
+import FullScreenImage from '@/components/FullScreenImage';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import PromotionalSection from '@/components/PromotionalSection';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ const Index = () => {
       <MotionGallery />
       <CollectionShowcase />
       <BrandStory />
+      <FullScreenImage />
       <TestimonialsCarousel />
       <PromotionalSection />
       <Footer />
