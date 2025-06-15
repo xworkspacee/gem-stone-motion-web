@@ -151,19 +151,21 @@ const productData: { [key: string]: ProductData } = {
   },
   "6": {
     id: 6,
-    name: "Gold Hoop Earrings",
-    price: "₹ 999.00",
-    description: "Classic gold hoop earrings, perfect for any occasion.",
-    material: "18K Gold",
+    name: "Pearl (Muthu)",
+    price: "₹ 12,000.00",
+    description: "Our premium Pearl (Muthu) collection features hand-selected, lustrous pearls with exceptional sheen, perfect for sophisticated and timeless jewelry. Revered for their elegance and classic charm, these pearls are ideal for both everyday wear and special occasions, bringing natural beauty and positive energy to the wearer.",
+    material: "Natural Cultured Pearl set in 18K Gold & Sterling Silver.",
     sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
-      { name: "Rose Gold", value: "rosegold" }
+      { name: "Sterling Silver", value: "silver" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Size comparison" }
+      { id: 1, url: "/lovable-uploads/88d9a07c-52c4-4735-b220-243092cedc55.png", alt: "Pearl drop earrings with gold and diamonds" },
+      { id: 2, url: "/lovable-uploads/a964317a-4924-452a-8a24-991a70c78dc7.png", alt: "Lustrous Pearl on a shell" },
+      { id: 3, url: "/lovable-uploads/2e1765e1-8e00-4272-a71f-3b921a6e3e13.png", alt: "Elegant gold and pearl necklace" },
+      { id: 4, url: "/lovable-uploads/140a9626-ae8e-4306-9c0a-f1fe4076bd42.png", alt: "Pearl in oyster surrounded by pearls" },
+      { id: 5, url: "/lovable-uploads/c2c36287-ab6e-4df4-9863-dbe7c8a2788c.png", alt: "Single shining Pearl (Muthu)" }
     ],
     inStock: true,
     stockCount: 15
