@@ -21,7 +21,7 @@ const Hero = () => {
           video.play().catch(console.error);
         }}
       >
-        <source src="https://ik.imagekit.io/cn0lbrbin/0613(3).mp4?updatedAt=1749928371734" type="video/mp4" />
+        <source src="https://ik.imagekit.io/cn0lbrbin/0615.mp4?updatedAt=1750007376847" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
