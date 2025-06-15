@@ -53,19 +53,37 @@ const productData: { [key: string]: ProductData } = {
   },
   "2": {
     id: 2,
-    name: "Gold Band Ring",
-    price: "₹ 1,599.00",
-    description: "A timeless gold band ring with elegant design. Perfect for everyday wear or special occasions.",
-    material: "18K Gold",
+    name: "Emerald (Maragadham)",
+    price: "₹ 35,000.00",
+    description:
+      "Emerald, known as Maragadham in India, is a captivating gemstone celebrated for its lush green color and legendary aura. Admired for centuries, this precious stone symbolizes rebirth, wisdom, and true love. Our carefully sourced emeralds display exceptional clarity and brilliance, making them an exquisite choice for those seeking beauty, status, and spiritual harmony. Perfect for jewelry or as a collector's gem, each piece radiates a vibrant heritage and mystical charm.",
+    material: "18K Gold with Natural Emerald",
     sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Gold", value: "gold" },
       { name: "Rose Gold", value: "rosegold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1615655406736-b37c4fabf923?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Hand wearing view" }
+      {
+        id: 1,
+        url: "/lovable-uploads/0979fcc1-7b22-404e-ad67-4092feea2531.png",
+        alt: "Emerald crystal (Maragadham) on rock"
+      },
+      {
+        id: 2,
+        url: "/lovable-uploads/aa6d099f-684f-43cb-885a-e0f90c95b9ff.png",
+        alt: "Emerald (Maragadham) held in tweezers"
+      },
+      {
+        id: 3,
+        url: "/lovable-uploads/01a2a700-fd3a-483e-b684-d3634fdd5c3f.png",
+        alt: "Emerald (Maragadham) jewelry worn by woman"
+      },
+      {
+        id: 4,
+        url: "/lovable-uploads/43af1af7-a0da-4cbb-9348-702649fcf884.png",
+        alt: "Three faceted Emeralds (Maragadham)"
+      }
     ],
     inStock: true,
     stockCount: 8
