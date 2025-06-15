@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,9 +8,9 @@ const featuredProducts = [
     name: "Hessonite (Gomed)",
     price: "₹ 15,000.00",
     images: [
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=500&fit=crop"
+      "/lovable-uploads/eaafb7d1-fd58-41dc-bb01-3b88c614af4e.png", // new
+      "/lovable-uploads/eaafb7d1-fd58-41dc-bb01-3b88c614af4e.png", // use same for all images for now
+      "/lovable-uploads/eaafb7d1-fd58-41dc-bb01-3b88c614af4e.png"
     ],
     colors: ["orange", "brown"],
     category: "precious"
@@ -21,9 +20,9 @@ const featuredProducts = [
     name: "White Sapphire", 
     price: "₹ 22,000.00",
     images: [
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=500&fit=crop"
+      "/lovable-uploads/49d79595-891a-4510-8305-e6f990cd4935.png", // new
+      "/lovable-uploads/49d79595-891a-4510-8305-e6f990cd4935.png",
+      "/lovable-uploads/49d79595-891a-4510-8305-e6f990cd4935.png"
     ],
     colors: ["white", "clear"],
     category: "precious"
@@ -33,9 +32,9 @@ const featuredProducts = [
     name: "Red Coral (Pavalam)",
     price: "₹ 8,500.00",
     images: [
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=500&fit=crop"
+      "/lovable-uploads/4f6f77aa-20ca-4f8f-b6c8-61edfc9964aa.png", // new
+      "/lovable-uploads/4f6f77aa-20ca-4f8f-b6c8-61edfc9964aa.png",
+      "/lovable-uploads/4f6f77aa-20ca-4f8f-b6c8-61edfc9964aa.png"
     ],
     colors: ["red"],
     badge: "BEST SELLER",
@@ -46,9 +45,9 @@ const featuredProducts = [
     name: "Alexandrite",
     price: "₹ 85,000.00", 
     images: [
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=400&h=500&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&h=500&fit=crop"
+      "/lovable-uploads/ff11579b-0a0a-4cf9-a85e-bde390762c26.png", // new
+      "/lovable-uploads/ff11579b-0a0a-4cf9-a85e-bde390762c26.png",
+      "/lovable-uploads/ff11579b-0a0a-4cf9-a85e-bde390762c26.png"
     ],
     colors: ["purple"],
     category: "rare"
@@ -63,6 +62,7 @@ const PromotionalSection = () => {
   };
 
   return (
+    
     <section className="py-8 md:py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Product Grid */}
@@ -120,6 +120,7 @@ const PromotionalSection = () => {
         </div>
 
         {/* Bottom Hero Section */}
+        
         <div className="relative rounded-lg md:rounded-2xl overflow-hidden">
           <div className="aspect-[16/12] md:aspect-[16/9] lg:aspect-[21/9] relative">
             <img
