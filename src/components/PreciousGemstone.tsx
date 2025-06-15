@@ -1,5 +1,12 @@
 
 import React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const gemstones = [
   {
@@ -30,23 +37,31 @@ const PreciousGemstone = () => (
       <h2 className="text-3xl md:text-4xl text-center font-luxury font-bold text-gradient bg-gradient-to-r from-yellow-400 via-red-500 to-pink-400 bg-clip-text text-transparent mb-10 animate-fade-in">
         Precious Gemstone
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {gemstones.map((gem, idx) => (
-          <div
-            key={idx}
-            className="bg-white bg-opacity-90 rounded-xl shadow-xl hover:shadow-2xl p-7 flex flex-col items-center transition-all duration-200 animate-fade-in"
-          >
-            <img
-              src={gem.image}
-              alt={gem.name}
-              className="w-32 h-32 object-cover rounded-full border-4 border-yellow-300 shadow mb-4 hover-scale"
-            />
-            <h3 className="text-lg font-semibold mb-2 text-luxury-black text-center">
-              {gem.name}
-            </h3>
-            <p className="text-gray-500 text-center">{gem.description}</p>
-          </div>
-        ))}
+      <div className="relative flex items-center justify-center">
+        <Carousel opts={{ align: "center", loop: true }} className="w-full max-w-2xl">
+          <CarouselContent>
+            {gemstones.map((gem, idx) => (
+              <CarouselItem
+                key={idx}
+                className="flex flex-col items-center p-7"
+              >
+                <div className="bg-white bg-opacity-90 rounded-xl shadow-xl hover:shadow-2xl flex flex-col items-center animate-fade-in transition-all duration-300">
+                  <img
+                    src={gem.image}
+                    alt={gem.name}
+                    className="w-40 h-40 object-cover rounded-full border-4 border-yellow-300 shadow mb-4 hover-scale animate-scale-in"
+                  />
+                  <h3 className="text-lg font-semibold mb-2 text-luxury-black text-center">
+                    {gem.name}
+                  </h3>
+                  <p className="text-gray-500 text-center">{gem.description}</p>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-0 bg-yellow-300 text-black hover:bg-yellow-400" />
+          <CarouselNext className="right-0 bg-yellow-300 text-black hover:bg-yellow-400" />
+        </Carousel>
       </div>
     </div>
   </section>
