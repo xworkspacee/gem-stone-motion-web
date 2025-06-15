@@ -90,22 +90,23 @@ const productData: { [key: string]: ProductData } = {
   },
   "3": {
     id: 3,
-    name: "Pearl Statement Ring",
-    price: "₹ 2,199.00",
-    description: "Elegant pearl statement ring that adds sophistication to any outfit.",
-    material: "Sterling Silver with Pearl",
+    name: "Ruby (Manik)",
+    price: "₹ 45,000.00",
+    description: "The Ruby (Manik) is renowned for its striking deep red color and unmatched brilliance, symbolizing passion, power, and vitality. Sourced from finest origins, this exquisite gemstone is meticulously cut to highlight its natural allure. Ideal for both collectors and jewelry lovers, Ruby (Manik) is believed to bring good fortune, confidence, and leadership to its wearer.",
+    material: "18K Gold or Sterling Silver Setting with Certified Natural Ruby",
     sizes: ["4", "5", "6", "7"],
     colors: [
-      { name: "Sterling Silver", value: "silver" },
+      { name: "Red", value: "red" },
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Side angle" },
-      { id: 3, url: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop", alt: "Detail view" }
+      { id: 1, url: "/lovable-uploads/b3bcb6c1-bfb5-447c-a2b1-a7577c4885a7.png", alt: "Ruby (Manik) Necklace" },
+      { id: 2, url: "/lovable-uploads/749d55b5-2642-4191-8ecb-36524f188206.png", alt: "Ruby (Manik) Ring with Diamonds" },
+      { id: 3, url: "/lovable-uploads/2a371f1b-a92a-4077-891e-bb7b7bcfc11b.png", alt: "Brilliant Ruby (Manik) on Black" },
+      { id: 4, url: "/lovable-uploads/f292acb4-402b-436a-a585-3d9281b0b923.png", alt: "Loose Ruby (Manik)" }
     ],
     inStock: true,
-    stockCount: 3
+    stockCount: 5
   },
   "4": {
     id: 4,
