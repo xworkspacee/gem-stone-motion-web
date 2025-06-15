@@ -559,6 +559,30 @@ const Collections = () => {
     navigate(`/product/${productId}`);
   };
 
+const premiumGemstoneNames = [
+  "Alexandrite",
+  "Alexandrite Cats Eye",
+  "Burmese Ruby",
+  "Carving Gem Stones",
+  "Exclusive Blue Sapphire",
+  "Exclusive Cats Eye",
+  "Exclusive Emerald",
+  "Exclusive Ruby",
+  "Exclusive Yellow Sapphire",
+  "Padparadscha Sapphire",
+  "Tanzanite"
+];
+
+  let displayProducts = currentCollection.products || [];
+
+  // For "precious-gemstone" map product names using provided list (repeats names if needed)
+  if (category === "precious-gemstone" && Array.isArray(displayProducts)) {
+    displayProducts = displayProducts.map((product: any, idx: number) => ({
+      ...product,
+      name: premiumGemstoneNames[idx % premiumGemstoneNames.length]
+    }));
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -588,7 +612,7 @@ const Collections = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {currentCollection.products?.map((product: any) => (
+            {displayProducts?.map((product: any) => (
               <div
                 key={product.id}
                 className="group relative bg-white cursor-pointer rounded-lg border hover:shadow-lg transition"
