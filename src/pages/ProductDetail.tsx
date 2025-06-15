@@ -53,40 +53,29 @@ const productData: { [key: string]: ProductData } = {
   },
   "2": {
     id: 2,
-    name: "Emerald (Maragadham)",
-    price: "₹ 35,000.00",
-    description:
-      "Emerald, known as Maragadham in India, is a captivating gemstone celebrated for its lush green color and legendary aura. Admired for centuries, this precious stone symbolizes rebirth, wisdom, and true love. Our carefully sourced emeralds display exceptional clarity and brilliance, making them an exquisite choice for those seeking beauty, status, and spiritual harmony. Perfect for jewelry or as a collector's gem, each piece radiates a vibrant heritage and mystical charm.",
-    material: "18K Gold with Natural Emerald",
-    sizes: ["4", "5", "6", "7"],
+    name: "ALEXANDRITE CAT'S EYE",
+    price: "₹ 1,599.00",
+    description: "Alexandrite Cat's Eye is a rare and mystical gemstone, prized for its unique color-changing property and the striking cat's eye effect. Revered in many cultures for its protective powers and ability to bring luck and insight, this gem makes an exquisite addition to any collection or piece of jewelry. Each Alexandrite Cat's Eye is expertly selected for its quality and captivating appearance.",
+    material: "Natural Alexandrite Cat's Eye, premium cabochon cut",
+    sizes: ["7", "8", "9", "10"],
     colors: [
-      { name: "Gold", value: "gold" },
-      { name: "Rose Gold", value: "rosegold" }
+      { name: "Mystic Green", value: "green" },
+      { name: "Royal Purple", value: "purple" },
     ],
     images: [
       {
         id: 1,
-        url: "/lovable-uploads/0979fcc1-7b22-404e-ad67-4092feea2531.png",
-        alt: "Emerald crystal (Maragadham) on rock"
+        url: "/lovable-uploads/978e25f2-58c2-4106-93d5-2a3c5b1c36fa.png",
+        alt: "Alexandrite Cat's Eye Ring",
       },
       {
         id: 2,
-        url: "/lovable-uploads/aa6d099f-684f-43cb-885a-e0f90c95b9ff.png",
-        alt: "Emerald (Maragadham) held in tweezers"
-      },
-      {
-        id: 3,
-        url: "/lovable-uploads/01a2a700-fd3a-483e-b684-d3634fdd5c3f.png",
-        alt: "Emerald (Maragadham) jewelry worn by woman"
-      },
-      {
-        id: 4,
-        url: "/lovable-uploads/43af1af7-a0da-4cbb-9348-702649fcf884.png",
-        alt: "Three faceted Emeralds (Maragadham)"
+        url: "/lovable-uploads/fa8d197b-fba0-4d4c-934b-1659bcf9c0dc.png",
+        alt: "Loose Alexandrite Cat's Eye Gemstone"
       }
     ],
     inStock: true,
-    stockCount: 8
+    stockCount: 8,
   },
   "3": {
     id: 3,

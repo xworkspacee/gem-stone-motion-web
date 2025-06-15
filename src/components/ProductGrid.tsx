@@ -28,12 +28,13 @@ const products: Product[] = [
   },
   {
     id: 2,
-    name: "Emerald (Maragadham)", 
-    price: "₹ 35,000.00",
+    name: "ALEXANDRITE CAT'S EYE",
+    price: "₹ 1,599.00",
     images: [
-      "/lovable-uploads/451ee67e-fe8a-4ab9-b110-3f911d53ac54.png"
+      "/lovable-uploads/978e25f2-58c2-4106-93d5-2a3c5b1c36fa.png",
+      "/lovable-uploads/fa8d197b-fba0-4d4c-934b-1659bcf9c0dc.png"
     ],
-    colors: ["green", "emerald"]
+    colors: ["green", "purple", "alexandrite"]
   },
   {
     id: 3,
