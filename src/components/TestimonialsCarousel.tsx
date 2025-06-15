@@ -10,25 +10,39 @@ import {
 
 const testimonials = [
   {
-    name: "Sarah Chen",
-    location: "New York",
-    text: "The craftsmanship is absolutely extraordinary. Each piece feels like a work of art that I get to wear.",
+    name: "Priya Mehta",
+    location: "Mumbai",
+    text: "Absolutely stunning! The gem stone’s color and craftsmanship far exceeded my expectations. I’ve received so many compliments.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Jessica Lee",
+    location: "San Francisco",
+    text: "My gemstone ring feels so special and luxurious. The quality is incredible, and wearing it makes every day feel elegant.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1494790108755-2616b612b1e5?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Maria Rodriguez",
-    location: "Los Angeles", 
-    text: "I've never received so many compliments on jewelry before. The attention to detail is incredible.",
+    name: "Ana Silva",
+    location: "Lisbon",
+    text: "I never take my gemstone pendant off! The design is so modern yet timeless. I’m thrilled with my purchase.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face"
   },
   {
-    name: "Emma Thompson",
-    location: "London",
-    text: "Timeless elegance meets modern sophistication. These pieces have become my daily essentials.",
+    name: "Lily Chen",
+    location: "Singapore",
+    text: "The service was fantastic and my gemstone jewelry arrived beautifully packaged. It truly feels one-of-a-kind.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    name: "Isabella Rossi",
+    location: "Milan",
+    text: "I was blown away by the brilliance and clarity of the gem. It’s a perfect gift to myself – truly worth every penny!",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b1e5?w=150&h=150&fit=crop&crop=face"
   }
 ];
 
@@ -56,7 +70,6 @@ const TestimonialsCarousel = () => {
           <h2 className="text-4xl md:text-5xl font-luxury font-bold text-luxury-black mb-6 animate-fade-in">
             Stories from Our Community
           </h2>
-          {/* Removed gemstone showcase row here */}
           <p className="text-lg text-luxury-gray max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Hear what our customers say about their Gem Stone experience
           </p>
@@ -122,3 +135,4 @@ const TestimonialsCarousel = () => {
 };
 
 export default TestimonialsCarousel;
+
