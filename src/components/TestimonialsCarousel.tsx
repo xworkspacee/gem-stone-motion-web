@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   Carousel,
@@ -32,22 +31,23 @@ const testimonials = [
   }
 ];
 
+// Updated gemstone showcase images according to user uploads:
 const gemstoneShowcase = [
   {
     name: "Hessonite (Gomed)",
-    img: "/lovable-uploads/d4842095-bac1-4e6e-9c1f-9b7a7bda986d.png",
+    img: "/lovable-uploads/65bf9dca-98e5-4c5f-9443-ca563ef405ba.png",
   },
   {
     name: "White Sapphire",
-    img: "/lovable-uploads/873ba493-33ff-4751-b861-c646753f28c9.png",
+    img: "/lovable-uploads/e11d69d6-59ce-4774-93b8-426ed0f8a711.png",
   },
   {
     name: "Red Coral (Pavalam)",
-    img: "/lovable-uploads/8a581a1b-1a18-4783-b463-dfbc926b5ba9.png",
+    img: "/lovable-uploads/5e78b403-8d29-4fdc-909c-7aac07499404.png",
   },
   {
     name: "Alexandrite",
-    img: "/lovable-uploads/d4c516cf-eb74-4516-9d08-3bbcfaa76de7.png",
+    img: "/lovable-uploads/fe7629e1-2472-4f76-bceb-3b86ecdcb48f.png",
   },
 ];
 
@@ -157,4 +157,3 @@ const TestimonialsCarousel = () => {
 };
 
 export default TestimonialsCarousel;
-
