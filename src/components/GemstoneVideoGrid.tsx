@@ -25,30 +25,35 @@ const videos = [
 ];
 
 const GemstoneVideoGrid = () => (
-  <section className="py-16 bg-white">
+  <section className="py-24 bg-white">
     <div className="container mx-auto px-4">
-      <h2 className="text-3xl md:text-4xl font-luxury font-bold text-luxury-black mb-8 text-center">
-        Watch Our Gemstone Stories
+      <h2 className="text-3xl md:text-4xl font-luxury font-bold text-luxury-black mb-10 text-center tracking-wide">
+        <span className="relative">
+          <span className="text-gradient bg-gradient-to-r from-yellow-400 via-red-500 to-pink-400 bg-clip-text text-transparent">Watch Our Gemstone Stories</span>
+          <span className="block w-24 h-1 mx-auto mt-2 rounded bg-gradient-to-r from-yellow-400 to-red-400"></span>
+        </span>
       </h2>
-      <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-10 md:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {videos.map((video, idx) => (
           <div
             key={idx}
-            className="rounded-xl shadow-xl overflow-hidden bg-luxury-cream flex flex-col items-center p-0"
+            className="rounded-2xl shadow-2xl overflow-hidden bg-luxury-cream relative flex flex-col items-center p-0 border-2 border-yellow-200 hover-scale"
+            style={{ minHeight: 370, transition: 'transform 0.2s' }}
           >
             <video
               controls
               poster={video.poster}
-              className="w-full object-cover aspect-video bg-black"
+              className="w-full object-cover aspect-video bg-black "
               preload="metadata"
-              style={{ height: 190 }}
+              style={{ height: 270, borderRadius: "0.75rem", marginTop: 6 }}
             >
               <source src={video.src} type="video/mp4" />
               Sorry, your browser does not support embedded videos.
             </video>
-            <div className="px-3 py-2 text-center">
-              <span className="text-base font-medium text-luxury-black">{video.title}</span>
+            <div className="px-4 py-4 text-center w-full">
+              <span className="text-base font-semibold text-luxury-black block">{video.title}</span>
             </div>
+            <div className="absolute top-3 left-3 bg-yellow-300 rounded-full px-3 py-1 text-xs font-bold text-luxury-black shadow">NEW</div>
           </div>
         ))}
       </div>

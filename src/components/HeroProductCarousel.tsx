@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -105,8 +104,9 @@ const products = [
 const HeroProductCarousel = () => (
   <section className="py-12 bg-white">
     <div className="container mx-auto px-4">
+      {/* Rename section as Birth Gemstone */}
       <h2 className="text-3xl md:text-4xl font-luxury font-bold text-luxury-black text-center mb-8">
-        Featured Gemstones
+        Birth Gemstone
       </h2>
       <Carousel
         opts={{ align: "start", loop: true }}
@@ -148,4 +148,3 @@ const HeroProductCarousel = () => (
 );
 
 export default HeroProductCarousel;
-

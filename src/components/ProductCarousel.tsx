@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -94,6 +93,34 @@ const products = [
     price: "₹ 32,000.00",
     image: "/lovable-uploads/c0134365-141e-44ba-93b3-e7d8caa2d406.png",
     shopUrl: "/product/112",
+  },
+  {
+    id: 13,
+    name: "Opal",
+    price: "₹ 20,500.00",
+    image: "/lovable-uploads/3c5f87fb-994d-4340-833c-654ff770db03.png",
+    shopUrl: "/product/113",
+  },
+  {
+    id: 14,
+    name: "Garnet",
+    price: "₹ 8,900.00",
+    image: "/lovable-uploads/a1e75b6a-5fce-4c2d-b162-35756ef29598.png",
+    shopUrl: "/product/114",
+  },
+  {
+    id: 15,
+    name: "Topaz",
+    price: "₹ 13,400.00",
+    image: "/lovable-uploads/707e1008-4994-4166-8dcc-e468b8281f8d.png",
+    shopUrl: "/product/115",
+  },
+  {
+    id: 16,
+    name: "Peridot",
+    price: "₹ 12,200.00",
+    image: "/lovable-uploads/81ab1d6b-c3ee-4f4a-8f08-ee834c895fe4.png",
+    shopUrl: "/product/116",
   },
 ];
 

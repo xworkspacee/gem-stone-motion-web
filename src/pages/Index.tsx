@@ -1,10 +1,8 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FullScreenImage from '@/components/FullScreenImage';
 import ProductGrid from '@/components/ProductGrid';
-// import MotionGallery from '@/components/MotionGallery';      // <-- REMOVED
 import CollectionShowcase from '@/components/CollectionShowcase';
 import BrandStory from '@/components/BrandStory';
 import ProductCarousel from '@/components/ProductCarousel';
@@ -13,6 +11,7 @@ import GemstoneVideoGrid from '@/components/GemstoneVideoGrid';
 import PromotionalSection from '@/components/PromotionalSection';
 import Footer from '@/components/Footer';
 import HeroProductCarousel from '@/components/HeroProductCarousel';
+import PreciousGemstone from '@/components/PreciousGemstone';
 
 const Index = () => {
   return (
@@ -20,9 +19,10 @@ const Index = () => {
       <Header />
       <Hero />
       <FullScreenImage />
-      {/* Removed <GemHeading /> and replaced with new carousel */}
+      {/* Add Precious Gemstone above Birth Gemstone */}
+      <PreciousGemstone />
+      {/* Birth Gemstone section (renamed HeroProductCarousel) */}
       <HeroProductCarousel />
-      {/* Moved ProductCarousel above BrandStory */}
       <ProductCarousel />
       <BrandStory />
       <CollectionShowcase />
