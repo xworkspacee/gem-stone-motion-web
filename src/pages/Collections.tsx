@@ -431,20 +431,24 @@ const Collections = () => {
     if (category === "black-tourmaline") {
       setDynamicLoading(true);
       setDynamicError(null);
-      supabase
-        .from("products")
-        .select("*")
-        .eq("category", "black-tourmaline")
-        .order("created_at", { ascending: false })
-        .then(({ data, error }) => {
+
+      (async () => {
+        try {
+          const { data, error } = await supabase
+            .from("products")
+            .select("*")
+            .eq("category", "black-tourmaline")
+            .order("created_at", { ascending: false });
           if (error) {
             setDynamicError("Failed to load products.");
             setDynamicProducts([]);
           } else {
             setDynamicProducts(data || []);
           }
-        })
-        .finally(() => setDynamicLoading(false));
+        } finally {
+          setDynamicLoading(false);
+        }
+      })();
     }
   }, [category]);
 
