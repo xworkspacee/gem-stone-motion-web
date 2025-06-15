@@ -131,22 +131,23 @@ const productData: { [key: string]: ProductData } = {
   },
   "5": {
     id: 5,
-    name: "Crystal Drop Earrings",
-    price: "₹ 1,299.00",
-    description: "Stunning crystal drop earrings that catch the light beautifully.",
-    material: "Sterling Silver with Crystal",
+    name: "Tanzanite",
+    price: "₹ 32,000.00",
+    description: "This stunning Tanzanite gemstone radiates with a vivid blue-violet color. Its extraordinary clarity and cut bring out a vibrant fire, making it a truly rare and precious addition to any collection. Symbolizing transformation and intuition, Tanzanite is highly prized among gemstone enthusiasts for both its natural beauty and metaphysical energy.",
+    material: "Natural Tanzanite, set in premium 18K white gold or sterling silver jewelry.",
     sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop", alt: "Wearing view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Close-up detail" }
+      { id: 1, url: "/lovable-uploads/53d76d52-0d9f-4761-96e5-fbbdd3eb89ed.png", alt: "Model wearing Tanzanite necklace and earrings" },
+      { id: 2, url: "/lovable-uploads/f870230d-bd5f-429b-bc00-88f24b22d5b6.png", alt: "Tanzanite and diamond drop earrings" },
+      { id: 3, url: "/lovable-uploads/372385ee-b1d9-4f40-b2a2-ef7a369dcf22.png", alt: "Trillion-cut vivid blue Tanzanite gemstone" },
+      { id: 4, url: "/lovable-uploads/e8bf9eca-6671-44b4-9d80-4ac1f2b0f564.png", alt: "Trillion-cut Tanzanite gemstone with purple blue hue" },
     ],
     inStock: true,
-    stockCount: 10
+    stockCount: 10,
   },
   "6": {
     id: 6,
