@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FullScreenImage from '@/components/FullScreenImage';
+import GemHeading from '@/components/GemHeading';
 import ProductGrid from '@/components/ProductGrid';
 import MotionGallery from '@/components/MotionGallery';
 import CollectionShowcase from '@/components/CollectionShowcase';
@@ -17,6 +18,7 @@ const Index = () => {
       <Header />
       <Hero />
       <FullScreenImage />
+      <GemHeading />
       <ProductGrid />
       <MotionGallery />
       <CollectionShowcase />
