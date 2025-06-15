@@ -67,56 +67,109 @@ const PromotionalSection = () => {
       <div className="container mx-auto px-4">
         {/* Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-16">
-          {featuredProducts.map((product) => (
-            <div 
-              key={product.id} 
-              className="group relative cursor-pointer"
-              onClick={() => handleProductClick(product.id)}
-            >
-              {/* Product Image */}
-              <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-3 md:mb-4">
-                {product.badge && (
-                  <span className="absolute top-2 md:top-3 left-2 md:left-3 bg-black text-white text-xs px-1.5 md:px-2 py-0.5 md:py-1 rounded z-10">
-                    {product.badge}
-                  </span>
-                )}
-                <img
-                  src={product.images[0]}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Product Info */}
-              <div className="space-y-1 md:space-y-2">
-                <h3 className="font-medium text-luxury-black text-xs md:text-sm group-hover:text-luxury-gold transition-colors line-clamp-2">
-                  {product.name}
-                </h3>
-                <p className="text-luxury-black font-medium text-xs md:text-sm">
-                  {product.price}
-                </p>
-                
-                {/* Color Options */}
-                <div className="flex gap-1 md:gap-2 mt-2 md:mt-3">
-                  {product.colors.map((color) => (
-                    <button
-                      key={color}
-                      className={`w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300 ${
-                        color === 'orange' ? 'bg-orange-400' :
-                        color === 'brown' ? 'bg-amber-600' :
-                        color === 'white' || color === 'clear' ? 'bg-white' :
-                        color === 'red' ? 'bg-red-500' :
-                        color === 'purple' ? 'bg-purple-500' :
-                        'bg-gray-300'
-                      }`}
-                      title={color}
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                  ))}
-                </div>
+          {/* Custom rendering based on screenshot */}
+          {/* Hessonite */}
+          <div
+            className="group relative cursor-pointer"
+            onClick={() => handleProductClick(1)}
+          >
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-3 md:mb-4">
+              <img
+                src="/lovable-uploads/eaafb7d1-fd58-41dc-bb01-3b88c614af4e.png"
+                alt="Hessonite (Gomed)"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="space-y-1 md:space-y-2">
+              <h3 className="font-medium text-xs md:text-sm group-hover:text-luxury-gold transition-colors line-clamp-2" style={{ color: "#D4AF37" }}>
+                Hessonite (Gomed)
+              </h3>
+              <p className="text-luxury-black font-medium text-xs md:text-sm">
+                ₹ 15,000.00
+              </p>
+              {/* Orange and brown color dots */}
+              <div className="flex gap-1 md:gap-2 mt-2 md:mt-3">
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#EB9907" }} title="Orange"></span>
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#C07F4B" }} title="Brown"></span>
               </div>
             </div>
-          ))}
+          </div>
+          {/* White Sapphire */}
+          <div
+            className="group relative cursor-pointer"
+            onClick={() => handleProductClick(2)}
+          >
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-3 md:mb-4">
+              <img
+                src="/lovable-uploads/49d79595-891a-4510-8305-e6f990cd4935.png"
+                alt="White Sapphire"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="space-y-1 md:space-y-2">
+              <h3 className="font-medium text-xs md:text-sm group-hover:text-luxury-gold transition-colors line-clamp-2 text-luxury-black">
+                White Sapphire
+              </h3>
+              <p className="text-luxury-black font-medium text-xs md:text-sm">
+                ₹ 22,000.00
+              </p>
+              {/* Light blue color dots */}
+              <div className="flex gap-1 md:gap-2 mt-2 md:mt-3">
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#D1F0F9" }} title="Light Blue"></span>
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#E3EDEE" }} title="Pale Blue"></span>
+              </div>
+            </div>
+          </div>
+          {/* Red Coral (But this is a purple amethyst in your screenshot) */}
+          <div
+            className="group relative cursor-pointer"
+            onClick={() => handleProductClick(3)}
+          >
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-3 md:mb-4">
+              <img
+                src="/lovable-uploads/4f6f77aa-20ca-4f8f-b6c8-61edfc9964aa.png"
+                alt="Red Coral (Pavalam)"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="space-y-1 md:space-y-2">
+              <h3 className="font-medium text-xs md:text-sm group-hover:text-luxury-gold transition-colors line-clamp-2 text-luxury-black">
+                Red Coral (Pavalam)
+              </h3>
+              <p className="text-luxury-black font-medium text-xs md:text-sm">
+                ₹ 8,500.00
+              </p>
+              {/* Purple color dot (matches screenshot, even though actual coral is red) */}
+              <div className="flex gap-1 md:gap-2 mt-2 md:mt-3">
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#822DBE" }} title="Purple"></span>
+              </div>
+            </div>
+          </div>
+          {/* Alexandrite */}
+          <div
+            className="group relative cursor-pointer"
+            onClick={() => handleProductClick(4)}
+          >
+            <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 rounded-lg mb-3 md:mb-4">
+              <img
+                src="/lovable-uploads/ff11579b-0a0a-4cf9-a85e-bde390762c26.png"
+                alt="Alexandrite"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <div className="space-y-1 md:space-y-2">
+              <h3 className="font-medium text-xs md:text-sm group-hover:text-luxury-gold transition-colors line-clamp-2 text-luxury-black">
+                Alexandrite
+              </h3>
+              <p className="text-luxury-black font-medium text-xs md:text-sm">
+                ₹ 85,000.00
+              </p>
+              {/* Magenta color dot */}
+              <div className="flex gap-1 md:gap-2 mt-2 md:mt-3">
+                <span className="w-3 h-3 md:w-4 md:h-4 rounded-full border border-gray-300" style={{ background: "#D14B9C" }} title="Magenta"></span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Hero Section */}
