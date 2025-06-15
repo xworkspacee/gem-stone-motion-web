@@ -172,33 +172,36 @@ const PromotionalSection = () => {
           </div>
         </div>
 
-        {/* Bottom Hero Section */}
-        
+        {/* Bottom Hero Section - replaced image for "semi-precious gemstones" */}
+        <div className="relative rounded-lg md:rounded-2xl overflow-hidden mb-8 md:mb-12">
+          <img
+            src="/lovable-uploads/42e4060c-0892-4535-a03b-283cc37d067d.png"
+            alt="Featured Gold Earrings"
+            className="w-full object-cover"
+            style={{ maxHeight: 500, width: '100%' }}
+          />
+        </div>
+        {/* "Semi-Precious Gemstones" Heading and Call to Action */}
         <div className="relative rounded-lg md:rounded-2xl overflow-hidden">
-          <div className="aspect-[16/12] md:aspect-[16/9] lg:aspect-[21/9] relative">
-            <img
-              src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop"
-              alt="The Gemstone Collection"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/30"></div>
-            <div className="absolute inset-0 flex items-center justify-center text-center text-white p-4">
-              <div className="max-w-2xl">
-                <h2 className="text-2xl md:text-3xl lg:text-5xl font-luxury font-bold mb-3 md:mb-4">
-                  SEMI-PRECIOUS GEMSTONES
-                </h2>
-                <p className="text-sm md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90">
-                  Agate, Amethyst, Aquamarine, Carnelian, Blue Topaz, and more beautiful stones
-                </p>
-                <Button 
-                  asChild
-                  className="bg-white text-black hover:bg-gray-100 px-4 md:px-8 py-2 md:py-3 text-xs md:text-sm font-medium tracking-wide"
-                >
-                  <Link to="/collections/semi-precious">
-                    EXPLORE COLLECTION
-                  </Link>
-                </Button>
-              </div>
+          <div className="aspect-[16/12] md:aspect-[16/9] lg:aspect-[21/9] relative hidden">
+            {/* Old background image and overlay (now hidden/deleted) */}
+          </div>
+          <div className="flex items-center justify-center text-center text-white p-4">
+            <div className="max-w-2xl w-full">
+              <h2 className="text-2xl md:text-3xl lg:text-5xl font-luxury font-bold mb-3 md:mb-4 text-black">
+                SEMI-PRECIOUS GEMSTONES
+              </h2>
+              <p className="text-sm md:text-lg lg:text-xl mb-6 md:mb-8 opacity-90 text-black">
+                Agate, Amethyst, Aquamarine, Carnelian, Blue Topaz, and more beautiful stones
+              </p>
+              <Button 
+                asChild
+                className="bg-white text-black hover:bg-gray-100 px-4 md:px-8 py-2 md:py-3 text-xs md:text-sm font-medium tracking-wide border border-black"
+              >
+                <Link to="/collections/semi-precious">
+                  EXPLORE COLLECTION
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
