@@ -8,7 +8,9 @@ import ProductGrid from '@/components/ProductGrid';
 // import MotionGallery from '@/components/MotionGallery';      // <-- REMOVED
 import CollectionShowcase from '@/components/CollectionShowcase';
 import BrandStory from '@/components/BrandStory';
+import OurProducts from '@/components/OurProducts';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
+import GemstoneVideoGrid from '@/components/GemstoneVideoGrid';
 import PromotionalSection from '@/components/PromotionalSection';
 import Footer from '@/components/Footer';
 
@@ -23,7 +25,9 @@ const Index = () => {
       {/* <MotionGallery />  <-- REMOVED! */}
       <CollectionShowcase />
       <BrandStory />
+      <OurProducts />
       <TestimonialsCarousel />
+      <GemstoneVideoGrid />
       <PromotionalSection />
       <Footer />
     </div>
@@ -31,4 +35,3 @@ const Index = () => {
 };
 
 export default Index;
-
