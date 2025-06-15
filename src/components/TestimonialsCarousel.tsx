@@ -32,6 +32,25 @@ const testimonials = [
   }
 ];
 
+const gemstoneShowcase = [
+  {
+    name: "Hessonite (Gomed)",
+    img: "/lovable-uploads/d4842095-bac1-4e6e-9c1f-9b7a7bda986d.png",
+  },
+  {
+    name: "White Sapphire",
+    img: "/lovable-uploads/873ba493-33ff-4751-b861-c646753f28c9.png",
+  },
+  {
+    name: "Red Coral (Pavalam)",
+    img: "/lovable-uploads/8a581a1b-1a18-4783-b463-dfbc926b5ba9.png",
+  },
+  {
+    name: "Alexandrite",
+    img: "/lovable-uploads/d4c516cf-eb74-4516-9d08-3bbcfaa76de7.png",
+  },
+];
+
 const TestimonialsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -52,10 +71,27 @@ const TestimonialsCarousel = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-luxury font-bold text-luxury-black mb-6 animate-fade-in">
             Stories from Our Community
           </h2>
+          {/* New: Gemstone showcase row */}
+          <div className="flex flex-wrap justify-center gap-6 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            {gemstoneShowcase.map((gem) => (
+              <div key={gem.name} className="flex flex-col items-center w-36">
+                <div className="w-28 h-28 rounded-xl overflow-hidden shadow-lg bg-white flex items-center justify-center mb-2 border-2 border-luxury-gold/30">
+                  <img
+                    src={gem.img}
+                    alt={gem.name}
+                    className="object-contain w-full h-full hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="text-xs md:text-sm font-medium text-luxury-gold/90 text-center">
+                  {gem.name}
+                </div>
+              </div>
+            ))}
+          </div>
           <p className="text-lg text-luxury-gray max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Hear what our customers say about their Gem Stone experience
           </p>
@@ -121,3 +157,4 @@ const TestimonialsCarousel = () => {
 };
 
 export default TestimonialsCarousel;
+
