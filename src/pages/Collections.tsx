@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -6,6 +7,7 @@ import { Heart, ShoppingCart } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const collectionsData = {
   rings: {
@@ -419,14 +421,64 @@ const Collections = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const navigate = useNavigate();
 
-  const currentCollection = category && collectionsData[category as keyof typeof collectionsData];
+  // For dynamic Supabase-backed category
+  const [dynamicProducts, setDynamicProducts] = useState<any[] | null>(null);
+  const [dynamicLoading, setDynamicLoading] = useState(false);
+  const [dynamicError, setDynamicError] = useState<string | null>(null);
 
-  if (!currentCollection) {
+  // Fetch products from Supabase if black-tourmaline
+  useEffect(() => {
+    if (category === "black-tourmaline") {
+      setDynamicLoading(true);
+      setDynamicError(null);
+      supabase
+        .from("products")
+        .select("*")
+        .eq("category", "black-tourmaline")
+        .order("created_at", { ascending: false })
+        .then(({ data, error }) => {
+          if (error) {
+            setDynamicError("Failed to load products.");
+            setDynamicProducts([]);
+          } else {
+            setDynamicProducts(data || []);
+          }
+        })
+        .finally(() => setDynamicLoading(false));
+    }
+  }, [category]);
+
+  // Use local collection logic only if not black-tourmaline
+  const currentCollection =
+    category === "black-tourmaline"
+      ? { title: "Premium Black Tourmaline", subtitle: "Premium Gemstone Selection", products: dynamicProducts }
+      : category && collectionsData[category as keyof typeof collectionsData];
+
+  // Show loading indicator for dynamic collections
+  if (category === "black-tourmaline" && dynamicLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <Header />
+        <div className="flex-1 flex flex-col items-center justify-center py-16">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-900 border-t-transparent mb-8"></div>
+          <h1 className="text-lg font-semibold">Loading Black Tourmaline Collection...</h1>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Show error for dynamic collection panel, or show collection not found
+  if (
+    (!currentCollection || !currentCollection.products || currentCollection.products.length === 0) ||
+    (category === "black-tourmaline" && dynamicError)
+  ) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-2xl font-bold">Collection not found</h1>
+          <p className="text-gray-500 mt-2">{dynamicError ? dynamicError : "No products found in this collection."}</p>
           <Link to="/" className="text-luxury-gold hover:underline mt-4 inline-block">
             Return to Home
           </Link>
@@ -438,7 +490,7 @@ const Collections = () => {
 
   const handleAddToCart = async (product: any, e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent navigation when clicking add to cart
-    
+
     if (!user) {
       toast.error("Please sign in to add items to cart");
       return;
@@ -448,11 +500,11 @@ const Collections = () => {
       await addToCart({
         product_id: product.id,
         product_name: product.name,
-        product_price: product.price,
-        product_image: product.image,
+        product_price: product.price?.toLocaleString("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2 }) ?? product.product_price,
+        product_image: product.image_url ?? product.image,
         quantity: 1,
-        selected_size: 'One Size',
-        selected_color: 'Default'
+        selected_size: Array.isArray(product.sizes) && product.sizes.length > 0 ? product.sizes[0] : 'One Size',
+        selected_color: Array.isArray(product.colors) && product.colors.length > 0 ? product.colors[0] : 'Default'
       });
       toast.success(`${product.name} added to cart!`);
     } catch (error) {
@@ -462,8 +514,8 @@ const Collections = () => {
 
   const toggleFavorite = (productId: number, e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent navigation when clicking favorite
-    setFavorites(prev => 
-      prev.includes(productId) 
+    setFavorites(prev =>
+      prev.includes(productId)
         ? prev.filter(id => id !== productId)
         : [...prev, productId]
     );
@@ -476,7 +528,7 @@ const Collections = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-12 bg-luxury-cream">
         <div className="container mx-auto px-4">
@@ -502,26 +554,26 @@ const Collections = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {currentCollection.products.map((product) => (
-              <div 
-                key={product.id} 
+            {currentCollection.products?.map((product) => (
+              <div
+                key={product.id}
                 className="group relative bg-white cursor-pointer"
                 onClick={() => handleProductClick(product.id)}
               >
                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-lg">
                   <img
-                    src={product.image}
+                    src={product.image_url ?? product.image}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  
+
                   {/* Favorite Button */}
                   <button
                     onClick={(e) => toggleFavorite(product.id, e)}
                     className="absolute top-4 right-4 p-2 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white"
                   >
-                    <Heart 
-                      className={`w-4 h-4 ${favorites.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} 
+                    <Heart
+                      className={`w-4 h-4 ${favorites.includes(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'}`}
                     />
                   </button>
 
@@ -541,7 +593,9 @@ const Collections = () => {
                     {product.name}
                   </h3>
                   <p className="text-luxury-black font-semibold">
-                    {product.price}
+                    {typeof product.price === "number"
+                      ? `₹ ${product.price.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`
+                      : product.price}
                   </p>
                 </div>
               </div>
