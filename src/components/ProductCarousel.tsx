@@ -141,10 +141,14 @@ const ProductCarousel = () => {
           <CarouselPrevious className="left-0 md:-left-6 bg-yellow-300 text-black hover:bg-yellow-400" />
           <CarouselNext className="right-0 md:-right-6 bg-yellow-300 text-black hover:bg-yellow-400" />
         </Carousel>
+        <div className="flex justify-center mt-8">
+          <Button className="bg-luxury-black hover:bg-luxury-gold text-white px-8 py-3 text-base font-semibold rounded-lg shadow transition-colors">
+            Show More
+          </Button>
+        </div>
       </div>
     </section>
   );
 };
 
 export default ProductCarousel;
-

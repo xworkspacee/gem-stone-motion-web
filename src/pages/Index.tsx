@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -21,11 +22,10 @@ const Index = () => {
       <FullScreenImage />
       {/* Removed <GemHeading /> and replaced with new carousel */}
       <HeroProductCarousel />
-      <ProductGrid />
-      {/* <MotionGallery />  <-- REMOVED! */}
-      <CollectionShowcase />
-      <BrandStory />
+      {/* Moved ProductCarousel above BrandStory */}
       <ProductCarousel />
+      <BrandStory />
+      <CollectionShowcase />
       <TestimonialsCarousel />
       <GemstoneVideoGrid />
       <PromotionalSection />
