@@ -2,28 +2,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Updated gallery items with new images
 const galleryItems = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=800&fit=crop",
-    title: "Signature Rings",
-    subtitle: "Handcrafted Excellence",
-    category: "rings"
+    image: "/lovable-uploads/516514c2-9d0e-4617-b961-e5d1cd1d6d3c.png", // Jewelry and pearls
+    title: "Precious Gemstone",
+    subtitle: "Exquisite Jewelry Collection",
+    category: "precious-gemstone",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=600&h=800&fit=crop",
-    title: "Elegant Earrings",
-    subtitle: "Modern Sophistication",
-    category: "earrings"
+    image: "/lovable-uploads/86bf29e2-54f4-47e1-9461-9599bdef5c97.png", // Sparkling gem spheres
+    title: "Gemstones",
+    subtitle: "Vibrant & Colorful Gems",
+    category: "gemstones",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=800&fit=crop",
-    title: "Statement Necklaces",
-    subtitle: "Timeless Beauty",
-    category: "necklaces"
-  }
+    image: "/lovable-uploads/3c5f87fb-994d-4340-833c-654ff770db03.png", // Gemstones on green silk
+    title: "Birth Stones",
+    subtitle: "Find Your Unique Birthstone",
+    category: "birth-stones",
+  },
 ];
 
 const MotionGallery = () => {
@@ -40,10 +41,10 @@ const MotionGallery = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-luxury font-bold text-luxury-black mb-6 animate-fade-in">
-            Motion in Every Detail
+            PRECIOUS GEMSTONE, <span className="text-luxury-gold">GEMSTONES</span>, <span className="text-luxury-brown">BIRTH STONES</span>
           </h2>
           <p className="text-lg text-luxury-gray max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Experience the fluid beauty of our collections through interactive motion
+            Dive into a world of exquisite gemstones, sparkling jewelry, and meaningful birthstones.
           </p>
         </div>
 
