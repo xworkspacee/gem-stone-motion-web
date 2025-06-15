@@ -440,6 +440,53 @@ const dynamicCollectionTitles: Record<string, { title: string; subtitle: string}
   },
 };
 
+const premiumGemstoneNamesWithImages = [
+  {
+    name: "Alexandrite",
+    image: "/lovable-uploads/9c6c98a5-85f6-4ad2-8ca0-74bd80f490c3.png",
+  },
+  {
+    name: "Alexandrite Cats Eye",
+    image: "/lovable-uploads/275980e3-2df1-4a8d-ad39-b91e1df9ba99.png",
+  },
+  {
+    name: "Burmese Ruby",
+    image: "/lovable-uploads/c3ae5388-a6f9-45b7-8893-410415d7896e.png",
+  },
+  {
+    name: "Carving Gem Stones",
+    image: "/lovable-uploads/2d26dab2-52d2-400a-8e00-c303bd814a6e.png",
+  },
+  {
+    name: "Exclusive Blue Sapphire",
+    image: "/lovable-uploads/707e1008-4994-4166-8dcc-e468b8281f8d.png",
+  },
+  {
+    name: "Exclusive Cats Eye",
+    image: "/lovable-uploads/2ac1df9f-ec36-4d87-a0a0-26778cbe3c28.png",
+  },
+  {
+    name: "Exclusive Emerald",
+    image: "/lovable-uploads/8c39fbae-6882-49a4-9cd7-a958807b2424.png",
+  },
+  {
+    name: "Exclusive Ruby",
+    image: "/lovable-uploads/2b3b5c43-02ad-4263-a00f-c94786a9b94a.png",
+  },
+  {
+    name: "Exclusive Yellow Sapphire",
+    image: "/lovable-uploads/16d49115-0174-4b6b-a594-680a23675a82.png",
+  },
+  {
+    name: "Padparadscha Sapphire",
+    image: "/lovable-uploads/2d26dab2-52d2-400a-8e00-c303bd814a6e.png",
+  },
+  {
+    name: "Tanzanite",
+    image: "/lovable-uploads/787516c4-f77b-4aeb-ab56-5b2ddbab3c45.png",
+  },
+];
+
 const Collections = () => {
   const { category } = useParams<{ category: string }>();
   const { user } = useAuth();
@@ -559,27 +606,44 @@ const Collections = () => {
     navigate(`/product/${productId}`);
   };
 
-const premiumGemstoneNames = [
-  "Alexandrite",
-  "Alexandrite Cats Eye",
-  "Burmese Ruby",
-  "Carving Gem Stones",
-  "Exclusive Blue Sapphire",
-  "Exclusive Cats Eye",
-  "Exclusive Emerald",
-  "Exclusive Ruby",
-  "Exclusive Yellow Sapphire",
-  "Padparadscha Sapphire",
-  "Tanzanite"
-];
+  const premiumGemstoneNames = [
+    "Alexandrite",
+    "Alexandrite Cats Eye",
+    "Burmese Ruby",
+    "Carving Gem Stones",
+    "Exclusive Blue Sapphire",
+    "Exclusive Cats Eye",
+    "Exclusive Emerald",
+    "Exclusive Ruby",
+    "Exclusive Yellow Sapphire",
+    "Padparadscha Sapphire",
+    "Tanzanite"
+  ];
 
   let displayProducts = currentCollection.products || [];
 
-  // For "precious-gemstone" map product names using provided list (repeats names if needed)
-  if (category === "precious-gemstone" && Array.isArray(displayProducts)) {
+  // Custom override for "Signature Rings" inside "Premium Gemstone" collection
+  // Show custom names/images if both category match
+  if (
+    category === "precious-gemstone" &&
+    currentCollection &&
+    currentCollection.title?.toLowerCase().includes("signature") // Make sure it's the Signature Rings section (if applicable)
+  ) {
+    // This condition likely won't be true because precious-gemstone collection title is "Precious Gemstones"
+    // So no override here
+  } else if (category === "rings" && currentCollection) {
+    // If instead, you want /collections/rings to show signature rings section as these names and images
     displayProducts = displayProducts.map((product: any, idx: number) => ({
       ...product,
-      name: premiumGemstoneNames[idx % premiumGemstoneNames.length]
+      name: premiumGemstoneNamesWithImages[idx % premiumGemstoneNamesWithImages.length].name,
+      image: premiumGemstoneNamesWithImages[idx % premiumGemstoneNamesWithImages.length].image,
+    }));
+  } else if (category === "precious-gemstone" && Array.isArray(displayProducts)) {
+    // For precious-gemstone collection, override names and images as well
+    displayProducts = displayProducts.map((product: any, idx: number) => ({
+      ...product,
+      name: premiumGemstoneNamesWithImages[idx % premiumGemstoneNamesWithImages.length].name,
+      image: premiumGemstoneNamesWithImages[idx % premiumGemstoneNamesWithImages.length].image,
     }));
   }
 
