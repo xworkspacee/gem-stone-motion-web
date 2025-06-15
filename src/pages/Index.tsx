@@ -21,12 +21,12 @@ const Index = () => {
       <Header />
       <Hero />
       <FullScreenImage />
-      {/* Add Gemstone Showcases row here above Our Products */}
-      <GemstoneShowcaseRow />
       {/* Add Precious Gemstone above Birth Gemstone */}
       <PreciousGemstone />
       {/* Birth Gemstone section (renamed HeroProductCarousel) */}
       <HeroProductCarousel />
+      {/* Move Gemstone Showcases row here BETWEEN Birth Gemstone and Our Products */}
+      <GemstoneShowcaseRow />
       {/* Our Products Carousel */}
       <ProductCarousel />
       <BrandStory />
@@ -38,4 +38,6 @@ const Index = () => {
     </div>
   );
 };
+
 export default Index;
+
