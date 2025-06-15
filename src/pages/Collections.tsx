@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -414,6 +413,33 @@ const collectionsData = {
   }
 };
 
+// List of categories to fetch from Supabase dynamically
+const DYNAMIC_COLLECTIONS = [
+  "black-tourmaline",
+  "precious-gemstone",
+  "gemstone",
+  "birth-stone"
+];
+
+const dynamicCollectionTitles: Record<string, { title: string; subtitle: string}> = {
+  "black-tourmaline": {
+    title: "Premium Black Tourmaline",
+    subtitle: "Premium Gemstone Selection"
+  },
+  "precious-gemstone": {
+    title: "Precious Gemstones",
+    subtitle: "Rare & Handpicked Jewels"
+  },
+  "gemstone": {
+    title: "Gemstone Collection",
+    subtitle: "Vibrant Natural Gemstones"
+  },
+  "birth-stone": {
+    title: "Birth Stone Special",
+    subtitle: "Celebrate with Your Gem"
+  },
+};
+
 const Collections = () => {
   const { category } = useParams<{ category: string }>();
   const { user } = useAuth();
@@ -421,14 +447,14 @@ const Collections = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const navigate = useNavigate();
 
-  // For dynamic Supabase-backed category
+  // For dynamic Supabase collection categories
   const [dynamicProducts, setDynamicProducts] = useState<any[] | null>(null);
   const [dynamicLoading, setDynamicLoading] = useState(false);
   const [dynamicError, setDynamicError] = useState<string | null>(null);
 
-  // Fetch products from Supabase if black-tourmaline
+  // Fetch products from Supabase if matches any DYNAMIC_COLLECTIONS
   useEffect(() => {
-    if (category === "black-tourmaline") {
+    if (category && DYNAMIC_COLLECTIONS.includes(category)) {
       setDynamicLoading(true);
       setDynamicError(null);
 
@@ -437,7 +463,7 @@ const Collections = () => {
           const { data, error } = await supabase
             .from("products")
             .select("*")
-            .eq("category", "black-tourmaline")
+            .eq("category", category)
             .order("created_at", { ascending: false });
           if (error) {
             setDynamicError("Failed to load products.");
@@ -452,30 +478,34 @@ const Collections = () => {
     }
   }, [category]);
 
-  // Use local collection logic only if not black-tourmaline
+  // For "old" demo collections
   const currentCollection =
-    category === "black-tourmaline"
-      ? { title: "Premium Black Tourmaline", subtitle: "Premium Gemstone Selection", products: dynamicProducts }
+    DYNAMIC_COLLECTIONS.includes(String(category))
+      ? {
+          title: dynamicCollectionTitles[category as keyof typeof dynamicCollectionTitles]?.title || "Jewelry Collection",
+          subtitle: dynamicCollectionTitles[category as keyof typeof dynamicCollectionTitles]?.subtitle || "",
+          products: dynamicProducts
+        }
       : category && collectionsData[category as keyof typeof collectionsData];
 
   // Show loading indicator for dynamic collections
-  if (category === "black-tourmaline" && dynamicLoading) {
+  if (category && DYNAMIC_COLLECTIONS.includes(category) && dynamicLoading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <Header />
         <div className="flex-1 flex flex-col items-center justify-center py-16">
           <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-900 border-t-transparent mb-8"></div>
-          <h1 className="text-lg font-semibold">Loading Black Tourmaline Collection...</h1>
+          <h1 className="text-lg font-semibold">Loading Collection...</h1>
         </div>
         <Footer />
       </div>
     );
   }
 
-  // Show error for dynamic collection panel, or show collection not found
+  // Show error for dynamic collection, or show collection not found
   if (
     (!currentCollection || !currentCollection.products || currentCollection.products.length === 0) ||
-    (category === "black-tourmaline" && dynamicError)
+    (category && DYNAMIC_COLLECTIONS.includes(category) && dynamicError)
   ) {
     return (
       <div className="min-h-screen bg-white">
@@ -557,11 +587,11 @@ const Collections = () => {
       {/* Products Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {currentCollection.products?.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {currentCollection.products?.map((product: any) => (
               <div
                 key={product.id}
-                className="group relative bg-white cursor-pointer"
+                className="group relative bg-white cursor-pointer rounded-lg border hover:shadow-lg transition"
                 onClick={() => handleProductClick(product.id)}
               >
                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100 rounded-lg">
@@ -581,19 +611,21 @@ const Collections = () => {
                     />
                   </button>
 
-                  {/* Add to Cart Button */}
+                  {/* Buy Now / Add to Cart Button */}
                   <button
-                    onClick={(e) => handleAddToCart(product, e)}
-                    className="absolute bottom-4 left-4 right-4 bg-luxury-black/80 text-white py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-luxury-black flex items-center justify-center gap-2"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProductClick(product.id);
+                    }}
+                    className="absolute bottom-4 left-4 right-4 bg-luxury-gold/90 text-white py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-luxury-black flex items-center justify-center gap-2 font-semibold"
                   >
-                    <ShoppingCart className="w-4 h-4" />
-                    Add to Cart
+                    Buy Now
                   </button>
                 </div>
 
                 {/* Product Info */}
-                <div className="mt-4 space-y-2">
-                  <h3 className="font-medium text-luxury-black uppercase tracking-wide text-sm group-hover:text-luxury-gold transition-colors">
+                <div className="mt-4 space-y-2 px-2 pb-4">
+                  <h3 className="font-medium text-luxury-black uppercase tracking-wide text-sm group-hover:text-luxury-gold transition-colors line-clamp-2">
                     {product.name}
                   </h3>
                   <p className="text-luxury-black font-semibold">
