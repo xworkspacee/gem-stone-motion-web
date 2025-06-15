@@ -21,7 +21,8 @@ const Hero = () => {
           video.play().catch(console.error);
         }}
       >
-        <source src="https://ik.imagekit.io/cn0lbrbin/0615.mp4?updatedAt=1750007376847" type="video/mp4" />
+        {/* Updated video link for Precious gemstone */}
+        <source src="https://ik.imagekit.io/m90cfq7gx/0615.mp4?updatedAt=1750008603963" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -49,3 +50,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

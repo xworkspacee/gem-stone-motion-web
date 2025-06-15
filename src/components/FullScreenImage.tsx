@@ -21,7 +21,8 @@ const FullScreenImage = () => {
           video.play().catch(console.error);
         }}
       >
-        <source src="https://ik.imagekit.io/cn0lbrbin/0615(2).mp4?updatedAt=1750007588847" type="video/mp4" />
+        {/* Updated video link for Premium Collection */}
+        <source src="https://ik.imagekit.io/m90cfq7gx/0615(2).mp4?updatedAt=1750008566322" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -43,3 +44,4 @@ const FullScreenImage = () => {
 };
 
 export default FullScreenImage;
+
