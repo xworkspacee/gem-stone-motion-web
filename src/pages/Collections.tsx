@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -234,6 +233,180 @@ const collectionsData = {
         price: "₹ 2,899.00",
         image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=800&fit=crop",
         category: "necklaces"
+      }
+    ]
+  },
+  luxury: {
+    title: "Luxury Jewels",
+    subtitle: "Handpicked High-End Pieces",
+    products: [
+      {
+        id: 101,
+        name: "Classic Pearl Necklace",
+        price: "₹ 1,899.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 102,
+        name: "Crystal Diamond Ring",
+        price: "₹ 2,299.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 103,
+        name: "Golden Chain Bracelet",
+        price: "₹ 2,199.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 104,
+        name: "Deluxe Sapphire Pendant",
+        price: "₹ 5,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 105,
+        name: "Emerald Halo Set",
+        price: "₹ 5,999.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 106,
+        name: "Ruby Heart Necklace",
+        price: "₹ 4,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 107,
+        name: "Timeless Diamond Bangle",
+        price: "₹ 10,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 108,
+        name: "Multi-Strand Pearl Bracelet",
+        price: "₹ 2,799.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 109,
+        name: "Morganite Rose Gold Ring",
+        price: "₹ 4,299.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 110,
+        name: "Onyx Drop Earrings",
+        price: "₹ 3,599.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 111,
+        name: "Sapphire Pearl Combo Necklace",
+        price: "₹ 2,999.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 112,
+        name: "Delicate Gold Anklet",
+        price: "₹ 1,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 113,
+        name: "White Diamond Choker",
+        price: "₹ 7,299.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 114,
+        name: "Artisan Rose Brooch",
+        price: "₹ 1,199.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 115,
+        name: "Antique Topaz Studs",
+        price: "₹ 1,799.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 116,
+        name: "Royal Emerald Bracelet",
+        price: "₹ 8,899.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 117,
+        name: "Luxury Diamond Studs",
+        price: "₹ 12,899.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 118,
+        name: "Twin Opal Bangles",
+        price: "₹ 3,999.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 119,
+        name: "Platinum Classic Cuff",
+        price: "₹ 11,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 120,
+        name: "Heritage Gold Filigree",
+        price: "₹ 2,399.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 121,
+        name: "Lapis Diamond Twirl",
+        price: "₹ 2,699.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 122,
+        name: "Vibrant Tanzanite Drops",
+        price: "₹ 4,899.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 123,
+        name: "Classic Amethyst Bar",
+        price: "₹ 1,599.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
+      },
+      {
+        id: 124,
+        name: "Festive Sapphire Tiara",
+        price: "₹ 17,499.00",
+        image: "/lovable-uploads/d76f4695-c883-427c-9919-bdd6ce77a085.png",
+        category: "luxury"
       }
     ]
   }
