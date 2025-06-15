@@ -9,17 +9,17 @@ const BrandStory = () => {
     {
       title: "Heritage",
       content: "Founded on principles of exceptional craftsmanship and timeless design",
-      image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=600&fit=crop"
+      image: "/lovable-uploads/b7f01832-c5f5-4d3a-9321-cfdf20dd4c4e.png"
     },
     {
       title: "Craftsmanship", 
       content: "Each piece is meticulously handcrafted by master artisans using premium materials",
-      image: "https://images.unsplash.com/photo-1622866389730-f5c3e2c8af75?w=800&h=600&fit=crop"
+      image: "/lovable-uploads/8cf6a4eb-9895-4876-bed0-76b29aa927c2.png"
     },
     {
       title: "Innovation",
       content: "Blending traditional techniques with contemporary design for the modern woman",
-      image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=600&fit=crop"
+      image: "/lovable-uploads/2ee13459-5a26-4cc5-89a9-de0a1171aa84.png"
     }
   ];
 
@@ -46,12 +46,12 @@ const BrandStory = () => {
               </p>
             </div>
 
-            {/* Interactive story points */}
+            {/* Interactive story points with images */}
             <div className="space-y-4">
               {storyPoints.map((point, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-lg cursor-pointer transition-all duration-500 animate-scale-in ${
+                  className={`flex items-center p-6 rounded-lg cursor-pointer transition-all duration-500 animate-scale-in ${
                     activeSection === index 
                       ? 'bg-luxury-cream shadow-lg transform scale-105' 
                       : 'bg-transparent hover:bg-luxury-cream/50'
@@ -59,10 +59,17 @@ const BrandStory = () => {
                   style={{ animationDelay: `${index * 0.2}s` }}
                   onClick={() => setActiveSection(index)}
                 >
-                  <h3 className="text-xl font-luxury font-bold text-luxury-black mb-2">
-                    {point.title}
-                  </h3>
-                  <p className="text-luxury-gray">{point.content}</p>
+                  <img
+                    src={point.image}
+                    alt={point.title}
+                    className="w-14 h-14 rounded-lg object-cover mr-4 border-2 border-luxury-gold/50 shadow"
+                  />
+                  <div>
+                    <h3 className="text-xl font-luxury font-bold text-luxury-black mb-1">
+                      {point.title}
+                    </h3>
+                    <p className="text-luxury-gray">{point.content}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -96,3 +103,4 @@ const BrandStory = () => {
 };
 
 export default BrandStory;
+
