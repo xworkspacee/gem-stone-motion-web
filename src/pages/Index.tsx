@@ -9,7 +9,7 @@ import BrandStory from '@/components/BrandStory';
 import ProductCarousel from '@/components/ProductCarousel';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 import GemstoneVideoGrid from '@/components/GemstoneVideoGrid';
-import PromotionalSection from '@/components/PromotionalSection';
+// Removed PromotionalSection import
 import Footer from '@/components/Footer';
 import HeroProductCarousel from '@/components/HeroProductCarousel';
 import PreciousGemstone from '@/components/PreciousGemstone';
@@ -33,7 +33,7 @@ const Index = () => {
       <CollectionShowcase />
       <TestimonialsCarousel />
       <GemstoneVideoGrid />
-      <PromotionalSection />
+      {/* PromotionalSection removed */}
       <Footer />
     </div>
   );
