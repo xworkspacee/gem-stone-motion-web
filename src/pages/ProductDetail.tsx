@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -33,20 +32,21 @@ interface ProductData {
 const productData: { [key: string]: ProductData } = {
   "1": {
     id: 1,
-    name: "Diamond Solitaire Ring",
+    name: "Blue Sapphire (Neelam)",
     price: "₹ 1,899.00",
-    description: "Crafted with precision and elegance, this stunning diamond solitaire ring features intricate detailing that captures light beautifully. Made from premium sterling silver for lasting durability.",
-    material: "Sterling Silver with Diamond",
+    description: "Our Blue Sapphire (Neelam) is prized for its rich, vivid blue color and exceptional clarity, making it a powerful and beautiful addition to any jewelry collection. Sourced from premium origins and expertly crafted, this gemstone is believed to bestow wisdom, prosperity, and protection to its wearer. Its captivating brilliance and elegant cut make it a truly extraordinary choice for those seeking both style and positive energy.",
+    material: "Sterling Silver with Blue Sapphire",
     sizes: ["4", "5", "6", "7"],
     colors: [
       { name: "Sterling Silver", value: "silver" },
       { name: "Gold Plated", value: "gold" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop", alt: "Side view" },
-      { id: 3, url: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop", alt: "Detail view" },
-      { id: 4, url: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=800&h=1000&fit=crop", alt: "Close-up view" }
+      { id: 1, url: "/lovable-uploads/39608713-a855-486b-ace3-c4a89a94b089.png", alt: "Blue Sapphire Jewelry Set" },
+      { id: 2, url: "/lovable-uploads/95c6f448-fa13-4695-bd02-0be172eb04f3.png", alt: "Blue Sapphire Ring" },
+      { id: 3, url: "/lovable-uploads/15e49dbc-9223-48bd-9549-120cb132ed02.png", alt: "Pair of Blue Sapphires" },
+      { id: 4, url: "/lovable-uploads/4cd1cd6d-67c8-414c-a1d2-50e1d68d24a3.png", alt: "Loose Blue Sapphire" },
+      { id: 5, url: "/lovable-uploads/3e70fae6-b940-4952-b2b6-3fed519e4583.png", alt: "Blue Sapphire Necklace in Box" }
     ],
     inStock: true,
     stockCount: 5
