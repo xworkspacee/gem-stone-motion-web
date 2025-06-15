@@ -67,7 +67,7 @@ const products: Product[] = [
     name: "Pearl (Muthu)",
     price: "₹ 12,000.00",
     images: [
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
+      "/lovable-uploads/bc6e6219-e538-402f-a024-3bba7157f996.png"
     ],
     isNew: true,
     colors: ["white", "cream"]
