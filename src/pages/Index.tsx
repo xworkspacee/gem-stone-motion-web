@@ -5,7 +5,7 @@ import Hero from '@/components/Hero';
 import FullScreenImage from '@/components/FullScreenImage';
 import GemHeading from '@/components/GemHeading';
 import ProductGrid from '@/components/ProductGrid';
-import MotionGallery from '@/components/MotionGallery';
+// import MotionGallery from '@/components/MotionGallery';      // <-- REMOVED
 import CollectionShowcase from '@/components/CollectionShowcase';
 import BrandStory from '@/components/BrandStory';
 import TestimonialsCarousel from '@/components/TestimonialsCarousel';
@@ -20,7 +20,7 @@ const Index = () => {
       <FullScreenImage />
       <GemHeading />
       <ProductGrid />
-      <MotionGallery />
+      {/* <MotionGallery />  <-- REMOVED! */}
       <CollectionShowcase />
       <BrandStory />
       <TestimonialsCarousel />
@@ -31,3 +31,4 @@ const Index = () => {
 };
 
 export default Index;
+
