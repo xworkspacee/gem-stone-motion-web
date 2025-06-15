@@ -6,24 +6,24 @@ import { Link } from 'react-router-dom';
 
 const collections = [
   {
-    title: "THE ESSENTIALS COLLECTION",
+    title: "PREMIUM GEMSTONES",
     description: "Our signature pieces designed to be worn everyday with subtle details in contemporary shapes.",
     buttonText: "SHOP CLASSICS",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=600&fit=crop",
+    image: "/lovable-uploads/da6d5dd5-5f16-437f-b1af-6639dd3595f0.png",
     route: "/collections/rings"
   },
   {
-    title: "MODERN STATEMENT",
+    title: "SEMI-PRECIOUS GEMSTONES",
     description: "Timeless and wearable earrings with a modern twist that add a touch of style to any outfit.",
     buttonText: "SHOP EARRINGS",
-    image: "https://images.unsplash.com/photo-1603561596112-a03c65c8ee37?w=400&h=600&fit=crop",
+    image: "/lovable-uploads/96d5f28d-3342-4223-bbf9-452d427ec01b.png",
     route: "/collections/earrings"
   },
   {
-    title: "MADE-TO-ORDER JEWELERY",
+    title: "PRECIOUS GEMSTONES",
     description: "Handmade pieces that are carefully crafted to ensure that you'll love for a lifetime.",
     buttonText: "SHOP NOW",
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&h=600&fit=crop",
+    image: "/lovable-uploads/23f1d609-28f0-47fa-81fc-b39969cae178.png",
     route: "/collections/necklaces"
   }
 ];
@@ -75,3 +75,4 @@ const CollectionShowcase = () => {
 };
 
 export default CollectionShowcase;
+
