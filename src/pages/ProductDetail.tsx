@@ -110,19 +110,21 @@ const productData: { [key: string]: ProductData } = {
   },
   "4": {
     id: 4,
-    name: "Vintage Ring Set",
-    price: "₹ 1,749.00",
-    description: "Beautiful vintage-inspired ring set with intricate detailing.",
-    material: "Sterling Silver",
+    name: "Yellow Sapphire (Pushparag)",
+    price: "₹ 28,000.00",
+    description: "Yellow Sapphire (Pushparag) is a vibrant gemstone cherished for its radiant golden color and astrological significance. Esteemed for attracting prosperity, wisdom, and positive energy, each stone is artfully cut and polished to showcase its dazzling brilliance. Perfect for rings, pendants, or as a collector’s gem, Yellow Sapphire makes an exceptional and meaningful addition to any jewelry collection.",
+    material: "18K Gold or Sterling Silver Setting with Certified Yellow Sapphire",
     sizes: ["4", "5", "6", "7"],
     colors: [
-      { name: "Sterling Silver", value: "silver" },
-      { name: "Antique Gold", value: "gold" }
+      { name: "Yellow", value: "gold" },
+      { name: "Silver", value: "silver" }
     ],
     images: [
-      { id: 1, url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=1000&fit=crop", alt: "Main view" },
-      { id: 2, url: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&h=1000&fit=crop", alt: "Set arrangement" },
-      { id: 3, url: "https://images.unsplash.com/photo-1629048446687-06a0b325d7c9?w=800&h=1000&fit=crop", alt: "Individual rings" }
+      { id: 1, url: "/lovable-uploads/8e6e83ca-9b23-4901-83ff-aefe89fb2280.png", alt: "Yellow Sapphire (Pushparag) gemstone on gray background" },
+      { id: 2, url: "/lovable-uploads/70af7a32-3231-4636-b06f-32840128b7bb.png", alt: "Yellow Sapphire (Pushparag) ring worn on hand" },
+      { id: 3, url: "/lovable-uploads/0dc0ed63-aef6-477d-8107-27e1ffbe60c0.png", alt: "Yellow Sapphire (Pushparag) oval loose stone" },
+      { id: 4, url: "/lovable-uploads/81ab1d6b-c3ee-4f4a-8f08-ee834c895fe4.png", alt: "Yellow Sapphire (Pushparag) gemstone closeup" },
+      { id: 5, url: "/lovable-uploads/a2649078-4d23-4d01-85d4-3970e23dd9cd.png", alt: "Yellow Sapphire (Pushparag) gemstone on coin" }
     ],
     inStock: true,
     stockCount: 6
