@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, ShoppingBag } from 'lucide-react';
@@ -22,9 +21,7 @@ const products: Product[] = [
     name: "Blue Sapphire (Neelam)",
     price: "₹ 25,000.00",
     images: [
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
+      "/lovable-uploads/c0134365-141e-44ba-93b3-e7d8caa2d406.png"
     ],
     isNew: true,
     colors: ["blue", "sapphire"]
@@ -34,9 +31,7 @@ const products: Product[] = [
     name: "Emerald (Maragadham)", 
     price: "₹ 35,000.00",
     images: [
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
+      "/lovable-uploads/451ee67e-fe8a-4ab9-b110-3f911d53ac54.png"
     ],
     colors: ["green", "emerald"]
   },
@@ -45,9 +40,7 @@ const products: Product[] = [
     name: "Ruby (Manik)",
     price: "₹ 45,000.00",
     images: [
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop"
+      "/lovable-uploads/c4afd5c3-8b2c-420c-9382-7b1a9a77cdd2.png"
     ],
     colors: ["red", "ruby"]
   },
@@ -56,31 +49,25 @@ const products: Product[] = [
     name: "Yellow Sapphire (Pushparag)",
     price: "₹ 28,000.00",
     images: [
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop"
+      "/lovable-uploads/d0b86aec-db2f-4e0b-9c2c-3f9a7db3d7e2.png"
     ],
     colors: ["yellow", "gold"]
   },
   {
     id: 5,
-    name: "Cat's Eye (Vaidurya)",
-    price: "₹ 18,000.00",
+    name: "Tanzanite",
+    price: "₹ 32,000.00",
     images: [
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
+      "/lovable-uploads/87fb0b6d-47da-4930-98e3-595e02bd1160.png"
     ],
-    colors: ["golden", "brown"]
+    colors: ["blue"]
   },
   {
     id: 6,
     name: "Pearl (Muthu)",
     price: "₹ 12,000.00",
     images: [
-      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&h=600&fit=crop"
+      "https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=500&h=600&fit=crop"
     ],
     isNew: true,
     colors: ["white", "cream"]
